@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rishabh Gulati (rgonwheels) - Professional Cinematographer & Storyteller in Ludhiana with 5+ years of experience in Fashion Videography.">
     <title>RG ON WHEELS | Cinematographer & Storyteller</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -216,17 +217,23 @@
         </div>
 
         <div class="reveal-social">
-            <h3 class="heading-font text-3xl mb-6">INSTAGRAM FEED</h3>
-            <div class="grid grid-cols-3 gap-2">
-                <div class="aspect-square bg-white/5"></div>
-                <div class="aspect-square bg-white/5"></div>
-                <div class="aspect-square bg-white/5"></div>
-                <div class="aspect-square bg-white/5"></div>
-                <div class="aspect-square bg-white/5"></div>
-                <div class="aspect-square bg-white/5"></div>
-            </div>
-            <a href="https://instagram.com/rgonwheels" target="_blank" class="block text-[9px] tracking-widest text-gray-500 mt-4 hover:text-white transition-colors">FOLLOW @RGONWHEELS</a>
+    <h3 class="heading-font text-3xl mb-6">INSTAGRAM <span class="text-[#d4af37]">FEED</span></h3>
+    <div class="grid grid-cols-3 gap-2">
+        <div class="aspect-square bg-white/5 border border-white/10 overflow-hidden group">
+            <img src="img/insta1.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0">
         </div>
+        <div class="aspect-square bg-white/5 border border-white/10 overflow-hidden group">
+            <img src="img/insta2.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0">
+        </div>
+        <div class="aspect-square bg-white/5 border border-white/10 overflow-hidden group">
+            <img src="img/insta3.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0">
+        </div>
+        <div class="aspect-square bg-white/5 border border-white/10"></div>
+        <div class="aspect-square bg-white/5 border border-white/10"></div>
+        <div class="aspect-square bg-white/5 border border-white/10"></div>
+    </div>
+    <a href="https://instagram.com/rgonwheels" target="_blank" class="block text-[9px] tracking-widest text-gray-500 mt-4 hover:text-[#d4af37] transition-colors">FOLLOW @RGONWHEELS</a>
+</div>
 
     </div>
 </section>
@@ -334,18 +341,26 @@ document.querySelectorAll("a, button, .reveal-work, iframe, input, textarea").fo
 });
 
 // Jab buttons ya links par mouse jaye toh cursor bada ho jaye
-document.querySelectorAll("a, button, .reveal-work, iframe").forEach((elem) => {
+// Optimized Magnetic Hover Effect
+document.querySelectorAll("a, button, .reveal-work, iframe, input, textarea").forEach((elem) => {
     elem.addEventListener("mouseenter", () => {
-        cursor.style.transform = "scale(4)";
-        cursor.style.backgroundColor = "transparent";
-        cursor.style.border = "0.5px solid #d4af37";
-        cursorBlur.style.opacity = "0";
+        gsap.to(cursor, { scale: 0, duration: 0.2 }); 
+        gsap.to(cursorBlur, { 
+            width: 65, 
+            height: 65, 
+            backgroundColor: "rgba(212, 175, 55, 0.15)",
+            borderColor: "#d4af37",
+            duration: 0.3 
+        });
     });
     elem.addEventListener("mouseleave", () => {
-        cursor.style.transform = "scale(1)";
-        cursor.style.backgroundColor = "#d4af37";
-        cursor.style.border = "none";
-        cursorBlur.style.opacity = "1";
+        gsap.to(cursor, { scale: 1, duration: 0.2 });
+        gsap.to(cursorBlur, { 
+            width: 35, 
+            height: 35, 
+            backgroundColor: "transparent",
+            duration: 0.3 
+        });
     });
 });
 
@@ -354,3 +369,4 @@ document.querySelectorAll("a, button, .reveal-work, iframe").forEach((elem) => {
 </body>
 
 </html>
+
