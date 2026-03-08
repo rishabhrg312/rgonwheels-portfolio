@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Rishabh Gulati (rgonwheels) - Professional Cinematographer & Storyteller in Ludhiana with 5+ years of experience.">
     <meta name="keywords" content="Rishabh Gulati, rgonwheels, Cinematographer Ludhiana, Fashion Videographer Punjab, Travel Filmmaker India, Hero Xpulse Vlogger">
-<meta name="author" content="Rishabh Gulati">
+    <meta name="author" content="Rishabh Gulati">
     <title>RG ON WHEELS | Cinematographer & Storyteller</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -29,41 +29,13 @@
         }
 
         /* Updated Minimalist Loader */
-#loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    z-index: 9999; /* Sabse upar */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
+        #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        #loader-text { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; letter-spacing: 0.8em; color: white; overflow: hidden; }
+        @media (max-width: 768px) { #loader-text { font-size: 1.5rem; letter-spacing: 0.4em; } }
+        #loader-bar { width: 0; height: 2px; background: #d4af37; margin: 20px auto 0 auto; }
 
-#loader-text {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 3rem; /* Desktop size chota kiya */
-    letter-spacing: 0.8em;
-    color: white;
-    overflow: hidden; /* Animation ke liye zaroori */
-}
-
-@media (max-width: 768px) {
-    #loader-text {
-        font-size: 1.5rem; /* Mobile par screen ke andar rahega */
-        letter-spacing: 0.4em;
-    }
-}
-
-#loader-bar {
-    width: 0;
-    height: 2px; /* Consistency ke liye */
-    background: #d4af37;
-    margin: 20px auto 0 auto; /* Center karne ke liye */
-}
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
         .ride-card { 
             min-width: 350px; 
@@ -81,8 +53,8 @@
 
     <div id="loader">
         <div class="text-center">
-            <h1 id="loader-text" class="heading-font text-5xl md:text-7xl tracking-[0.5em] opacity-0">RISHABH GULATI</h1>
-            <div id="loader-bar" class="w-0 h-[2px] bg-[#d4af37] mt-4 mx-auto"></div>
+            <h1 id="loader-text" class="opacity-0">RISHABH GULATI</h1>
+            <div id="loader-bar"></div>
         </div>
     </div>
 
@@ -92,7 +64,7 @@
                 <video autoplay muted loop playsinline><source src="hero-bg.mp4" type="video/mp4"></video>
                 <div class="absolute inset-0 bg-black/50"></div>
             </div>
-            <nav class="relative z-20 flex justify-between p-10 items-center">
+            <nav class="relative z-20 flex justify-between p-10 items-center bg-gradient-to-b from-black/50 to-transparent">
                 <div class="heading-font text-2xl tracking-widest">RISHABH GULATI</div>
                 <div class="text-[10px] uppercase tracking-[0.3em] hidden md:block">Ludhiana • Filmmaker • Storyteller</div>
             </nav>
@@ -102,7 +74,7 @@
             </div>
         </section>
 
-       <nav class="relative z-20 flex justify-between p-10 items-center bg-gradient-to-b from-black/50 to-transparent">
+        <section class="relative py-24 px-10 bg-[#0a0a0a]">
             <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="reveal-about">
                     <h2 class="heading-font text-5xl md:text-7xl mb-6 tracking-wider leading-none">THE <br><span class="text-[#d4af37]">STORYTELLER</span></h2>
@@ -137,23 +109,23 @@
                     <h2 class="heading-font text-5xl md:text-7xl tracking-widest leading-none">THE <span class="text-[#d4af37]">RIDE</span></h2>
                     <p class="text-[10px] uppercase tracking-[0.4em] text-gray-500 mt-2">Documenting life on two wheels</p>
                 </div>
-                <div class="hidden md:block text-[9px] uppercase tracking-widest text-gray-600">Scroll to Explore →</div>
+                <div class="hidden md:block text-[9px] uppercase tracking-widest text-gray-600 italic">Scroll to Explore →</div>
             </div>
             <div class="flex gap-6 overflow-x-auto px-10 pb-10 no-scrollbar select-none">
                 <div class="ride-card p-10 flex-shrink-0 w-[350px] md:w-[450px]">
                     <i data-lucide="bike" class="w-8 h-8 text-[#d4af37] mb-6"></i>
-                    <h3 class="heading-font text-3xl mb-4">Hero Xpulse 200 4V</h3>
-                    <p class="text-sm text-gray-400">Built for the rugged trails of Punjab and the thin air of the Himalayas.</p>
+                    <h3 class="heading-font text-3xl mb-4 text-white">Hero Xpulse 200 4V</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">Built for the rugged trails of Punjab and the thin air of the Himalayas.</p>
                 </div>
                 <div class="ride-card p-10 flex-shrink-0 w-[350px] md:w-[450px]">
                     <i data-lucide="mountain" class="w-8 h-8 text-[#d4af37] mb-6"></i>
-                    <h3 class="heading-font text-3xl mb-4">Spiti Expedition</h3>
-                    <p class="text-sm text-gray-400">Capturing the stark beauty of the cold desert at 14,000 feet.</p>
+                    <h3 class="heading-font text-3xl mb-4 text-white">Spiti Expedition</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">Capturing the stark beauty of the cold desert at 14,000 feet.</p>
                 </div>
                 <div class="ride-card p-10 flex-shrink-0 w-[350px] md:w-[450px]">
                     <i data-lucide="video" class="w-8 h-8 text-[#d4af37] mb-6"></i>
-                    <h3 class="heading-font text-3xl mb-4">Cinematic Frames</h3>
-                    <p class="text-sm text-gray-400">Blending the adrenaline of riding with the art of filmmaking.</p>
+                    <h3 class="heading-font text-3xl mb-4 text-white">Cinematic Frames</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">Blending the adrenaline of riding with the art of filmmaking.</p>
                 </div>
             </div>
         </section>
@@ -163,22 +135,20 @@
                 <div class="reveal-work">
                     <h3 class="heading-font text-3xl mb-6 tracking-widest">ON THE ROAD (YOUTUBE)</h3>
                     <div class="aspect-video bg-white/5 border border-white/10 flex items-center justify-center group">
-                        <a href="https://youtube.com/@rgonwheels" target="_blank" class="text-center">
-                            <p class="text-[10px] tracking-[0.4em] text-gray-500 group-hover:text-[#d4af37]">WATCH LATEST VLOG</p>
-                        </a>
+                        <a href="https://youtube.com/@rgonwheels" target="_blank" class="text-[10px] tracking-widest text-gray-500 hover:text-[#d4af37]">WATCH LATEST VLOG</a>
                     </div>
                 </div>
                 <div class="reveal-work">
                     <h3 class="heading-font text-3xl mb-6 tracking-widest">INSTAGRAM <span class="text-[#d4af37]">FEED</span></h3>
                     <div class="grid grid-cols-3 gap-2">
                         <div class="aspect-square bg-white/5 border border-white/10 overflow-hidden group">
-                            <img src="img/insta1.jpg" alt="Work" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0">
+                            <img src="img/insta1.jpg" alt="Fashion Videography" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0">
                         </div>
                         <div class="aspect-square bg-white/5 border border-white/10 overflow-hidden group">
-                            <img src="img/insta2.jpg" alt="Travel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0">
+                            <img src="img/insta2.jpg" alt="Travel Storytelling" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0">
                         </div>
                         <div class="aspect-square bg-white/5 border border-white/10 overflow-hidden group">
-                            <img src="img/insta3.jpg" alt="Ride" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0">
+                            <img src="img/insta3.jpg" alt="Hero Xpulse Ride" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0">
                         </div>
                     </div>
                 </div>
@@ -186,63 +156,33 @@
         </section>
 
         <div class="py-16 text-center bg-black border-t border-white/5">
-        <div class="inline-flex items-center gap-2 px-4 py-2 border border-[#d4af37]/30 bg-[#d4af37]/5 rounded-full">
-            <span class="relative flex h-2 w-2">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d4af37] opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-2 w-2 bg-[#d4af37]"></span>
-            </span>
-            <p class="text-[10px] tracking-[0.2em] uppercase text-gray-300">Available for projects in Ludhiana & Worldwide</p>
+            <div class="inline-flex items-center gap-2 px-4 py-2 border border-[#d4af37]/30 bg-[#d4af37]/5 rounded-full">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d4af37] opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-[#d4af37]"></span>
+                </span>
+                <p class="text-[10px] tracking-[0.2em] uppercase text-gray-300">Available for projects in Ludhiana & Worldwide</p>
+            </div>
         </div>
-    </div>
 
-    <footer class="py-20 text-center bg-black">
-        <h4 class="heading-font text-6xl mb-6 italic">Let's Collaborate</h4>
-        <p class="text-gray-500 mb-8 tracking-widest">rgonwheels3@gmail.com</p>
-        <div class="flex justify-center gap-6">
-            <a href="https://instagram.com/rgonwheels" target="_blank" class="border border-white/20 px-8 py-3 hover:bg-white hover:text-black transition">Instagram</a>
-            <a href="https://youtube.com/@rgonwheels" target="_blank" class="border border-white/20 px-8 py-3 hover:bg-white hover:text-black transition">YouTube</a>
-        </div>
-    </footer>
-           
-            <div class="py-10 text-center">
-    <div class="inline-flex items-center gap-2 px-4 py-2 border border-[#d4af37]/30 bg-[#d4af37]/5 rounded-full">
-        <span class="relative flex h-2 w-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d4af37] opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-[#d4af37]"></span>
-        </span>
-        <p class="text-[10px] tracking-[0.2em] uppercase text-gray-300">Available for projects in Ludhiana & Worldwide</p>
-    </div>
-</div>
-            
+        <footer class="py-20 text-center bg-black">
+            <h4 class="heading-font text-6xl mb-6 italic">Let's Collaborate</h4>
+            <p class="text-gray-500 mb-8 tracking-widest">rgonwheels3@gmail.com</p>
+            <div class="flex justify-center gap-6">
+                <a href="https://instagram.com/rgonwheels" target="_blank" class="border border-white/20 px-8 py-3 hover:bg-white hover:text-black transition">Instagram</a>
+                <a href="https://youtube.com/@rgonwheels" target="_blank" class="border border-white/20 px-8 py-3 hover:bg-white hover:text-black transition">YouTube</a>
+            </div>
         </footer>
     </main>
 
     <script>
-        
         const tl = gsap.timeline();
-
-tl.fromTo("#loader-text", 
-    { y: 50, opacity: 0 }, 
-    { y: 0, opacity: 1, duration: 1.2, ease: "power4.out" }
-)
-.to("#loader-bar", { width: "150px", duration: 1, ease: "expo.inOut" }, "-=0.5")
-.to("#loader-text", { opacity: 0, y: -20, duration: 0.5, delay: 0.5 })
-.to("#loader", { 
-    height: 0, 
-    duration: 1.2, 
-    ease: "expo.inOut" 
-})
-.to("#main-content", { 
-    opacity: 1, 
-    duration: 1 
-}, "-=0.8")
-.from("nav, h2", { 
-    y: 30, 
-    opacity: 0, 
-    stagger: 0.2, 
-    duration: 1, 
-    ease: "power3.out" 
-}, "-=0.5");
+        tl.fromTo("#loader-text", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1.2, ease: "power4.out" })
+          .to("#loader-bar", { width: "150px", duration: 1, ease: "expo.inOut" }, "-=0.5")
+          .to("#loader-text", { opacity: 0, y: -20, duration: 0.5, delay: 0.5 })
+          .to("#loader", { height: 0, duration: 1.2, ease: "expo.inOut" })
+          .to("#main-content", { opacity: 1, duration: 0.5 }, "-=0.8")
+          .from("nav, h2", { y: 30, opacity: 0, stagger: 0.2, duration: 1, ease: "power3.out" }, "-=0.5");
 
         gsap.registerPlugin(ScrollTrigger);
 
@@ -266,6 +206,3 @@ tl.fromTo("#loader-text",
     </script>
 </body>
 </html>
-
-
-
