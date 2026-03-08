@@ -170,7 +170,7 @@
     <div class="max-w-4xl mx-auto">
         <h2 class="heading-font text-4xl md:text-5xl mb-12 tracking-widest text-center">GET IN <span class="text-[#d4af37]">TOUCH</span></h2>
         
-        <form action="https://formspree.io/f/YOUR_ID" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <form action="https://formspree.io/f/xzdjzldv" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="reveal-about">
                 <input type="text" name="name" placeholder="NAME" required class="w-full bg-transparent border-b border-white/20 p-4 focus:border-[#d4af37] outline-none transition-colors text-sm uppercase tracking-widest">
             </div>
@@ -214,6 +214,7 @@
           .to("#loader-bar", { width: "150px", duration: 1, ease: "expo.inOut" }, "-=0.5")
           .to("#loader-text", { opacity: 0, y: -20, duration: 0.5, delay: 0.5 })
           .to("#loader", { height: 0, duration: 1.2, ease: "expo.inOut" })
+          .set("#loader", { display: "none" }) // <-- YE LINE ADD KARO (Zaroori Hai)
           .to("#main-content", { opacity: 1, duration: 0.5 }, "-=0.8")
           .from("nav, h2", { y: 30, opacity: 0, stagger: 0.2, duration: 1, ease: "power3.out" }, "-=0.5");
 
@@ -245,4 +246,5 @@
     </script>
 </body>
 </html>
+
 
