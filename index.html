@@ -38,6 +38,16 @@
     z-index: 9999;
     transition: width 0.3s, height 0.3s, background-color 0.3s;
 }
+
+        /* Custom Cursor Styling - Mobile Friendly */
+@media (max-width: 768px) {
+    #cursor, #cursor-blur { 
+        display: none !important; 
+    }
+    * { 
+        cursor: auto !important; 
+    }
+}
         
         /* 1. Welcome Animation (Loader) */
         #loader {
@@ -342,4 +352,5 @@ document.querySelectorAll("a, button, .reveal-work, iframe").forEach((elem) => {
 </script>
 
 </body>
+
 </html>
