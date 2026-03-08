@@ -28,11 +28,42 @@
             * { cursor: auto !important; }
         }
 
-        #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 1000; display: flex; align-items: center; justify-content: center; }
-        .video-container video { width: 100%; height: 100vh; object-fit: cover; }
+        /* Updated Minimalist Loader */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 9999; /* Sabse upar */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+#loader-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem; /* Desktop size chota kiya */
+    letter-spacing: 0.8em;
+    color: white;
+    overflow: hidden; /* Animation ke liye zaroori */
+}
+
+@media (max-width: 768px) {
+    #loader-text {
+        font-size: 1.5rem; /* Mobile par screen ke andar rahega */
+        letter-spacing: 0.4em;
+    }
+}
+
+#loader-bar {
+    width: 0;
+    height: 1px;
+    background: #d4af37;
+    margin-top: 20px;
+}
 
         .ride-card { 
             min-width: 350px; 
@@ -173,11 +204,31 @@
     </main>
 
     <script>
+        
         const tl = gsap.timeline();
-        tl.to("#loader-text", { opacity: 1, duration: 1, letterSpacing: "1em" })
-          .to("#loader-bar", { width: "200px", duration: 1.2 }, "-=0.5")
-          .to("#loader", { y: "-100%", duration: 1, ease: "expo.inOut", delay: 0.5 })
-          .to("#main-content", { opacity: 1, duration: 0.5 }, "-=0.5");
+
+tl.fromTo("#loader-text", 
+    { y: 50, opacity: 0 }, 
+    { y: 0, opacity: 1, duration: 1.2, ease: "power4.out" }
+)
+.to("#loader-bar", { width: "150px", duration: 1, ease: "expo.inOut" }, "-=0.5")
+.to("#loader-text", { opacity: 0, y: -20, duration: 0.5, delay: 0.5 })
+.to("#loader", { 
+    height: 0, 
+    duration: 1.2, 
+    ease: "expo.inOut" 
+})
+.to("#main-content", { 
+    opacity: 1, 
+    duration: 1 
+}, "-=0.8")
+.from("nav, h2", { 
+    y: 30, 
+    opacity: 0, 
+    stagger: 0.2, 
+    duration: 1, 
+    ease: "power3.out" 
+}, "-=0.5");
 
         gsap.registerPlugin(ScrollTrigger);
 
@@ -201,4 +252,5 @@
     </script>
 </body>
 </html>
+
 
