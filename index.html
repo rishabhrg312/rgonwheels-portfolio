@@ -28,6 +28,29 @@
             * { cursor: auto !important; }
         }
 
+        /* Cinematic Film Grain Overlay */
+.grain-overlay {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url('https://res.cloudinary.com/dkpbzpyb8/image/upload/v1741460000/grain_texture.png'); /* Standard Film Grain */
+    opacity: 0.04; /* Isse halka rakhna hai taaki kaam ki cheezein saaf dikhein */
+    pointer-events: none; /* Isse buttons click karne mein dikkat nahi aayegi */
+    z-index: 9999;
+    animation: grain-animation 8s steps(10) infinite;
+}
+
+@keyframes grain-animation {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-5%, -10%); }
+    30% { transform: translate(-15%, 5%); }
+    50% { transform: translate(10%, 5%); }
+    70% { transform: translate(5%, 15%); }
+    90% { transform: translate(-10%, 5%); }
+}
+
         /* Updated Minimalist Loader */
         #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; }
         #loader-text { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; letter-spacing: 0.8em; color: white; overflow: hidden; }
@@ -48,6 +71,7 @@
     </style>
 </head>
 <body>
+    <div class="grain-overlay"></div>
     <div id="cursor"></div>
     <div id="cursor-blur"></div>
 
@@ -112,30 +136,49 @@
         </section>
 
         <section class="relative py-24 bg-[#0a0a0a] z-10 overflow-hidden border-t border-white/5">
-            <div class="px-10 mb-12 flex justify-between items-end">
-                <div>
-                    <h2 class="heading-font text-5xl md:text-7xl tracking-widest leading-none">THE <span class="text-[#d4af37]">RIDE</span></h2>
-                    <p class="text-[10px] uppercase tracking-[0.4em] text-gray-500 mt-2">Documenting life on two wheels</p>
-                </div>
-                <div class="hidden md:block text-[9px] uppercase tracking-widest text-gray-600 italic">Scroll to Explore →</div>
+    <div class="px-10 mb-12 flex justify-between items-end">
+        <div>
+            <h2 class="heading-font text-5xl md:text-7xl tracking-widest leading-none">THE <span class="text-[#d4af37]">RIDE</span></h2>
+            <p class="text-[10px] uppercase tracking-[0.4em] text-gray-500 mt-2">Documenting life on two wheels</p>
+        </div>
+        <div class="hidden md:block text-[9px] uppercase tracking-widest text-gray-600 italic">Scroll to Explore →</div>
+    </div>
+
+    <div class="flex gap-6 overflow-x-auto px-10 pb-10 no-scrollbar select-none">
+        <div class="ride-card p-10 flex-shrink-0 w-[350px] md:w-[450px]">
+            <i data-lucide="bike" class="w-8 h-8 text-[#d4af37] mb-6"></i>
+            <h3 class="heading-font text-3xl mb-4 text-white">Hero Xpulse 200 4V</h3>
+            <p class="text-sm text-gray-400 mb-6 leading-relaxed">Built for the rugged trails of Punjab and the thin air of the Himalayas.</p>
+            <div class="flex gap-4 border-t border-white/10 pt-4">
+                <span class="text-[10px] tracking-widest text-[#d4af37]">DIST: 5000KM+</span>
+                <span class="text-[10px] tracking-widest text-gray-500">|</span>
+                <span class="text-[10px] tracking-widest text-[#d4af37]">TERRAIN: OFF-ROAD</span>
             </div>
-            <div class="flex gap-6 overflow-x-auto px-10 pb-10 no-scrollbar select-none">
-                <div class="ride-card p-10 flex-shrink-0 w-[350px] md:w-[450px]">
-                    <i data-lucide="bike" class="w-8 h-8 text-[#d4af37] mb-6"></i>
-                    <h3 class="heading-font text-3xl mb-4 text-white">Hero Xpulse 200 4V</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">Built for the rugged trails of Punjab and the thin air of the Himalayas.</p>
-                </div>
-                <div class="ride-card p-10 flex-shrink-0 w-[350px] md:w-[450px]">
-                    <i data-lucide="mountain" class="w-8 h-8 text-[#d4af37] mb-6"></i>
-                    <h3 class="heading-font text-3xl mb-4 text-white">Spiti Expedition</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">Capturing the stark beauty of the cold desert at 14,000 feet.</p>
-                </div>
-                <div class="ride-card p-10 flex-shrink-0 w-[350px] md:w-[450px]">
-                    <i data-lucide="video" class="w-8 h-8 text-[#d4af37] mb-6"></i>
-                    <h3 class="heading-font text-3xl mb-4 text-white">Cinematic Frames</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">Blending the adrenaline of riding with the art of filmmaking.</p>
-                </div>
+        </div>
+
+        <div class="ride-card p-10 flex-shrink-0 w-[350px] md:w-[450px]">
+            <i data-lucide="mountain" class="w-8 h-8 text-[#d4af37] mb-6"></i>
+            <h3 class="heading-font text-3xl mb-4 text-white">Spiti Expedition</h3>
+            <p class="text-sm text-gray-400 mb-6 leading-relaxed">Capturing the stark beauty of the cold desert at 14,000 feet.</p>
+            <div class="flex gap-4 border-t border-white/10 pt-4">
+                <span class="text-[10px] tracking-widest text-[#d4af37]">ALT: 14,500FT</span>
+                <span class="text-[10px] tracking-widest text-gray-500">|</span>
+                <span class="text-[10px] tracking-widest text-[#d4af37]">TEMP: -15°C</span>
             </div>
+        </div>
+
+        <div class="ride-card p-10 flex-shrink-0 w-[350px] md:w-[450px]">
+            <i data-lucide="video" class="w-8 h-8 text-[#d4af37] mb-6"></i>
+            <h3 class="heading-font text-3xl mb-4 text-white">Cinematic Frames</h3>
+            <p class="text-sm text-gray-400 mb-6 leading-relaxed">Blending the adrenaline of riding with the art of filmmaking.</p>
+            <div class="flex gap-4 border-t border-white/10 pt-4">
+                <span class="text-[10px] tracking-widest text-[#d4af37]">GEAR: ACTION 5 PRO</span>
+                <span class="text-[10px] tracking-widest text-gray-500">|</span>
+                <span class="text-[10px] tracking-widest text-[#d4af37]">4K CINEMATIC</span>
+            </div>
+        </div>
+    </div>
+</section>
         </section>
 
         <section class="py-24 px-10 border-t border-white/5">
@@ -243,6 +286,7 @@
     </script>
 </body>
 </html>
+
 
 
 
