@@ -64,10 +64,21 @@
                 <video autoplay muted loop playsinline><source src="hero-bg.mp4" type="video/mp4"></video>
                 <div class="absolute inset-0 bg-black/50"></div>
             </div>
-            <nav class="relative z-20 flex justify-between p-10 items-center bg-gradient-to-b from-black/50 to-transparent">
-                <div class="heading-font text-2xl tracking-widest">RISHABH GULATI</div>
-                <div class="text-[10px] uppercase tracking-[0.3em] hidden md:block">Ludhiana • Filmmaker • Storyteller</div>
-            </nav>
+            <nav class="relative z-20 flex justify-between p-8 md:p-10 items-center bg-gradient-to-b from-black/60 to-transparent">
+    <div class="heading-font text-2xl tracking-widest">RISHABH GULATI</div>
+    
+    <div class="flex items-center gap-6">
+        <a href="https://youtube.com/@rgonwheels" target="_blank" class="hover:text-[#d4af37] transition-colors">
+            <i data-lucide="youtube" class="w-5 h-5 md:w-6 md:h-6"></i>
+        </a>
+        <a href="https://instagram.com/rgonwheels" target="_blank" class="hover:text-[#d4af37] transition-colors">
+            <i data-lucide="instagram" class="w-5 h-5 md:w-6 md:h-6"></i>
+        </a>
+        <div class="text-[10px] uppercase tracking-[0.3em] hidden lg:block border-l border-white/20 pl-6 ml-2">
+            Ludhiana • Filmmaker
+        </div>
+    </div>
+</nav>
             <div class="relative z-10 h-[70vh] flex flex-col justify-center items-center text-center px-6">
                 <h2 class="heading-font text-8xl md:text-[12rem] leading-none mb-4">RG ON WHEELS</h2>
                 <p class="max-w-xl text-gray-400 uppercase tracking-widest text-xs">Capturing life through the lens of a traveler and a filmmaker.</p>
@@ -155,6 +166,28 @@
             </div>
         </section>
 
+        <section id="contact" class="py-24 px-10 bg-[#0c0d10] border-t border-white/5">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="heading-font text-4xl md:text-5xl mb-12 tracking-widest text-center">GET IN <span class="text-[#d4af37]">TOUCH</span></h2>
+        
+        <form action="https://formspree.io/f/YOUR_ID" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="reveal-about">
+                <input type="text" name="name" placeholder="NAME" required class="w-full bg-transparent border-b border-white/20 p-4 focus:border-[#d4af37] outline-none transition-colors text-sm uppercase tracking-widest">
+            </div>
+            <div class="reveal-about">
+                <input type="email" name="email" placeholder="EMAIL" required class="w-full bg-transparent border-b border-white/20 p-4 focus:border-[#d4af37] outline-none transition-colors text-sm uppercase tracking-widest">
+            </div>
+            <div class="md:col-span-2 reveal-about">
+                <textarea name="message" placeholder="PROJECT DETAILS / MESSAGE" rows="4" required class="w-full bg-transparent border-b border-white/20 p-4 focus:border-[#d4af37] outline-none transition-colors text-sm uppercase tracking-widest"></textarea>
+            </div>
+            
+            <button type="submit" class="md:col-span-2 mt-8 border border-[#d4af37] text-[#d4af37] py-5 uppercase tracking-[0.4em] text-[10px] hover:bg-[#d4af37] hover:text-black transition-all duration-500">
+                Send Message
+            </button>
+        </form>
+    </div>
+</section>
+
         <div class="py-16 text-center bg-black border-t border-white/5">
             <div class="inline-flex items-center gap-2 px-4 py-2 border border-[#d4af37]/30 bg-[#d4af37]/5 rounded-full">
                 <span class="relative flex h-2 w-2">
@@ -186,9 +219,15 @@
 
         gsap.registerPlugin(ScrollTrigger);
 
-        gsap.utils.toArray(".reveal-about, .reveal-work, .ride-card").forEach(el => {
-            gsap.from(el, { scrollTrigger: { trigger: el, start: "top 90%" }, y: 50, opacity: 0, duration: 1 });
-        });
+        gsap.utils.toArray(".reveal-about, .reveal-work, .ride-card, #contact form").forEach(el => {
+    gsap.from(el, { 
+        scrollTrigger: { trigger: el, start: "top 90%" }, 
+        y: 40, 
+        opacity: 0, 
+        duration: 1, 
+        ease: "power2.out" 
+    });
+});
 
         const cursor = document.querySelector("#cursor");
         const cursorBlur = document.querySelector("#cursor-blur");
@@ -206,3 +245,4 @@
     </script>
 </body>
 </html>
+
