@@ -9,6 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
 
     <style>
@@ -177,25 +178,29 @@
 
         <section class="relative py-32 px-10 bg-[#0c0d10] z-10">
     <div class="max-w-6xl mx-auto">
-        <h2 class="heading-font text-4xl md:text-5xl mb-16 tracking-[0.3em] text-center">The Arsenal</h2>
+        <h2 class="heading-font text-4xl md:text-5xl mb-16 tracking-[0.3em] text-center italic">The <span class="text-[#d4af37]">Arsenal</span></h2>
         
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div class="p-8 border border-white/10 bg-white/5 backdrop-blur-md rounded-sm group hover:border-white/30 transition-all">
+            <div class="p-8 border border-white/10 bg-white/5 backdrop-blur-md rounded-sm group hover:border-[#d4af37] transition-all duration-500">
+                <i data-lucide="smartphone" class="w-8 h-8 mb-6 text-gray-500 group-hover:text-[#d4af37] transition-colors"></i>
                 <p class="text-[9px] uppercase tracking-widest text-gray-500 mb-2">Primary Cam</p>
                 <h3 class="heading-font text-xl">iPhone 12</h3>
             </div>
 
-            <div class="p-8 border border-white/10 bg-white/5 backdrop-blur-md rounded-sm group hover:border-white/30 transition-all">
+            <div class="p-8 border border-white/10 bg-white/5 backdrop-blur-md rounded-sm group hover:border-[#d4af37] transition-all duration-500">
+                <i data-lucide="camera" class="w-8 h-8 mb-6 text-gray-500 group-hover:text-[#d4af37] transition-colors"></i>
                 <p class="text-[9px] uppercase tracking-widest text-gray-500 mb-2">Action</p>
                 <h3 class="heading-font text-xl">DJI Action 5 Pro</h3>
             </div>
 
-            <div class="p-8 border border-white/10 bg-white/5 backdrop-blur-md rounded-sm group hover:border-white/30 transition-all">
+            <div class="p-8 border border-white/10 bg-white/5 backdrop-blur-md rounded-sm group hover:border-[#d4af37] transition-all duration-500">
+                <i data-lucide="layers" class="w-8 h-8 mb-6 text-gray-500 group-hover:text-[#d4af37] transition-colors"></i>
                 <p class="text-[9px] uppercase tracking-widest text-gray-500 mb-2">Stability</p>
                 <h3 class="heading-font text-xl">DJI Gimbal</h3>
             </div>
 
-            <div class="p-8 border border-white/10 bg-white/5 backdrop-blur-md rounded-sm group hover:border-white/30 transition-all">
+            <div class="p-8 border border-white/10 bg-white/5 backdrop-blur-md rounded-sm group hover:border-[#d4af37] transition-all duration-500">
+                <i data-lucide="mic" class="w-8 h-8 mb-6 text-gray-500 group-hover:text-[#d4af37] transition-colors"></i>
                 <p class="text-[9px] uppercase tracking-widest text-gray-500 mb-2">Audio</p>
                 <h3 class="heading-font text-xl">DJI Mic Mini</h3>
             </div>
@@ -220,13 +225,13 @@
     <h3 class="heading-font text-3xl mb-6">INSTAGRAM <span class="text-[#d4af37]">FEED</span></h3>
     <div class="grid grid-cols-3 gap-2">
         <div class="aspect-square bg-white/5 border border-white/10 overflow-hidden group">
-            <img src="img/insta1.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0">
+           <img src="img/insta1.jpg" alt="Rishabh Gulati Fashion Videography Ludhiana" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0">
         </div>
         <div class="aspect-square bg-white/5 border border-white/10 overflow-hidden group">
-            <img src="img/insta2.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0">
+            <img src="img/insta2.jpg" alt="RG ON WHEELS Travel Storytelling Spiti Valley" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0">
         </div>
         <div class="aspect-square bg-white/5 border border-white/10 overflow-hidden group">
-            <img src="img/insta3.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0">
+            <img src="img/insta3.jpg" alt="Hero Xpulse 200 4V Offroading Ride Rishabh Gulati" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0">
         </div>
         <div class="aspect-square bg-white/5 border border-white/10"></div>
         <div class="aspect-square bg-white/5 border border-white/10"></div>
@@ -341,10 +346,13 @@ document.querySelectorAll("a, button, .reveal-work, iframe, input, textarea").fo
     });
 });
 
+       lucide.createIcons();
+
 </script>
 
 </body>
 
 </html>
+
 
 
