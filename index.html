@@ -286,7 +286,7 @@
         ease: "power2.out"
     });
 
-    // Portfolio & Social & Form Anim   ation
+    // Portfolio & Social & Form Animation
     gsap.from(".reveal-work, .reveal-social, form", {
         scrollTrigger: {
             trigger: ".reveal-work",
@@ -314,29 +314,6 @@ window.addEventListener("mousemove", (e) => {
         y: e.clientY - 14,
         duration: 0.15, // Halka sa delay for cinematic feel
         ease: "power2.out"
-    });
-});
-
-// Magnetic Hover Effect
-document.querySelectorAll("a, button, .reveal-work, iframe, input, textarea").forEach((elem) => {
-    elem.addEventListener("mouseenter", () => {
-        gsap.to(cursor, { scale: 0, duration: 0.2 }); // Chota dot gayab
-        gsap.to(cursorBlur, { 
-            width: 60, 
-            height: 60, 
-            backgroundColor: "rgba(212, 175, 55, 0.1)",
-            borderColor: "#d4af37",
-            duration: 0.3 
-        });
-    });
-    elem.addEventListener("mouseleave", () => {
-        gsap.to(cursor, { scale: 1, duration: 0.2 });
-        gsap.to(cursorBlur, { 
-            width: 35, 
-            height: 35, 
-            backgroundColor: "transparent",
-            duration: 0.3 
-        });
     });
 });
 
@@ -369,4 +346,5 @@ document.querySelectorAll("a, button, .reveal-work, iframe, input, textarea").fo
 </body>
 
 </html>
+
 
