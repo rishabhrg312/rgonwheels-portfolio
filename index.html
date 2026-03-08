@@ -60,9 +60,9 @@
 
 #loader-bar {
     width: 0;
-    height: 1px;
+    height: 2px; /* Consistency ke liye */
     background: #d4af37;
-    margin-top: 20px;
+    margin: 20px auto 0 auto; /* Center karne ke liye */
 }
 
         .ride-card { 
@@ -102,7 +102,7 @@
             </div>
         </section>
 
-        <section class="relative py-24 px-10 bg-[#0a0a0a]">
+       <nav class="relative z-20 flex justify-between p-10 items-center bg-gradient-to-b from-black/50 to-transparent">
             <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="reveal-about">
                     <h2 class="heading-font text-5xl md:text-7xl mb-6 tracking-wider leading-none">THE <br><span class="text-[#d4af37]">STORYTELLER</span></h2>
@@ -185,11 +185,25 @@
             </div>
         </section>
 
-        <footer class="py-20 text-center border-t border-white/5">
-            <h4 class="heading-font text-6xl mb-6 italic">Let's Collaborate</h4>
-            <p class="text-gray-500 mb-8">rgonwheels3@gmail.com</p>
-            <a href="https://instagram.com/rgonwheels" target="_blank" class="border border-white/20 px-8 py-3 hover:bg-white hover:text-black transition">Instagram</a>
+        <div class="py-16 text-center bg-black border-t border-white/5">
+        <div class="inline-flex items-center gap-2 px-4 py-2 border border-[#d4af37]/30 bg-[#d4af37]/5 rounded-full">
+            <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d4af37] opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-[#d4af37]"></span>
+            </span>
+            <p class="text-[10px] tracking-[0.2em] uppercase text-gray-300">Available for projects in Ludhiana & Worldwide</p>
+        </div>
+    </div>
 
+    <footer class="py-20 text-center bg-black">
+        <h4 class="heading-font text-6xl mb-6 italic">Let's Collaborate</h4>
+        <p class="text-gray-500 mb-8 tracking-widest">rgonwheels3@gmail.com</p>
+        <div class="flex justify-center gap-6">
+            <a href="https://instagram.com/rgonwheels" target="_blank" class="border border-white/20 px-8 py-3 hover:bg-white hover:text-black transition">Instagram</a>
+            <a href="https://youtube.com/@rgonwheels" target="_blank" class="border border-white/20 px-8 py-3 hover:bg-white hover:text-black transition">YouTube</a>
+        </div>
+    </footer>
+           
             <div class="py-10 text-center">
     <div class="inline-flex items-center gap-2 px-4 py-2 border border-[#d4af37]/30 bg-[#d4af37]/5 rounded-full">
         <span class="relative flex h-2 w-2">
@@ -252,5 +266,6 @@ tl.fromTo("#loader-text",
     </script>
 </body>
 </html>
+
 
 
