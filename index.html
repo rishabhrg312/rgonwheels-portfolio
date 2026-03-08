@@ -71,6 +71,15 @@
         .video-container video {
             width: 100%; height: 100vh; object-fit: cover;
         }
+
+        .ride-card {
+    min-width: 300px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ride-card:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+        
     </style>
 </head>
 <body>
@@ -208,6 +217,36 @@
     </div>
 </section>
 
+        <section class="py-24 bg-[#0a0a0a] overflow-hidden">
+    <div class="px-10 mb-12 flex justify-between items-end">
+        <div>
+            <h2 class="heading-font text-5xl tracking-widest leading-none">THE <span class="text-[#d4af37]">RIDE</span></h2>
+            <p class="text-[10px] uppercase tracking-[0.4em] text-gray-500 mt-2">Documenting life on two wheels</p>
+        </div>
+        <div class="hidden md:block text-[9px] uppercase tracking-widest text-gray-600">Scroll to Explore →</div>
+    </div>
+
+    <div class="flex gap-6 overflow-x-auto px-10 pb-10 no-scrollbar select-none">
+        <div class="ride-card p-10 bg-white/5 border border-white/10 rounded-sm flex-shrink-0 w-[400px]">
+            <i data-lucide="bike" class="w-8 h-8 text-[#d4af37] mb-6"></i>
+            <h3 class="heading-font text-3xl mb-4 text-white">Hero Xpulse 200 4V</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">Not just a motorcycle, but a tool for storytelling. Built for the rugged trails of Punjab and the thin air of the Himalayas.</p>
+        </div>
+
+        <div class="ride-card p-10 bg-white/5 border border-white/10 rounded-sm flex-shrink-0 w-[400px]">
+            <i data-lucide="mountain" class="w-8 h-8 text-[#d4af37] mb-6"></i>
+            <h3 class="heading-font text-3xl mb-4 text-white">Spiti Expedition</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">Capturing the stark beauty of the cold desert. Where the lens meets the soul of the mountains at 14,000 feet.</p>
+        </div>
+
+        <div class="ride-card p-10 bg-white/5 border border-white/10 rounded-sm flex-shrink-0 w-[400px]">
+            <i data-lucide="video" class="w-8 h-8 text-[#d4af37] mb-6"></i>
+            <h3 class="heading-font text-3xl mb-4 text-white">Cinematic Frames</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">Every mile is a frame. Every sunset is a story. Blending the adrenaline of riding with the art of filmmaking.</p>
+        </div>
+    </div>
+</section>
+        
 <section class="py-24 px-10 border-t border-white/5">
     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
         
@@ -346,6 +385,18 @@ document.querySelectorAll("a, button, .reveal-work, iframe, input, textarea").fo
     });
 });
 
+       gsap.from(".ride-card", {
+    scrollTrigger: {
+        trigger: ".ride-card",
+        start: "top 90%",
+    },
+    x: 100,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.2,
+    ease: "power2.out"
+});
+       
     lucide.createIcons();
 
 </script>
@@ -353,6 +404,7 @@ document.querySelectorAll("a, button, .reveal-work, iframe, input, textarea").fo
 </body>
 
 </html>
+
 
 
 
