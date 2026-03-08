@@ -385,10 +385,11 @@ document.querySelectorAll("a, button, .reveal-work, iframe, input, textarea").fo
     });
 });
 
-       gsap.from(".ride-card", {
+       // Clean & Working Ride Card Animation
+    gsap.from(".ride-card", {
     scrollTrigger: {
         trigger: ".ride-card",
-        start: "top 90%",
+        start: "top 90%", // Jab card screen ke 90% niche ho tab shuru ho
     },
     x: 100,
     opacity: 0,
@@ -404,6 +405,7 @@ document.querySelectorAll("a, button, .reveal-work, iframe, input, textarea").fo
 </body>
 
 </html>
+
 
 
 
