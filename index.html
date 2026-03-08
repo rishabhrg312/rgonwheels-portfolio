@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Rishabh Gulati (rgonwheels) - Professional Cinematographer & Storyteller in Ludhiana with 5+ years of experience.">
+    <meta name="description" content="Rishabh Gulati (rgonwheels) - Professional Cinematographer & Storyteller in Ludhiana with 5+ years of experience in Fashion Videography.">
     <title>RG ON WHEELS | Cinematographer & Storyteller</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -16,35 +16,99 @@
         body { background-color: #0a0a0a; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         .heading-font { font-family: 'Bebas Neue', sans-serif; }
 
-        * { cursor: none !important; } 
+        /* Custom Cursor Styling - New & Fast */
+* { cursor: none !important; } 
 
-        #cursor { width: 8px; height: 8px; background-color: #d4af37; border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; mix-blend-mode: difference; }
-        #cursor-blur { width: 35px; height: 35px; border: 1px solid #d4af37; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: width 0.3s, height 0.3s; }
+#cursor {
+    width: 8px;
+    height: 8px;
+    background-color: #d4af37;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 10000;
+    mix-blend-mode: difference; /* Isse cursor har background par dikhega */
+}
 
-        @media (max-width: 768px) {
-            #cursor, #cursor-blur { display: none !important; }
-            * { cursor: auto !important; }
+#cursor-blur {
+    width: 35px;
+    height: 35px;
+    border: 1px solid #d4af37;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: width 0.3s, height 0.3s, background-color 0.3s;
+}
+
+        /* Custom Cursor Styling - Mobile Friendly */
+@media (max-width: 768px) {
+    #cursor, #cursor-blur { 
+        display: none !important; 
+    }
+    * { 
+        cursor: auto !important; 
+    }
+}
+        
+        /* 1. Welcome Animation (Loader) */
+        #loader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 100; display: flex;
+            align-items: center; justify-content: center;
         }
 
-        #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 1000; display: flex; align-items: center; justify-content: center; }
-        .video-container video { width: 100%; height: 100vh; object-fit: cover; }
-
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-        .ride-card { 
-            min-width: 350px; 
-            background: rgba(255, 255, 255, 0.03); 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-            border-radius: 4px; 
-            transition: all 0.4s ease; 
+        /* 2. Glassmorphism for Equipment Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: 0.4s ease;
         }
-        .ride-card:hover { transform: translateY(-10px) scale(1.02); border-color: #d4af37; }
+        .glass-card:hover { border-color: #d4af37; transform: translateY(-5px); }
+
+        /* Video Background Styling */
+        .video-container video {
+            width: 100%; height: 100vh; object-fit: cover;
+        }
+
+     /* Custom Scrollbar for the Ride Section */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+        /* Custom Scrollbar and Visibility Fix */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Animation se pehle section ko force-visible karne ke liye */
+.ride-card {
+    opacity: 1 !important; /* Shuru mein dikhne do, animation baad mein handle hogi */
+    will-change: transform, opacity;
+}
+    
+
+.ride-card {
+    min-width: 350px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 20; /* Isse cards background ke piche nahi chupenge */
+    opacity: 1 !important; /* Force visible for testing */
+}
+.ride-card:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+        
     </style>
 </head>
 <body>
     <div id="cursor"></div>
-    <div id="cursor-blur"></div>
+<div id="cursor-blur"></div>
 
     <div id="loader">
         <div class="text-center">
@@ -54,15 +118,20 @@
     </div>
 
     <main id="main-content" class="opacity-0">
+        
         <section class="relative h-screen overflow-hidden">
             <div class="video-container absolute inset-0 z-0">
-                <video autoplay muted loop playsinline><source src="hero-bg.mp4" type="video/mp4"></video>
+                <video autoplay muted loop playsinline>
+                    <source src="hero-bg.mp4" type="video/mp4">
+                </video>
                 <div class="absolute inset-0 bg-black/50"></div>
             </div>
+
             <nav class="relative z-20 flex justify-between p-10 items-center">
                 <div class="heading-font text-2xl tracking-widest">RISHABH GULATI</div>
                 <div class="text-[10px] uppercase tracking-[0.3em] hidden md:block">Ludhiana • Filmmaker • Storyteller</div>
             </nav>
+
             <div class="relative z-10 h-[70vh] flex flex-col justify-center items-center text-center px-6">
                 <h2 class="heading-font text-8xl md:text-[12rem] leading-none mb-4">RG ON WHEELS</h2>
                 <p class="max-w-xl text-gray-400 uppercase tracking-widest text-xs">Capturing life through the lens of a traveler and a filmmaker.</p>
@@ -70,121 +139,310 @@
         </section>
 
         <section class="relative py-24 px-10 bg-[#0a0a0a]">
-            <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="reveal-about">
-                    <h2 class="heading-font text-5xl md:text-7xl mb-6 tracking-wider leading-none">THE <br><span class="text-[#d4af37]">STORYTELLER</span></h2>
-                    <div class="w-20 h-[1px] bg-[#d4af37]"></div>
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        
+        <div class="reveal-about">
+            <h2 class="heading-font text-5xl md:text-7xl mb-6 tracking-wider leading-none">
+                THE <br><span class="text-[#d4af37]">STORYTELLER</span>
+            </h2>
+            <div class="w-20 h-[1px] bg-[#d4af37]"></div>
+        </div>
+
+        <div class="reveal-about">
+            <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-6">
+                Based in Ludhiana, I am a professional cinematographer and photographer with over 5 years of experience. My expertise lies in fashion videography, where I blend commercial aesthetics with cinematic soul.
+            </p>
+            <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-8">
+                When I’m not on a commercial set, I’m on my <span class="text-white">Hero Xpulse</span>, chasing stories across the map. **RG ON WHEELS** is the intersection of my love for filmmaking and the freedom of the open road.
+            </p>
+            
+            <div class="flex gap-12">
+                <div>
+                    <p class="heading-font text-4xl text-[#d4af37]">5+</p>
+                    <p class="text-[9px] uppercase tracking-[0.2em] text-gray-500">Years of Lens</p>
                 </div>
-                <div class="reveal-about">
-                    <p class="text-gray-400 mb-6">Based in Ludhiana, I am a professional cinematographer with 5+ years of experience in fashion videography.</p>
-                    <p class="text-gray-400 mb-8">When I’m not on set, I’m on my <span class="text-white">Hero Xpulse</span>, chasing stories across the map.</p>
-                    <div class="flex gap-12">
-                        <div><p class="heading-font text-4xl text-[#d4af37]">5+</p><p class="text-[9px] uppercase tracking-widest text-gray-500">Years Exp</p></div>
-                        <div><p class="heading-font text-4xl text-[#d4af37]">50+</p><p class="text-[9px] uppercase tracking-widest text-gray-500">Stories</p></div>
-                    </div>
+                <div>
+                    <p class="heading-font text-4xl text-[#d4af37]">50+</p>
+                    <p class="text-[9px] uppercase tracking-[0.2em] text-gray-500">Global Stories</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
+
+<section class="py-20 px-10 bg-[#0a0a0a] border-t border-white/5">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div class="reveal-about">
+            <h3 class="heading-font text-2xl text-[#d4af37] mb-4">Cinematography</h3>
+            <p class="text-xs text-gray-500 uppercase tracking-widest">Fashion Films • Documentaries • Travel Vlogs</p>
+        </div>
+        <div class="reveal-about">
+            <h3 class="heading-font text-2xl text-[#d4af37] mb-4">Photography</h3>
+            <p class="text-xs text-gray-500 uppercase tracking-widest">Editorial • Street • Portraits</p>
+        </div>
+        <div class="reveal-about">
+            <h3 class="heading-font text-2xl text-[#d4af37] mb-4">Post Production</h3>
+            <p class="text-xs text-gray-500 uppercase tracking-widest">Color Grading • Sound Design • Storyboarding</p>
+        </div>
+    </div>
+</section>
+
+<section class="py-24 px-10 bg-[#0a0a0a]">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="heading-font text-4xl mb-12 tracking-widest text-center">FEATURED <span class="text-[#d4af37]">FILMS</span></h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="reveal-work">
+                <div class="aspect-video bg-white/5 border border-white/10 overflow-hidden">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <h3 class="heading-font text-xl mt-4 tracking-wider">Fashion Cinematography Reel</h3>
+            </div>
+
+            <div class="reveal-work">
+                <div class="aspect-video bg-white/5 border border-white/10 overflow-hidden">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <h3 class="heading-font text-xl mt-4 tracking-wider">Travel Storytelling | Spiti</h3>
+            </div>
+        </div>
+    </div>
+</section>
 
         <section class="relative py-32 px-10 bg-[#0c0d10] z-10">
-            <div class="max-w-6xl mx-auto">
-                <h2 class="heading-font text-4xl text-center mb-16 italic">The <span class="text-[#d4af37]">Arsenal</span></h2>
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                    <div class="p-8 border border-white/10 bg-white/5 reveal-about"><i data-lucide="smartphone" class="w-8 h-8 mb-4 text-[#d4af37]"></i><h3 class="heading-font text-xl">iPhone 12</h3></div>
-                    <div class="p-8 border border-white/10 bg-white/5 reveal-about"><i data-lucide="camera" class="w-8 h-8 mb-4 text-[#d4af37]"></i><h3 class="heading-font text-xl">DJI Action 5 Pro</h3></div>
-                    <div class="p-8 border border-white/10 bg-white/5 reveal-about"><i data-lucide="layers" class="w-8 h-8 mb-4 text-[#d4af37]"></i><h3 class="heading-font text-xl">DJI Gimbal</h3></div>
-                    <div class="p-8 border border-white/10 bg-white/5 reveal-about"><i data-lucide="mic" class="w-8 h-8 mb-4 text-[#d4af37]"></i><h3 class="heading-font text-xl">DJI Mic Mini</h3></div>
-                </div>
+    <div class="max-w-6xl mx-auto">
+        <h2 class="heading-font text-4xl md:text-5xl mb-16 tracking-[0.3em] text-center italic">The <span class="text-[#d4af37]">Arsenal</span></h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="p-8 border border-white/10 bg-white/5 backdrop-blur-md rounded-sm group hover:border-[#d4af37] transition-all duration-500">
+                <i data-lucide="smartphone" class="w-8 h-8 mb-6 text-gray-500 group-hover:text-[#d4af37] transition-colors"></i>
+                <p class="text-[9px] uppercase tracking-widest text-gray-500 mb-2">Primary Cam</p>
+                <h3 class="heading-font text-xl">iPhone 12</h3>
             </div>
-        </section>
+
+            <div class="p-8 border border-white/10 bg-white/5 backdrop-blur-md rounded-sm group hover:border-[#d4af37] transition-all duration-500">
+                <i data-lucide="camera" class="w-8 h-8 mb-6 text-gray-500 group-hover:text-[#d4af37] transition-colors"></i>
+                <p class="text-[9px] uppercase tracking-widest text-gray-500 mb-2">Action</p>
+                <h3 class="heading-font text-xl">DJI Action 5 Pro</h3>
+            </div>
+
+            <div class="p-8 border border-white/10 bg-white/5 backdrop-blur-md rounded-sm group hover:border-[#d4af37] transition-all duration-500">
+                <i data-lucide="layers" class="w-8 h-8 mb-6 text-gray-500 group-hover:text-[#d4af37] transition-colors"></i>
+                <p class="text-[9px] uppercase tracking-widest text-gray-500 mb-2">Stability</p>
+                <h3 class="heading-font text-xl">DJI Gimbal</h3>
+            </div>
+
+            <div class="p-8 border border-white/10 bg-white/5 backdrop-blur-md rounded-sm group hover:border-[#d4af37] transition-all duration-500">
+                <i data-lucide="mic" class="w-8 h-8 mb-6 text-gray-500 group-hover:text-[#d4af37] transition-colors"></i>
+                <p class="text-[9px] uppercase tracking-widest text-gray-500 mb-2">Audio</p>
+                <h3 class="heading-font text-xl">DJI Mic Mini</h3>
+            </div>
+        </div>
+    </div>
+</section>
 
         <section class="relative py-24 bg-[#0a0a0a] z-10 overflow-hidden border-t border-white/5">
-            <div class="px-10 mb-12 flex justify-between items-end">
-                <div>
-                    <h2 class="heading-font text-5xl md:text-7xl tracking-widest leading-none">THE <span class="text-[#d4af37]">RIDE</span></h2>
-                    <p class="text-[10px] uppercase tracking-[0.4em] text-gray-500 mt-2">Documenting life on two wheels</p>
-                </div>
-                <div class="hidden md:block text-[9px] uppercase tracking-widest text-gray-600">Scroll to Explore →</div>
-            </div>
-            <div class="flex gap-6 overflow-x-auto px-10 pb-10 no-scrollbar select-none">
-                <div class="ride-card p-10 flex-shrink-0 w-[350px] md:w-[450px]">
-                    <i data-lucide="bike" class="w-8 h-8 text-[#d4af37] mb-6"></i>
-                    <h3 class="heading-font text-3xl mb-4">Hero Xpulse 200 4V</h3>
-                    <p class="text-sm text-gray-400">Built for the rugged trails of Punjab and the thin air of the Himalayas.</p>
-                </div>
-                <div class="ride-card p-10 flex-shrink-0 w-[350px] md:w-[450px]">
-                    <i data-lucide="mountain" class="w-8 h-8 text-[#d4af37] mb-6"></i>
-                    <h3 class="heading-font text-3xl mb-4">Spiti Expedition</h3>
-                    <p class="text-sm text-gray-400">Capturing the stark beauty of the cold desert at 14,000 feet.</p>
-                </div>
-                <div class="ride-card p-10 flex-shrink-0 w-[350px] md:w-[450px]">
-                    <i data-lucide="video" class="w-8 h-8 text-[#d4af37] mb-6"></i>
-                    <h3 class="heading-font text-3xl mb-4">Cinematic Frames</h3>
-                    <p class="text-sm text-gray-400">Blending the adrenaline of riding with the art of filmmaking.</p>
-                </div>
-            </div>
-        </section>
+    <div class="px-10 mb-12 flex justify-between items-end">
+        <div class="reveal-about">
+            <h2 class="heading-font text-5xl md:text-7xl tracking-widest leading-none">THE <span class="text-[#d4af37]">RIDE</span></h2>
+            <p class="text-[10px] uppercase tracking-[0.4em] text-gray-500 mt-2">Documenting life on two wheels</p>
+        </div>
+        <div class="hidden md:block text-[9px] uppercase tracking-widest text-gray-600">Scroll to Explore →</div>
+    </div>
 
-        <section class="py-24 px-10 border-t border-white/5">
-            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
-                <div class="reveal-work">
-                    <h3 class="heading-font text-3xl mb-6 tracking-widest">ON THE ROAD (YOUTUBE)</h3>
-                    <div class="aspect-video bg-white/5 border border-white/10 flex items-center justify-center group">
-                        <a href="https://youtube.com/@rgonwheels" target="_blank" class="text-center">
-                            <p class="text-[10px] tracking-[0.4em] text-gray-500 group-hover:text-[#d4af37]">WATCH LATEST VLOG</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="reveal-work">
-                    <h3 class="heading-font text-3xl mb-6 tracking-widest">INSTAGRAM <span class="text-[#d4af37]">FEED</span></h3>
-                    <div class="grid grid-cols-3 gap-2">
-                        <div class="aspect-square bg-white/5 border border-white/10 overflow-hidden group">
-                            <img src="img/insta1.jpg" alt="Work" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0">
-                        </div>
-                        <div class="aspect-square bg-white/5 border border-white/10 overflow-hidden group">
-                            <img src="img/insta2.jpg" alt="Travel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0">
-                        </div>
-                        <div class="aspect-square bg-white/5 border border-white/10 overflow-hidden group">
-                            <img src="img/insta3.jpg" alt="Ride" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0">
-                        </div>
-                    </div>
-                </div>
+    <div class="flex gap-6 overflow-x-auto px-10 pb-10 no-scrollbar select-none">
+        <div class="ride-card p-10 bg-white/5 border border-white/10 rounded-sm flex-shrink-0 w-[350px] md:w-[450px]">
+            <i data-lucide="bike" class="w-8 h-8 text-[#d4af37] mb-6"></i>
+            <h3 class="heading-font text-3xl mb-4 text-white">Hero Xpulse 200 4V</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">Not just a motorcycle, but a tool for storytelling. Built for the rugged trails of Punjab and the thin air of the Himalayas.</p>
+        </div>
+
+        <div class="ride-card p-10 bg-white/5 border border-white/10 rounded-sm flex-shrink-0 w-[350px] md:w-[450px]">
+            <i data-lucide="mountain" class="w-8 h-8 text-[#d4af37] mb-6"></i>
+            <h3 class="heading-font text-3xl mb-4 text-white">Spiti Expedition</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">Capturing the stark beauty of the cold desert. Where the lens meets the soul of the mountains at 14,000 feet.</p>
+        </div>
+
+        <div class="ride-card p-10 bg-white/5 border border-white/10 rounded-sm flex-shrink-0 w-[350px] md:w-[450px]">
+            <i data-lucide="video" class="w-8 h-8 text-[#d4af37] mb-6"></i>
+            <h3 class="heading-font text-3xl mb-4 text-white">Cinematic Frames</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">Every mile is a frame. Every sunset is a story. Blending the adrenaline of riding with the art of filmmaking.</p>
+        </div>
+    </div>
+</section>
+
+        <div class="ride-card p-10 bg-white/5 border border-white/10 rounded-sm flex-shrink-0 w-[400px]">
+            <i data-lucide="mountain" class="w-8 h-8 text-[#d4af37] mb-6"></i>
+            <h3 class="heading-font text-3xl mb-4 text-white">Spiti Expedition</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">Capturing the stark beauty of the cold desert. Where the lens meets the soul of the mountains at 14,000 feet.</p>
+        </div>
+
+        <div class="ride-card p-10 bg-white/5 border border-white/10 rounded-sm flex-shrink-0 w-[400px]">
+            <i data-lucide="video" class="w-8 h-8 text-[#d4af37] mb-6"></i>
+            <h3 class="heading-font text-3xl mb-4 text-white">Cinematic Frames</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">Every mile is a frame. Every sunset is a story. Blending the adrenaline of riding with the art of filmmaking.</p>
+        </div>
+    </div>
+</section>
+        
+<section class="py-24 px-10 border-t border-white/5">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+        
+        <div class="reveal-social">
+            <h3 class="heading-font text-3xl mb-6">ON THE ROAD (YOUTUBE)</h3>
+            <div class="aspect-video bg-white/5 flex items-center justify-center border border-white/10 group cursor-pointer">
+                <a href="https://youtube.com/@rgonwheels" target="_blank" class="text-center">
+                    <p class="text-[10px] tracking-[0.4em] text-gray-500 group-hover:text-[#d4af37] transition-colors">WATCH LATEST VLOG</p>
+                    <p class="heading-font text-xl mt-2">rgonwheels</p>
+                </a>
             </div>
-        </section>
+        </div>
+
+        <div class="reveal-social">
+    <h3 class="heading-font text-3xl mb-6">INSTAGRAM <span class="text-[#d4af37]">FEED</span></h3>
+    <div class="grid grid-cols-3 gap-2">
+        <div class="aspect-square bg-white/5 border border-white/10 overflow-hidden group">
+           <img src="img/insta1.jpg" alt="Rishabh Gulati Fashion Videography Ludhiana" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0">
+        </div>
+        <div class="aspect-square bg-white/5 border border-white/10 overflow-hidden group">
+            <img src="img/insta2.jpg" alt="RG ON WHEELS Travel Storytelling Spiti Valley" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0">
+        </div>
+        <div class="aspect-square bg-white/5 border border-white/10 overflow-hidden group">
+            <img src="img/insta3.jpg" alt="Hero Xpulse 200 4V Offroading Ride Rishabh Gulati" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0">
+        </div>
+        <div class="aspect-square bg-white/5 border border-white/10"></div>
+        <div class="aspect-square bg-white/5 border border-white/10"></div>
+        <div class="aspect-square bg-white/5 border border-white/10"></div>
+    </div>
+    <a href="https://instagram.com/rgonwheels" target="_blank" class="block text-[9px] tracking-widest text-gray-500 mt-4 hover:text-[#d4af37] transition-colors">FOLLOW @RGONWHEELS</a>
+</div>
+
+    </div>
+</section>
+
+<section class="py-24 px-10 bg-[#0c0d10]">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="heading-font text-4xl mb-10 tracking-widest text-center">GET IN <span class="text-[#d4af37]">TOUCH</span></h2>
+        
+        <form action="mailto:rgonwheels3@gmail.com" method="post" enctype="text/plain" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <input type="text" name="Name" placeholder="NAME" class="bg-transparent border-b border-white/20 p-4 focus:border-[#d4af37] outline-none transition-colors text-sm">
+            <input type="email" name="Email" placeholder="EMAIL" class="bg-transparent border-b border-white/20 p-4 focus:border-[#d4af37] outline-none transition-colors text-sm">
+            <textarea name="Message" placeholder="YOUR MESSAGE" rows="4" class="md:col-span-2 bg-transparent border-b border-white/20 p-4 focus:border-[#d4af37] outline-none transition-colors text-sm"></textarea>
+            
+            <button type="submit" class="md:col-span-2 mt-6 border border-[#d4af37] text-[#d4af37] py-4 uppercase tracking-[0.3em] text-xs hover:bg-[#d4af37] hover:text-black transition-all">Send Message</button>
+        </form>
+    </div>
+</section>
 
         <footer class="py-20 text-center border-t border-white/5">
-            <h4 class="heading-font text-6xl mb-6 italic">Let's Collaborate</h4>
+            <h4 class="heading-font text-6xl mb-6">Let's Collaborate</h4>
             <p class="text-gray-500 mb-8">rgonwheels3@gmail.com</p>
-            <a href="https://instagram.com/rgonwheels" target="_blank" class="border border-white/20 px-8 py-3 hover:bg-white hover:text-black transition">Instagram</a>
+            <a href="https://instagram.com/rgonwheels" target="_blank" class="text-[10px] uppercase tracking-[0.5em] border border-white/20 px-8 py-3 hover:bg-white hover:text-black transition">Instagram</a>
         </footer>
+
     </main>
 
-    <script>
-        const tl = gsap.timeline();
-        tl.to("#loader-text", { opacity: 1, duration: 1, letterSpacing: "1em" })
-          .to("#loader-bar", { width: "200px", duration: 1.2 }, "-=0.5")
-          .to("#loader", { y: "-100%", duration: 1, ease: "expo.inOut", delay: 0.5 })
-          .to("#main-content", { opacity: 1, duration: 0.5 }, "-=0.5");
+   <script>
+    // 1. Loader aur Hero Animation
+    const tl = gsap.timeline();
 
-        gsap.registerPlugin(ScrollTrigger);
+    tl.to("#loader-text", { opacity: 1, duration: 1, letterSpacing: "1em", ease: "power2.out" })
+      .to("#loader-bar", { width: "200px", duration: 1.5, ease: "expo.inOut" }, "-=0.5")
+      .to("#loader", { y: "-100%", duration: 1, ease: "expo.inOut", delay: 0.5 })
+      .to("#main-content", { opacity: 1, duration: 1 }, "-=0.5")
+      .from("h2", { y: 50, opacity: 0, duration: 1, ease: "power4.out" }, "-=0.5");
 
-        gsap.utils.toArray(".reveal-about, .reveal-work, .ride-card").forEach(el => {
-            gsap.from(el, { scrollTrigger: { trigger: el, start: "top 90%" }, y: 50, opacity: 0, duration: 1 });
+    // 2. Scroll Animations shuru
+    gsap.registerPlugin(ScrollTrigger);
+
+    // About Section Animation
+    gsap.from(".reveal-about", {
+        scrollTrigger: {
+            trigger: ".reveal-about",
+            start: "top 85%",
+        },
+        y: 50,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.3,
+        ease: "power2.out"
+    });
+
+    // Portfolio & Social & Form Animation
+    gsap.from(".reveal-work, .reveal-social, form", {
+        scrollTrigger: {
+            trigger: ".reveal-work",
+            start: "top 85%",
+        },
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.2,
+        ease: "power2.out"
+    });
+
+    const cursor = document.querySelector("#cursor");
+const cursorBlur = document.querySelector("#cursor-blur");
+
+// Fast Mouse Movement Logic
+window.addEventListener("mousemove", (e) => {
+    gsap.to(cursor, {
+        x: e.clientX,
+        y: e.clientY,
+        duration: 0, // Instant movement
+    });
+    gsap.to(cursorBlur, {
+        x: e.clientX - 14,
+        y: e.clientY - 14,
+        duration: 0.15, // Halka sa delay for cinematic feel
+        ease: "power2.out"
+    });
+});
+
+// Jab buttons ya links par mouse jaye toh cursor bada ho jaye
+// Optimized Magnetic Hover Effect
+document.querySelectorAll("a, button, .reveal-work, iframe, input, textarea").forEach((elem) => {
+    elem.addEventListener("mouseenter", () => {
+        gsap.to(cursor, { scale: 0, duration: 0.2 }); 
+        gsap.to(cursorBlur, { 
+            width: 65, 
+            height: 65, 
+            backgroundColor: "rgba(212, 175, 55, 0.15)",
+            borderColor: "#d4af37",
+            duration: 0.3 
         });
-
-        const cursor = document.querySelector("#cursor");
-        const cursorBlur = document.querySelector("#cursor-blur");
-        window.addEventListener("mousemove", (e) => {
-            gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0 });
-            gsap.to(cursorBlur, { x: e.clientX - 14, y: e.clientY - 14, duration: 0.15 });
+    });
+    elem.addEventListener("mouseleave", () => {
+        gsap.to(cursor, { scale: 1, duration: 0.2 });
+        gsap.to(cursorBlur, { 
+            width: 35, 
+            height: 35, 
+            backgroundColor: "transparent",
+            duration: 0.3 
         });
+    });
+});
 
-        document.querySelectorAll("a, button, .group").forEach(el => {
-            el.addEventListener("mouseenter", () => gsap.to(cursorBlur, { width: 60, height: 60, backgroundColor: "rgba(212,175,55,0.1)" }));
-            el.addEventListener("mouseleave", () => gsap.to(cursorBlur, { width: 35, height: 35, backgroundColor: "transparent" }));
-        });
+       // Simple Reveal for Ride Cards
+gsap.utils.toArray(".ride-card").forEach((card, i) => {
+    gsap.from(card, {
+        scrollTrigger: {
+            trigger: card,
+            start: "top 95%", 
+            toggleActions: "play none none none"
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        delay: i * 0.2, // Ek ek karke aayenge
+        ease: "power2.out"
+    });
+});
+       
+    lucide.createIcons();
 
-        lucide.createIcons();
-    </script>
+</script>
+
 </body>
+
 </html>
