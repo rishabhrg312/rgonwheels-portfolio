@@ -81,6 +81,17 @@
     scrollbar-width: none;
 }
 
+        /* Custom Scrollbar and Visibility Fix */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Animation se pehle section ko force-visible karne ke liye */
+.ride-card {
+    opacity: 1 !important; /* Shuru mein dikhne do, animation baad mein handle hogi */
+    will-change: transform, opacity;
+}
+    
+
 .ride-card {
     min-width: 350px; /* Thoda wide card professional lagta hai */
     background: rgba(255, 255, 255, 0.03);
@@ -397,17 +408,20 @@ document.querySelectorAll("a, button, .reveal-work, iframe, input, textarea").fo
     });
 });
 
-       // Isko script ke end mein dalo
-gsap.from(".ride-card", {
-    scrollTrigger: {
-        trigger: ".ride-card",
-        start: "top 95%", // Thoda jaldi shuru hoga
-    },
-    y: 50, // x ki jagah y (niche se upar) move karega toh zyada clean lagega
-    opacity: 0,
-    duration: 1,
-    stagger: 0.2,
-    ease: "power3.out"
+       // Simple Reveal for Ride Cards
+gsap.utils.toArray(".ride-card").forEach((card, i) => {
+    gsap.from(card, {
+        scrollTrigger: {
+            trigger: card,
+            start: "top 95%", 
+            toggleActions: "play none none none"
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        delay: i * 0.2, // Ek ek karke aayenge
+        ease: "power2.out"
+    });
 });
        
     lucide.createIcons();
@@ -417,6 +431,7 @@ gsap.from(".ride-card", {
 </body>
 
 </html>
+
 
 
 
