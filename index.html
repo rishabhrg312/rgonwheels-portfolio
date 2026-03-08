@@ -60,9 +60,13 @@
 
     <main id="main-content" class="opacity-0">
         <section class="relative h-screen overflow-hidden">
-            <div class="video-container absolute inset-0 z-0">
-                <video autoplay muted loop playsinline>
-    <source src="https://res.cloudinary.com/dkpbzpyb8/video/upload/v1772996060/hero-bg_z3brkx.mp4" type="video/mp4">
+            <div class="video-container absolute inset-0 z-0 overflow-hidden">
+    <video autoplay muted loop playsinline preload="auto" class="w-full h-full object-cover scale-[1.05]">
+        <source src="https://res.cloudinary.com/dkpbzpyb8/video/upload/v1772996060/hero-bg_z3brkx.mp4" type="video/mp4">
+    </video>
+    <div class="absolute inset-0 bg-black/40"></div>
+        </div>
+            
 </video>
                 <div class="absolute inset-0 bg-black/50"></div>
             </div>
@@ -248,6 +252,7 @@
     </script>
 </body>
 </html>
+
 
 
 
