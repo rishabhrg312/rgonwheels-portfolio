@@ -65,6 +65,17 @@
     will-change: transform;
 }
 
+        /* CINEMATIC TEXT GLOW EFFECT */
+.glow-text {
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.4), 0 0 40px rgba(212, 175, 55, 0.2);
+    animation: textPulse 3s infinite ease-in-out;
+}
+
+@keyframes textPulse {
+    0%, 100% { filter: brightness(1) drop-shadow(0 0 5px rgba(212, 175, 55, 0.3)); }
+    50% { filter: brightness(1.2) drop-shadow(0 0 20px rgba(212, 175, 55, 0.6)); }
+}
+
         /* Glassmorphism Effect */
 .glass-card {
     background: rgba(255, 255, 255, 0.03) !important;
@@ -354,9 +365,12 @@
         // GSAP Parallax Logic
 gsap.registerPlugin(ScrollTrigger);
 
-// Video background thoda slow move hoga (Deep perspective)
+// GSAP Parallax Logic Updated
+gsap.registerPlugin(ScrollTrigger);
+
+// Video thoda dhire move hoga (Depth ke liye)
 gsap.to(".parallax-video-wrapper", {
-    yPercent: 20, // Niche ki taraf slide hoga
+    yPercent: 15, 
     ease: "none",
     scrollTrigger: {
         trigger: "section",
@@ -366,10 +380,10 @@ gsap.to(".parallax-video-wrapper", {
     }
 });
 
-// Text thoda fast upar jayega (3D lift feel)
+// Text thoda fast move hoga (3D Lift ke liye)
 gsap.to(".parallax-text", {
-    yPercent: -30, // Upar ki taraf fast slide hoga
-    scale: 1.05,   // Thoda bada hoga scroll par
+    yPercent: -40, 
+    scale: 1.1,
     ease: "none",
     scrollTrigger: {
         trigger: "section",
@@ -393,6 +407,7 @@ gsap.to(".parallax-text", {
     </script>
 </body>
 </html>
+
 
 
 
