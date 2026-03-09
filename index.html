@@ -41,20 +41,25 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* ANAMORPHIC LENS FLARE EFFECT */
-        .lens-flare {
-            position: absolute;
-            top: 20%;
-            left: -20%;
-            width: 150%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), rgba(255, 255, 255, 0.5), rgba(212, 175, 55, 0.3), transparent);
-            filter: blur(10px);
-            transform: rotate(-15deg);
-            pointer-events: none;
-            opacity: 0.6;
-            animation: flareMove 10s infinite alternate ease-in-out;
-        }
+       /* UPDATED ANAMORPHIC LENS FLARE */
+.lens-flare {
+    position: absolute;
+    top: 30%;
+    left: -20%;
+    width: 150%;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(212, 175, 55, 0.1) 20%, 
+        rgba(255, 255, 255, 0.4) 50%, 
+        rgba(212, 175, 55, 0.1) 80%, 
+        transparent 100%);
+    filter: blur(15px);
+    transform: rotate(-15deg);
+    pointer-events: none;
+    z-index: 5;
+    will-change: transform;
+}
         @keyframes flareMove {
             0% { transform: rotate(-15deg) translateY(0); opacity: 0.4; }
             100% { transform: rotate(-15deg) translateY(50px); opacity: 0.7; }
@@ -277,6 +282,22 @@
             gsap.set(cursor, { x: e.clientX, y: e.clientY });
             gsap.to(cursorBlur, { x: e.clientX - 14, y: e.clientY - 14, duration: 0.15 });
         });
+        // INTERACTIVE LENS FLARE LOGIC
+const flare = document.querySelector(".lens-flare");
+
+window.addEventListener("mousemove", (e) => {
+    // Mouse ki vertical movement ko track karke flare ko move karna
+    const moveY = (e.clientY / window.innerHeight) * 100;
+    const moveX = (e.clientX / window.innerWidth) * 20;
+
+    gsap.to(flare, {
+        y: moveY - 50, // Flare thoda upar niche hoga
+        x: moveX,
+        duration: 2, 
+        ease: "power2.out"
+    });
+});
+        
 
         lucide.createIcons();
     </script>
@@ -288,4 +309,5 @@
     </script>
 </body>
 </html>
+
 
