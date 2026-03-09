@@ -21,19 +21,13 @@
 
         @media (max-width: 768px) { #cursor, #cursor-blur { display: none !important; } * { cursor: auto !important; } }
 
-        /* Lag Fix & Parallax Optimization */
+        /* Performance Parallax & Edge Fix */
         .parallax-layer { will-change: transform; transform: translateZ(0); backface-visibility: hidden; }
+        .parallax-layer img#hero-subject { transform: scale(1.15) translateY(8%); transform-origin: bottom center; }
 
-        /* Subject Edge Fix: Isse incomplete sides chhup jayengi */
-        .parallax-layer img#hero-subject {
-            transform: scale(1.15) translateY(8%); 
-            transform-origin: bottom center;
-        }
-
-        /* Bottom Shadow Overlay */
+        /* Bottom Shadow Overlay to hide cuts */
         .subject-bottom-gradient {
-            position: absolute;
-            bottom: 0; left: 0; width: 100%; height: 35vh;
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 35vh;
             background: linear-gradient(to top, rgba(10, 10, 10, 1) 15%, rgba(10, 10, 10, 0));
             z-index: 21; pointer-events: none;
         }
@@ -41,39 +35,21 @@
         .hero-heading { font-family: 'Bebas Neue', sans-serif; font-size: 8vw; letter-spacing: 0.1em; color: white; line-height: 1; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
         @media (max-width: 768px) { .hero-heading { font-size: 15vw; } }
 
-        /* Glassmorphism Restore */
         .glass-card { 
-            background: rgba(255, 255, 255, 0.03) !important; 
-            backdrop-filter: blur(12px) saturate(180%) !important; 
-            border: 1px solid rgba(255, 255, 255, 0.1) !important; 
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); 
-            transition: all 0.4s ease;
+            background: rgba(255, 255, 255, 0.03) !important; backdrop-filter: blur(12px) saturate(180%) !important; 
+            border: 1px solid rgba(255, 255, 255, 0.1) !important; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); transition: all 0.4s ease;
         }
         .glass-card:hover { border-color: #d4af37 !important; transform: translateY(-10px); }
 
         #loader { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; }
         #loader-bar { width: 0; height: 2px; background: #d4af37; margin-top: 20px; }
-        
-       /* UPDATED INTERACTIVE LENS FLARE */
-.lens-flare {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 150%;
-    height: 4px; /* Thoda thick kiya taaki dikhe */
-    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), rgba(255, 255, 255, 0.4), rgba(212, 175, 55, 0.2), transparent);
-    filter: blur(15px);
-    transform: rotate(-15deg);
-    pointer-events: none;
-    z-index: 5;
-    mix-blend-mode: screen; /* Isse light asli lagegi background ke upar */
-    will-change: transform;
-}
-        @keyframes flareMove {
-            0% { transform: rotate(-15deg) translateY(0); opacity: 0.4; }
-            100% { transform: rotate(-15deg) translateY(50px); opacity: 0.7; }
+
+        /* LENS FLARE */
+        .lens-flare {
+            position: absolute; top: 0; left: 0; width: 150%; height: 4px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), rgba(255, 255, 255, 0.4), rgba(212, 175, 55, 0.2), transparent);
+            filter: blur(15px); transform: rotate(-15deg); pointer-events: none; z-index: 5; mix-blend-mode: screen; will-change: transform;
         }
-        
     </style>
 </head>
 <body>
@@ -81,14 +57,15 @@
     <div id="cursor-blur"></div>
 
     <div id="loader">
-        <h1 id="loader-text" class="heading-font text-4xl tracking-[0.5em] opacity-0 text-white">RISHABH GULATI</h1>
+        <h1 id="loader-text" class="heading-font text-4xl tracking-[0.5em] opacity-0 text-white uppercase">Rishabh Gulati</h1>
         <div id="loader-bar"></div>
     </div>
 
     <main id="main-content" class="opacity-0">
         <section class="relative h-screen w-full overflow-hidden bg-black parallax-container">
-            <div class="absolute inset-0 z-0 parallax-layer" data-speed="0.1">
+            <div class="absolute inset-0 z-0 parallax-layer bg-zoom-effect" data-speed="0.1">
                 <img src="pexels-maaz-kalia-104744186-29401243.jpg" class="w-full h-full object-cover opacity-80" loading="eager">
+                <div class="lens-flare"></div>
             </div>
 
             <div class="absolute inset-0 z-10 flex flex-col justify-center items-center text-center parallax-layer" data-speed="0.5">
@@ -97,7 +74,7 @@
             </div>
 
             <div class="absolute inset-0 z-20 flex items-end justify-center parallax-layer" data-speed="0.2">
-                <img src="subject-parallax.png" id="hero-subject" alt="Rishabh Silhouette" class="h-[95%] md:h-[105%] object-contain pointer-events-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)]">
+                <img src="subject-parallax.png" id="hero-subject" alt="Rishabh" class="h-[95%] md:h-[105%] object-contain pointer-events-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)]">
             </div>
 
             <div class="subject-bottom-gradient"></div>
@@ -114,100 +91,29 @@
         <section class="relative py-24 px-10 bg-[#0a0a0a]">
             <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="reveal">
-                    <h2 class="heading-font text-5xl md:text-7xl mb-6 tracking-wider leading-none">THE <br><span class="text-[#d4af37]">STORYTELLER</span></h2>
+                    <h2 class="heading-font text-5xl md:text-7xl mb-6 tracking-wider leading-none uppercase">The <br><span class="text-[#d4af37]">Storyteller</span></h2>
                     <div class="w-20 h-[1px] bg-[#d4af37]"></div>
                 </div>
                 <div class="reveal text-gray-400 text-lg">
-                    <p class="mb-6">Based in Ludhiana, I am a professional cinematographer with 5+ years of experience in fashion videography. Capturing stories across the map on my Hero Xpulse.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="relative py-32 px-10 bg-[#0c0d10] z-10">
-            <div class="max-w-6xl mx-auto">
-                <h2 class="heading-font text-4xl text-center mb-16 italic text-[#d4af37]">The Arsenal</h2>
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                    <div class="p-8 glass-card text-center reveal"><i data-lucide="smartphone" class="mx-auto mb-4 text-[#d4af37]"></i><h3 class="heading-font text-xl text-white">iPhone 12</h3></div>
-                    <div class="p-8 glass-card text-center reveal"><i data-lucide="camera" class="mx-auto mb-4 text-[#d4af37]"></i><h3 class="heading-font text-xl text-white">DJI Action 5</h3></div>
-                    <div class="p-8 glass-card text-center reveal"><i data-lucide="layers" class="mx-auto mb-4 text-[#d4af37]"></i><h3 class="heading-font text-xl text-white">DJI Gimbal</h3></div>
-                    <div class="p-8 glass-card text-center reveal"><i data-lucide="mic" class="mx-auto mb-4 text-[#d4af37]"></i><h3 class="heading-font text-xl text-white">DJI Mic Mini</h3></div>
+                    <p class="mb-6">Based in Ludhiana, I am a professional cinematographer with 5+ years of experience. Capturing stories on my Hero Xpulse.</p>
                 </div>
             </div>
         </section>
 
         <section class="relative py-24 bg-[#0a0a0a] z-10 overflow-hidden border-t border-white/5">
-            <div class="px-10 mb-12 flex justify-between items-end">
-                <div>
-                    <h2 class="heading-font text-5xl md:text-7xl tracking-widest leading-none text-white uppercase">THE <span class="text-[#d4af37]">RIDE</span></h2>
-                    <p class="text-[10px] uppercase tracking-[0.4em] text-gray-500 mt-2">Documenting life on two wheels</p>
-                </div>
-                <div class="hidden md:block text-[9px] uppercase tracking-widest text-gray-600 italic">Scroll to Explore →</div>
-            </div>
-            
+            <h2 class="heading-font text-5xl md:text-7xl tracking-widest text-center mb-12 uppercase text-white">The <span class="text-[#d4af37]">Ride</span></h2>
             <div class="flex gap-6 overflow-x-auto px-10 pb-10 no-scrollbar select-none">
                 <div class="glass-card p-10 flex-shrink-0 w-[350px] md:w-[450px] reveal">
                     <i data-lucide="bike" class="w-8 h-8 text-[#d4af37] mb-6"></i>
                     <h3 class="heading-font text-3xl mb-4 text-white uppercase">Hero Xpulse 200 4V</h3>
-                    <p class="text-sm text-gray-400 mb-6 leading-relaxed">Built for the rugged trails of Punjab and the thin air of the Himalayas.</p>
-                    <div class="flex gap-4 border-t border-white/10 pt-4">
-                        <span class="text-[10px] tracking-widest text-[#d4af37]">DIST: 5000KM+</span>
-                        <span class="text-[10px] tracking-widest text-gray-500">|</span>
-                        <span class="text-[10px] tracking-widest text-[#d4af37]">TERRAIN: OFF-ROAD</span>
-                    </div>
+                    <p class="text-sm text-gray-400 mb-6">Built for the rugged trails of Punjab and the Himalayas.</p>
+                    <div class="flex gap-4 border-t border-white/10 pt-4 text-[10px] tracking-widest text-[#d4af37]">DIST: 5000KM+ | TERRAIN: OFF-ROAD</div>
                 </div>
-
                 <div class="glass-card p-10 flex-shrink-0 w-[350px] md:w-[450px] reveal">
-                    <i data-lucide="bike" class="w-8 h-8 text-[#d4af37] mb-6"></i>
+                    <i data-lucide="mountain" class="w-8 h-8 text-[#d4af37] mb-6"></i>
                     <h3 class="heading-font text-3xl mb-4 text-white uppercase">Spiti Expedition</h3>
-                    <p class="text-sm text-gray-400 mb-6 leading-relaxed">Capturing the stark beauty of the cold desert at 14,000 feet.</p>
-                    <div class="flex gap-4 border-t border-white/10 pt-4">
-                        <span class="text-[10px] tracking-widest text-[#d4af37]">ALT: 14,500FT</span>
-                        <span class="text-[10px] tracking-widest text-gray-500">|</span>
-                        <span class="text-[10px] tracking-widest text-[#d4af37]">TEMP: -15°C</span>
-                    </div>
-                </div>
-
-                <div class="glass-card p-10 flex-shrink-0 w-[350px] md:w-[450px] reveal">
-                    <i data-lucide="bike" class="w-8 h-8 text-[#d4af37] mb-6"></i>
-                    <h3 class="heading-font text-3xl mb-4 text-white uppercase">Cinematic Frames</h3>
-                    <p class="text-sm text-gray-400 mb-6 leading-relaxed">Blending the adrenaline of riding with the art of filmmaking.</p>
-                    <div class="flex gap-4 border-t border-white/10 pt-4">
-                        <span class="text-[10px] tracking-widest text-[#d4af37]">GEAR: ACTION 5 PRO</span>
-                        <span class="text-[10px] tracking-widest text-gray-500">|</span>
-                        <span class="text-[10px] tracking-widest text-[#d4af37]">4K CINEMATIC</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-24 px-10 border-t border-white/5 bg-[#0a0a0a]">
-            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
-                <div class="reveal">
-                    <h3 class="heading-font text-3xl mb-6 tracking-widest text-[#d4af37]">INSTAGRAM FEED</h3>
-                    <div class="grid grid-cols-3 gap-2">
-                        <img src="img/insta1.jpg" class="aspect-square object-cover grayscale hover:grayscale-0 transition-all border border-white/10" loading="lazy">
-                        <img src="img/insta2.jpg" class="aspect-square object-cover grayscale hover:grayscale-0 transition-all border border-white/10" loading="lazy">
-                        <img src="img/insta3.jpg" class="aspect-square object-cover grayscale hover:grayscale-0 transition-all border border-white/10" loading="lazy">
-                    </div>
-                </div>
-                <div class="reveal">
-                    <h3 class="heading-font text-3xl mb-6 tracking-widest text-white">ON THE ROAD</h3>
-                    <div class="aspect-video bg-white/5 flex items-center justify-center border border-white/10">
-                        <a href="https://youtube.com/@rgonwheels" target="_blank" class="text-xs tracking-widest text-gray-500 hover:text-[#d4af37]">WATCH LATEST VLOG</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="relative py-40 bg-black border-t border-white/5 overflow-hidden group">
-            <div class="absolute inset-0 z-0 opacity-0 group-hover:opacity-30 transition-opacity duration-1000">
-                <video autoplay muted loop playsinline class="w-full h-full object-cover grayscale"><source src="https://res.cloudinary.com/dkpbzpyb8/video/upload/v1772996060/hero-bg_z3brkx.mp4" type="video/mp4"></video>
-            </div>
-            <div class="max-w-4xl mx-auto text-center relative z-10">
-                <h2 class="heading-font text-6xl md:text-[10rem] mb-4 opacity-10 group-hover:opacity-20 transition-all transform group-hover:scale-110 text-white">THE VAULT</h2>
-                <div class="-mt-16 md:-mt-24">
-                    <h3 class="heading-font text-3xl md:text-5xl mb-6 text-[#d4af37]">DIGITAL ARCHIVE</h3>
-                    <a href="https://drive.google.com/drive/folders/1KILSIcqt1rON1tKhpY8XlcgniX7duOy2?usp=drive_link" target="_blank" class="inline-block px-12 py-5 border border-[#d4af37] text-[#d4af37] text-[10px] uppercase tracking-[0.5em] hover:bg-[#d4af37] hover:text-black transition-all">Access The Vault — 2026</a>
+                    <p class="text-sm text-gray-400 mb-6">Capturing the stark beauty of the cold desert at 14,000 feet.</p>
+                    <div class="flex gap-4 border-t border-white/10 pt-4 text-[10px] tracking-widest text-[#d4af37]">ALT: 14,500FT | TEMP: -15°C</div>
                 </div>
             </div>
         </section>
@@ -219,35 +125,28 @@
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d4af37] opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2 w-2 bg-[#d4af37]"></span>
                     </span>
-                    <p class="text-[10px] tracking-[0.2em] uppercase text-gray-300">Available for projects in Ludhiana & Worldwide</p>
+                    <p class="text-[10px] tracking-[0.2em] uppercase text-gray-300">Available for projects worldwide</p>
                 </div>
-
                 <h4 class="heading-font text-6xl md:text-8xl mb-6 italic text-white reveal uppercase">Let's Collaborate</h4>
                 <p class="text-gray-500 mb-12 tracking-widest reveal">rgonwheels3@gmail.com</p>
-                
-                <div class="flex justify-center gap-6 mb-20 reveal">
-                    <a href="https://instagram.com/rgonwheels" target="_blank" class="border border-white/20 px-10 py-3 hover:bg-white hover:text-black transition uppercase text-xs tracking-widest">Instagram</a>
-                    <a href="https://youtube.com/@rgonwheels" target="_blank" class="border border-white/20 px-10 py-3 hover:bg-white hover:text-black transition uppercase text-xs tracking-widest">YouTube</a>
-                </div>
-
                 <form action="https://formspree.io/f/xzdjzldv" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left reveal">
                     <input type="text" name="name" placeholder="NAME" required class="w-full bg-transparent border-b border-white/20 p-4 outline-none text-sm focus:border-[#d4af37] uppercase text-white">
                     <input type="email" name="email" placeholder="EMAIL" required class="w-full bg-transparent border-b border-white/20 p-4 outline-none text-sm focus:border-[#d4af37] uppercase text-white">
                     <textarea name="message" placeholder="PROJECT DETAILS" rows="4" class="md:col-span-2 w-full bg-transparent border-b border-white/20 p-4 outline-none text-sm focus:border-[#d4af37] uppercase text-white"></textarea>
-                    <button type="submit" class="md:col-span-2 border border-[#d4af37] text-[#d4af37] py-5 uppercase tracking-widest hover:bg-[#d4af37] hover:text-black transition-all duration-500 font-bold">Send Message</button>
+                    <button type="submit" class="md:col-span-2 border border-[#d4af37] text-[#d4af37] py-5 uppercase tracking-widest hover:bg-[#d4af37] hover:text-black transition-all duration-500">Send Message</button>
                 </form>
             </div>
         </section>
 
-        <footer class="py-10 text-center bg-black border-t border-white/5">
-            <p class="text-gray-500 text-[10px] tracking-widest uppercase">© 2026 RG ON WHEELS | Ludhiana</p>
+        <footer class="py-10 text-center bg-black">
+            <p class="text-gray-600 text-[10px] tracking-widest uppercase">© 2026 RG ON WHEELS | Ludhiana</p>
         </footer>
     </main>
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
         
-        // 1. Loader Sequence
+        // 1. Loader
         const tl = gsap.timeline();
         tl.to("#loader-text", { opacity: 1, duration: 1 })
           .to("#loader-bar", { width: "220px", duration: 1.2, ease: "expo.inOut" })
@@ -255,46 +154,32 @@
           .to("#main-content", { opacity: 1, duration: 0.5 }, "-=0.8")
           .set("#loader", { display: "none" });
 
-        // 2. Cinematic Opening Zoom (Background mountain load hote hi move hoga)
-        gsap.fromTo(".bg-zoom-effect img", 
-            { scale: 1.3 }, 
-            { scale: 1, duration: 5, ease: "power2.out", delay: 1 }
-        );
+        // 2. Opening Zoom
+        gsap.fromTo(".bg-zoom-effect img", { scale: 1.3 }, { scale: 1, duration: 5, ease: "power2.out", delay: 1 });
 
-        // 3. Optimized Parallax Engine (Sandwich Effect Fix)
+        // 3. Parallax
         gsap.utils.toArray(".parallax-layer").forEach(layer => {
             const speed = layer.getAttribute("data-speed");
             gsap.to(layer, {
-                yPercent: speed * 80, // Optimized for 3D depth
-                force3D: true, // GPU acceleration to stop lag
-                scrollTrigger: {
-                    trigger: ".parallax-container",
-                    start: "top top",
-                    end: "bottom top",
-                    scrub: 1 // High smoothness
-                }
+                yPercent: speed * 80, force3D: true,
+                scrollTrigger: { trigger: ".parallax-container", start: "top top", end: "bottom top", scrub: 1 }
             });
         });
 
-        // 4. Section Reveals (Ride Cards & Content)
+        // 4. Reveals
         gsap.utils.toArray(".reveal, .glass-card").forEach(el => {
-            gsap.from(el, { 
-                scrollTrigger: { trigger: el, start: "top 92%" }, 
-                y: 50, opacity: 0, duration: 1, ease: "power3.out" 
-            });
+            gsap.from(el, { scrollTrigger: { trigger: el, start: "top 92%" }, y: 50, opacity: 0, duration: 1, ease: "power3.out" });
         });
 
-        // 5. Combined Cursor & Lens Flare Interaction
+        // 5. Cursor & Flare
         const cursor = document.querySelector("#cursor");
         const cursorBlur = document.querySelector("#cursor-blur");
         const flare = document.querySelector(".lens-flare");
 
         window.addEventListener("mousemove", (e) => {
-            // Standard Cursor Logic
             gsap.set(cursor, { x: e.clientX, y: e.clientY });
             gsap.to(cursorBlur, { x: e.clientX - 14, y: e.clientY - 14, duration: 0.15 });
 
-            // Flare Interaction (Physics based)
             if(flare) {
                 const xMove = (e.clientX - window.innerWidth / 2) * 0.15;
                 const yMove = (e.clientY - window.innerHeight / 2) * 0.15;
@@ -312,7 +197,3 @@
     </script>
 </body>
 </html>
-
-
-
-
