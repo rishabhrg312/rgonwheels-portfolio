@@ -41,23 +41,19 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-       /* UPDATED ANAMORPHIC LENS FLARE */
+       /* UPDATED INTERACTIVE LENS FLARE */
 .lens-flare {
     position: absolute;
-    top: 30%;
-    left: -20%;
+    top: 0;
+    left: 0;
     width: 150%;
-    height: 3px;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(212, 175, 55, 0.1) 20%, 
-        rgba(255, 255, 255, 0.4) 50%, 
-        rgba(212, 175, 55, 0.1) 80%, 
-        transparent 100%);
+    height: 4px; /* Thoda thick kiya taaki dikhe */
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), rgba(255, 255, 255, 0.4), rgba(212, 175, 55, 0.2), transparent);
     filter: blur(15px);
     transform: rotate(-15deg);
     pointer-events: none;
     z-index: 5;
+    mix-blend-mode: screen; /* Isse light asli lagegi background ke upar */
     will-change: transform;
 }
         @keyframes flareMove {
@@ -282,18 +278,23 @@
             gsap.set(cursor, { x: e.clientX, y: e.clientY });
             gsap.to(cursorBlur, { x: e.clientX - 14, y: e.clientY - 14, duration: 0.15 });
         });
-        // INTERACTIVE LENS FLARE LOGIC
+        // Interactive Lens Flare Logic
 const flare = document.querySelector(".lens-flare");
 
 window.addEventListener("mousemove", (e) => {
-    // Mouse ki vertical movement ko track karke flare ko move karna
-    const moveY = (e.clientY / window.innerHeight) * 100;
-    const moveX = (e.clientX / window.innerWidth) * 20;
+    // Standard Cursor Logic (Pehle wala rehne dena)
+    gsap.set(cursor, { x: e.clientX, y: e.clientY });
+    gsap.to(cursorBlur, { x: e.clientX - 14, y: e.clientY - 14, duration: 0.15 });
+
+    // New Flare Interaction
+    // Jab mouse left jayega toh flare right aur upar move hogi (Camera physics)
+    const xMove = (e.clientX - window.innerWidth / 2) * 0.1;
+    const yMove = (e.clientY - window.innerHeight / 2) * 0.1;
 
     gsap.to(flare, {
-        y: moveY - 50, // Flare thoda upar niche hoga
-        x: moveX,
-        duration: 2, 
+        x: xMove,
+        y: yMove,
+        duration: 2, // Smooth reaction
         ease: "power2.out"
     });
 });
@@ -309,5 +310,6 @@ window.addEventListener("mousemove", (e) => {
     </script>
 </body>
 </html>
+
 
 
