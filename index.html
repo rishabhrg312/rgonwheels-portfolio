@@ -57,18 +57,17 @@
 /* --- CLEAN MINIMALIST TYPOGRAPHY --- */
 .hero-heading {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 8vw; /* Size kam kar diya hai */
+    font-size: 8vw; /* Proportional size */
     letter-spacing: 0.1em;
     color: white;
     line-height: 1;
     will-change: transform;
-    /* Subtle shadow for depth without glow */
     text-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 @media (max-width: 768px) {
     .hero-heading {
-        font-size: 15vw; /* Mobile ke liye adjust kiya */
+        font-size: 15vw; /* Mobile adjust */
     }
 }
  
@@ -132,7 +131,8 @@
                class="w-full h-full object-cover object-center scale-[1.1]">
             <source src="https://res.cloudinary.com/dkpbzpyb8/video/upload/v1772996060/hero-bg_z3brkx.mp4" type="video/mp4">
         </video>
-        <div class="absolute inset-0 bg-black/50"></div> </div>
+        <div class="absolute inset-0 bg-black/50"></div>
+    </div>
 
     <nav class="relative z-30 flex justify-between p-8 md:p-10 items-center">
         <div class="heading-font text-2xl tracking-widest text-white">RISHABH GULATI</div>
@@ -143,11 +143,9 @@
     </nav>
 
     <div class="relative z-10 h-[70vh] flex flex-col justify-center items-center text-center px-6">
-        <h1 class="hero-heading reveal-text">
-            RG ON WHEELS
-        </h1>
+        <h1 class="hero-heading reveal-text">RG ON WHEELS</h1>
         <p class="reveal-text max-w-xl text-gray-400 uppercase tracking-[0.4em] text-[10px] mt-4 font-light">
-            Cinematographer & Storyteller
+            Capturing life through the lens of a traveler and a filmmaker.
         </p>
     </div>
 </section>
@@ -364,8 +362,11 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollTrigger);
 
 // GSAP Parallax Logic (Simple & Clean)
+gsap.registerPlugin(ScrollTrigger);
+
+// Video background movement
 gsap.to(".parallax-video-wrapper", {
-    yPercent: 10, // Video thodi si move hogi
+    yPercent: 10,
     ease: "none",
     scrollTrigger: {
         trigger: "section",
@@ -375,9 +376,10 @@ gsap.to(".parallax-video-wrapper", {
     }
 });
 
+// Text lift and fade effect
 gsap.to(".reveal-text", {
-    yPercent: -20, // Text thoda sa upar jayega
-    opacity: 0.5,  // Scroll par halka fade hoga
+    yPercent: -20,
+    opacity: 0.4,
     ease: "none",
     scrollTrigger: {
         trigger: "section",
@@ -401,6 +403,7 @@ gsap.to(".reveal-text", {
     </script>
 </body>
 </html>
+
 
 
 
