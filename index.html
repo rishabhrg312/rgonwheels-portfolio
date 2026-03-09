@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rishabh Gulati (rgonwheels) - Professional Cinematographer & Storyteller in Ludhiana with 5+ years of experience.">
     <title>RG ON WHEELS | Cinematographer & Storyteller</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -21,174 +22,195 @@
 
         @media (max-width: 768px) { #cursor, #cursor-blur { display: none !important; } * { cursor: auto !important; } }
 
-        /* Performance Parallax */
-        .parallax-layer { will-change: transform; transform: translateZ(0); backface-visibility: hidden; }
-        .hero-heading { font-family: 'Bebas Neue', sans-serif; font-size: 8vw; letter-spacing: 0.1em; color: white; line-height: 1; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
-        @media (max-width: 768px) { .hero-heading { font-size: 15vw; } }
+        /* Cinematic Film Grain Overlay */
+        .grain-overlay {
+            position: fixed; top: -50%; left: -50%; width: 200%; height: 200%;
+            background-image: url('https://res.cloudinary.com/dkpbzpyb8/image/upload/v1741460000/grain_texture.png');
+            opacity: 0.04; pointer-events: none; z-index: 9999; animation: grain-animation 8s steps(10) infinite;
+        }
+        @keyframes grain-animation {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-5%, -10%); }
+            50% { transform: translate(10%, 5%); }
+        }
 
         /* Glassmorphism Effect */
         .glass-card { 
-            background: rgba(255, 255, 255, 0.03) !important; 
+            background: rgba(255, 255, 255, 0.02) !important; 
             backdrop-filter: blur(12px) saturate(180%) !important; 
-            border: 1px solid rgba(255, 255, 255, 0.1) !important; 
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); 
-            transition: all 0.4s ease; 
+            border: 1px solid rgba(255, 255, 255, 0.08) !important; 
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); 
         }
-        .glass-card:hover { border-color: #d4af37 !important; transform: translateY(-10px); }
+        .glass-card:hover { border-color: #d4af37 !important; transform: translateY(-10px) scale(1.02); background: rgba(255, 255, 255, 0.05) !important; }
 
-        #loader { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        #loader-bar { width: 0; height: 2px; background: #d4af37; margin-top: 20px; }
+        .hero-heading { font-family: 'Bebas Neue', sans-serif; font-size: 10vw; letter-spacing: 0.05em; color: white; line-height: 0.9; text-shadow: 0 10px 50px rgba(0,0,0,0.9); }
+        @media (max-width: 768px) { .hero-heading { font-size: 18vw; } }
+
+        #loader { position: fixed; inset: 0; background: #000; z-index: 10001; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        #loader-bar { width: 0; height: 1px; background: #d4af37; margin-top: 20px; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
     </style>
 </head>
 <body>
+    <div class="grain-overlay"></div>
     <div id="cursor"></div>
     <div id="cursor-blur"></div>
 
     <div id="loader">
-        <h1 id="loader-text" class="heading-font text-4xl tracking-[0.5em] opacity-0 text-white">RISHABH GULATI</h1>
+        <h1 id="loader-text" class="heading-font text-4xl tracking-[0.8em] opacity-0 text-white uppercase">Rishabh Gulati</h1>
         <div id="loader-bar"></div>
     </div>
 
     <main id="main-content" class="opacity-0">
         <section class="relative h-screen w-full overflow-hidden bg-black parallax-container">
-            <div class="absolute inset-0 z-0 parallax-layer" data-speed="0.1">
-                <img src="pexels-maaz-kalia-104744186-29401243.jpg" class="w-full h-full object-cover opacity-80" loading="eager">
+            <div class="absolute inset-0 z-0 parallax-layer" data-speed="0.15">
+                <img src="pexels-maaz-kalia-104744186-29401243.jpg" class="w-full h-full object-cover opacity-60 grayscale" loading="eager">
+                <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[#0a0a0a]"></div>
             </div>
-            <div class="absolute inset-0 z-10 flex flex-col justify-center items-center text-center parallax-layer" data-speed="0.5">
+            
+            <div class="absolute inset-0 z-10 flex flex-col justify-center items-center text-center parallax-layer" data-speed="0.4">
                 <h1 class="hero-heading">RG ON WHEELS</h1>
-                <p class="text-gray-400 uppercase tracking-[0.5em] text-[10px] mt-2 font-light">Cinematographer & Storyteller</p>
+                <p class="text-[#d4af37] uppercase tracking-[0.6em] text-[10px] md:text-xs mt-4 font-light">Cinematographer • Storyteller • Explorer</p>
             </div>
-            <div class="absolute inset-0 z-20 flex items-end justify-center parallax-layer" data-speed="0.2">
-                <img src="subject-parallax.png" alt="Rishabh" class="h-[90%] md:h-[100%] object-contain pointer-events-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)]" loading="eager">
+
+            <div class="absolute inset-0 z-20 flex items-end justify-center parallax-layer" data-speed="0.1">
+                <img src="subject-parallax.png" alt="Rishabh" class="h-[85%] md:h-[95%] object-contain pointer-events-none drop-shadow-[0_20px_80px_rgba(0,0,0,1)]" loading="eager">
             </div>
-            <nav class="relative z-30 flex justify-between p-10 items-center">
-                <div class="heading-font text-2xl tracking-widest text-white text-shadow">RISHABH GULATI</div>
-                <div class="flex items-center gap-6">
-                    <a href="https://youtube.com/@rgonwheels" target="_blank" class="text-white hover:text-[#d4af37]"><i data-lucide="youtube"></i></a>
-                    <a href="https://instagram.com/rgonwheels" target="_blank" class="text-white hover:text-[#d4af37]"><i data-lucide="instagram"></i></a>
+
+            <nav class="relative z-30 flex justify-between p-8 md:p-12 items-center">
+                <div class="heading-font text-2xl tracking-widest text-white">RISHABH GULATI</div>
+                <div class="flex items-center gap-8">
+                    <a href="https://youtube.com/@rgonwheels" target="_blank" class="text-white hover:text-[#d4af37] transition-all"><i data-lucide="youtube"></i></a>
+                    <a href="https://instagram.com/rgonwheels" target="_blank" class="text-white hover:text-[#d4af37] transition-all"><i data-lucide="instagram"></i></a>
                 </div>
             </nav>
         </section>
 
-        <section class="relative py-24 px-10 bg-[#0a0a0a]">
-            <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="reveal-about">
-                    <h2 class="heading-font text-5xl md:text-7xl mb-6 tracking-wider leading-none">THE <br><span class="text-[#d4af37]">STORYTELLER</span></h2>
-                    <div class="w-20 h-[1px] bg-[#d4af37]"></div>
+        <section class="relative py-32 px-10 bg-[#0a0a0a]">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <h2 class="heading-font text-6xl md:text-8xl mb-6 tracking-wider leading-none">THE <br><span class="text-[#d4af37]">STORYTELLER</span></h2>
+                    <div class="w-24 h-[2px] bg-[#d4af37]"></div>
                 </div>
-                <div class="reveal-about text-gray-400 text-lg">
-                    <p class="mb-6">Based in Ludhiana, professional cinematographer with 5+ years of experience in fashion videography.</p>
+                <div class="reveal text-gray-400 text-lg md:text-xl font-light leading-relaxed">
+                    <p class="mb-8 italic">"Every frame is a journey, and every journey is a frame."</p>
+                    <p>Based in Ludhiana, I specialize in crafting high-end fashion films and commercial narratives. With <span class="text-white">5+ years behind the lens</span>, I blend technical precision with the raw energy of exploration.</p>
                 </div>
             </div>
         </section>
 
         <section class="relative py-32 px-10 bg-[#0c0d10] z-10">
             <div class="max-w-6xl mx-auto">
-                <h2 class="heading-font text-4xl text-center mb-16 italic text-[#d4af37]">The Arsenal</h2>
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                    <div class="p-8 glass-card text-center"><i data-lucide="smartphone" class="mx-auto mb-4 text-[#d4af37]"></i><h3 class="heading-font text-xl text-white">iPhone 12</h3></div>
-                    <div class="p-8 glass-card text-center"><i data-lucide="camera" class="mx-auto mb-4 text-[#d4af37]"></i><h3 class="heading-font text-xl text-white">DJI Action 5</h3></div>
-                    <div class="p-8 glass-card text-center"><i data-lucide="layers" class="mx-auto mb-4 text-[#d4af37]"></i><h3 class="heading-font text-xl text-white">DJI Gimbal</h3></div>
-                    <div class="p-8 glass-card text-center"><i data-lucide="mic" class="mx-auto mb-4 text-[#d4af37]"></i><h3 class="heading-font text-xl text-white">DJI Mic Mini</h3></div>
+                <h2 class="heading-font text-4xl text-center mb-20 tracking-[0.3em] uppercase">The <span class="text-[#d4af37]">Arsenal</span></h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                    <div class="p-10 glass-card text-center reveal"><i data-lucide="smartphone" class="mx-auto mb-6 text-[#d4af37] w-8 h-8"></i><h3 class="heading-font text-xl text-white">iPhone 12</h3></div>
+                    <div class="p-10 glass-card text-center reveal"><i data-lucide="camera" class="mx-auto mb-6 text-[#d4af37] w-8 h-8"></i><h3 class="heading-font text-xl text-white">DJI Action 5</h3></div>
+                    <div class="p-10 glass-card text-center reveal"><i data-lucide="layers" class="mx-auto mb-6 text-[#d4af37] w-8 h-8"></i><h3 class="heading-font text-xl text-white">DJI Gimbal</h3></div>
+                    <div class="p-10 glass-card text-center reveal"><i data-lucide="mic" class="mx-auto mb-6 text-[#d4af37] w-8 h-8"></i><h3 class="heading-font text-xl text-white">DJI Mic Mini</h3></div>
                 </div>
             </div>
         </section>
 
-        <section class="relative py-24 bg-[#0a0a0a] z-10 overflow-hidden border-t border-white/5">
-            <h2 class="heading-font text-5xl md:text-7xl tracking-widest text-center mb-12">THE <span class="text-[#d4af37]">RIDE</span></h2>
-            <div class="flex gap-6 overflow-x-auto px-10 pb-10 no-scrollbar select-none">
-                <div class="glass-card p-10 flex-shrink-0 w-[350px] md:w-[450px]">
-                    <i data-lucide="bike" class="w-8 h-8 text-[#d4af37] mb-6"></i>
-                    <h3 class="heading-font text-3xl mb-4 text-white">Hero Xpulse 200 4V</h3>
-                    <p class="text-sm text-gray-400 mb-6">Built for the rugged trails of Punjab and the Himalayas.</p>
-                    <div class="flex gap-4 border-t border-white/10 pt-4 text-[10px] tracking-widest text-[#d4af37]">DIST: 5000KM+ | TERRAIN: OFF-ROAD</div>
-                </div>
-                <div class="glass-card p-10 flex-shrink-0 w-[350px] md:w-[450px]">
-                    <i data-lucide="mountain" class="w-8 h-8 text-[#d4af37] mb-6"></i>
-                    <h3 class="heading-font text-3xl mb-4 text-white">Spiti Expedition</h3>
-                    <p class="text-sm text-gray-400 mb-6">Capturing the stark beauty of the cold desert at 14,000 feet.</p>
-                    <div class="flex gap-4 border-t border-white/10 pt-4 text-[10px] tracking-widest text-[#d4af37]">ALT: 14,500FT | TEMP: -15°C</div>
-                </div>
+        <section class="relative py-32 bg-[#0a0a0a] z-10 overflow-hidden border-t border-white/5">
+            <div class="px-10 mb-16">
+                <h2 class="heading-font text-5xl md:text-7xl tracking-widest text-left">THE <span class="text-[#d4af37]">RIDE</span></h2>
+                <p class="text-gray-500 text-xs tracking-[0.4em] uppercase mt-2">Documenting life on two wheels</p>
             </div>
-        </section>
-
-        <section class="py-24 px-10 border-t border-white/5 bg-[#0a0a0a]">
-            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
-                <div>
-                    <h3 class="heading-font text-3xl mb-6 tracking-widest text-[#d4af37]">INSTAGRAM FEED</h3>
-                    <div class="grid grid-cols-3 gap-2">
-                        <img src="img/insta1.jpg" class="aspect-square object-cover grayscale hover:grayscale-0 transition-all border border-white/10" loading="lazy">
-                        <img src="img/insta2.jpg" class="aspect-square object-cover grayscale hover:grayscale-0 transition-all border border-white/10" loading="lazy">
-                        <img src="img/insta3.jpg" class="aspect-square object-cover grayscale hover:grayscale-0 transition-all border border-white/10" loading="lazy">
+            <div class="flex gap-8 overflow-x-auto px-10 pb-12 no-scrollbar select-none">
+                <div class="glass-card p-12 flex-shrink-0 w-[350px] md:w-[500px] reveal">
+                    <i data-lucide="bike" class="w-10 h-10 text-[#d4af37] mb-8"></i>
+                    <h3 class="heading-font text-4xl mb-4 text-white">Hero Xpulse 200 4V</h3>
+                    <p class="text-gray-400 mb-8 font-light">Forged in the trails of Punjab, built for the Himalayan silence.</p>
+                    <div class="flex gap-6 border-t border-white/10 pt-6 text-[10px] tracking-[0.2em] text-[#d4af37] font-bold">
+                        <span>DIST: 5000KM+</span>
+                        <span>TERRAIN: OFF-ROAD</span>
                     </div>
                 </div>
-                <div>
-                    <h3 class="heading-font text-3xl mb-6 tracking-widest text-white">ON THE ROAD</h3>
-                    <div class="aspect-video bg-white/5 flex items-center justify-center border border-white/10 relative group overflow-hidden">
-                        <a href="https://youtube.com/@rgonwheels" target="_blank" class="text-xs tracking-widest text-gray-500 hover:text-[#d4af37] z-10">WATCH LATEST VLOG</a>
+                <div class="glass-card p-12 flex-shrink-0 w-[350px] md:w-[500px] reveal">
+                    <i data-lucide="mountain" class="w-10 h-10 text-[#d4af37] mb-8"></i>
+                    <h3 class="heading-font text-4xl mb-4 text-white">Spiti Expedition</h3>
+                    <p class="text-gray-400 mb-8 font-light">Capturing the stark beauty of the cold desert at 14,000 feet.</p>
+                    <div class="flex gap-6 border-t border-white/10 pt-6 text-[10px] tracking-[0.2em] text-[#d4af37] font-bold">
+                        <span>ALT: 14,500FT</span>
+                        <span>TEMP: -15°C</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="relative py-40 bg-black border-t border-white/5 overflow-hidden group">
-            <div class="absolute inset-0 z-0 opacity-0 group-hover:opacity-30 transition-opacity duration-1000">
-                <video autoplay muted loop playsinline class="w-full h-full object-cover grayscale"><source src="https://res.cloudinary.com/dkpbzpyb8/video/upload/v1772996060/hero-bg_z3brkx.mp4" type="video/mp4"></video>
+        <section class="relative py-48 bg-black border-t border-white/5 overflow-hidden group">
+            <div class="absolute inset-0 z-0 opacity-0 group-hover:opacity-40 transition-opacity duration-1000">
+                <video autoplay muted loop playsinline class="w-full h-full object-cover grayscale">
+                    <source src="https://res.cloudinary.com/dkpbzpyb8/video/upload/v1772996060/hero-bg_z3brkx.mp4" type="video/mp4">
+                </video>
             </div>
-            <div class="max-w-4xl mx-auto text-center relative z-10">
-                <h2 class="heading-font text-6xl md:text-[10rem] mb-4 opacity-10 group-hover:opacity-20 transition-all transform group-hover:scale-110 text-white">THE VAULT</h2>
-                <div class="-mt-16 md:-mt-24">
-                    <h3 class="heading-font text-3xl md:text-5xl mb-6 text-[#d4af37]">DIGITAL ARCHIVE</h3>
-                    <a href="https://drive.google.com/drive/folders/1KILSIcqt1rON1tKhpY8XlcgniX7duOy2?usp=drive_link" target="_blank" class="inline-block px-12 py-5 border border-[#d4af37] text-[#d4af37] text-[10px] uppercase tracking-[0.5em] hover:bg-[#d4af37] hover:text-black transition-all">Access The Vault — 2026</a>
+            <div class="max-w-5xl mx-auto text-center relative z-10 px-10">
+                <h2 class="heading-font text-7xl md:text-[12rem] mb-4 opacity-10 group-hover:opacity-20 transition-all duration-1000 transform group-hover:scale-110 text-white select-none">THE VAULT</h2>
+                <div class="-mt-20 md:-mt-32">
+                    <h3 class="heading-font text-4xl md:text-6xl mb-8 text-[#d4af37] tracking-widest">DIGITAL ARCHIVE</h3>
+                    <a href="https://drive.google.com/drive/folders/1KILSIcqt1rON1tKhpY8XlcgniX7duOy2?usp=drive_link" target="_blank" 
+                       class="inline-block px-12 py-6 border border-[#d4af37] text-[#d4af37] text-xs uppercase tracking-[0.6em] hover:bg-[#d4af37] hover:text-black transition-all duration-700">
+                        Access Archive — 2026
+                    </a>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="py-24 px-10 bg-[#0c0d10] border-t border-white/5">
-            <div class="max-w-4xl mx-auto text-center">
-                <h4 class="heading-font text-6xl mb-12 italic text-white">Let's Collaborate</h4>
-                <form action="https://formspree.io/f/xzdjzldv" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-                    <input type="text" name="name" placeholder="NAME" required class="w-full bg-transparent border-b border-white/20 p-4 outline-none text-sm focus:border-[#d4af37] uppercase text-white">
-                    <input type="email" name="email" placeholder="EMAIL" required class="w-full bg-transparent border-b border-white/20 p-4 outline-none text-sm focus:border-[#d4af37] uppercase text-white">
-                    <textarea name="message" placeholder="PROJECT DETAILS" rows="4" class="md:col-span-2 w-full bg-transparent border-b border-white/20 p-4 outline-none text-sm focus:border-[#d4af37] uppercase text-white"></textarea>
-                    <button type="submit" class="md:col-span-2 border border-[#d4af37] text-[#d4af37] py-5 uppercase tracking-widest hover:bg-[#d4af37] hover:text-black transition-all">Send Message</button>
+        <section id="contact" class="py-32 px-10 bg-[#0c0d10] border-t border-white/5">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-20">
+                    <h4 class="heading-font text-7xl italic text-white mb-4">Let's Work</h4>
+                    <p class="text-[#d4af37] tracking-[0.4em] text-xs uppercase">Available for Global Assignments</p>
+                </div>
+                <form action="https://formspree.io/f/xzdjzldv" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
+                    <input type="text" name="name" placeholder="YOUR NAME" required class="bg-transparent border-b border-white/20 p-6 outline-none text-sm focus:border-[#d4af37] uppercase text-white transition-all">
+                    <input type="email" name="email" placeholder="EMAIL ADDRESS" required class="bg-transparent border-b border-white/20 p-6 outline-none text-sm focus:border-[#d4af37] uppercase text-white transition-all">
+                    <textarea name="message" placeholder="TELL ME ABOUT YOUR PROJECT" rows="4" class="md:col-span-2 bg-transparent border-b border-white/20 p-6 outline-none text-sm focus:border-[#d4af37] uppercase text-white transition-all"></textarea>
+                    <button type="submit" class="md:col-span-2 border border-[#d4af37] text-[#d4af37] py-6 uppercase tracking-[0.5em] text-xs hover:bg-[#d4af37] hover:text-black transition-all duration-500">Send Message</button>
                 </form>
             </div>
         </section>
 
-        <footer class="py-10 text-center bg-black border-t border-white/5">
-            <p class="text-gray-500 text-[10px] tracking-widest uppercase">© 2026 RG ON WHEELS | Ludhiana</p>
+        <footer class="py-12 text-center bg-black border-t border-white/5">
+            <p class="text-gray-600 text-[10px] tracking-[0.5em] uppercase">© 2026 RG ON WHEELS | Ludhiana • Punjab</p>
         </footer>
     </main>
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
         
-        // Performance Optimized Loader
+        // Optimized Loader
         const tl = gsap.timeline();
-        tl.to("#loader-text", { opacity: 1, duration: 1 })
-          .to("#loader-bar", { width: "200px", duration: 1.2, ease: "expo.inOut" })
-          .to("#loader", { yPercent: -100, duration: 1, ease: "power4.inOut" })
-          .to("#main-content", { opacity: 1, duration: 0.4 }, "-=0.8")
+        tl.to("#loader-text", { opacity: 1, duration: 1.2, y: -10, ease: "power2.out" })
+          .to("#loader-bar", { width: "250px", duration: 1.5, ease: "expo.inOut" }, "-=0.5")
+          .to("#loader", { yPercent: -100, duration: 1.2, ease: "power4.inOut" })
+          .to("#main-content", { opacity: 1, duration: 0.5 }, "-=0.8")
           .set("#loader", { display: "none" });
 
-        // SMOOTH PARALLAX (Lag Fix)
+        // Parallax Engine
         gsap.utils.toArray(".parallax-layer").forEach(layer => {
             const speed = layer.getAttribute("data-speed");
             gsap.to(layer, {
-                yPercent: speed * 80,
-                force3D: true, // GPU Acceleration
+                yPercent: speed * 100,
+                ease: "none",
                 scrollTrigger: {
                     trigger: ".parallax-container",
                     start: "top top",
                     end: "bottom top",
-                    scrub: 0.1 // Smooth movement
+                    scrub: true
                 }
             });
         });
 
-        // Cursor Fix
+        // Scroll Reveals
+        gsap.utils.toArray(".reveal").forEach(el => {
+            gsap.from(el, {
+                y: 50, opacity: 0, duration: 1.2, ease: "power3.out",
+                scrollTrigger: { trigger: el, start: "top 90%" }
+            });
+        });
+
+        // Cursor Movement
         const cursor = document.querySelector("#cursor");
         const cursorBlur = document.querySelector("#cursor-blur");
         window.addEventListener("mousemove", (e) => {
@@ -200,7 +222,7 @@
     </script>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script> 
     <script>
-        const lenis = new Lenis({ lerp: 0.1, smoothWheel: true }); // Fast & Smooth scroll
+        const lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
         function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
         requestAnimationFrame(raf);
     </script>
