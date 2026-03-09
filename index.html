@@ -51,6 +51,11 @@
     90% { transform: translate(-10%, 5%); }
 }
 
+        html {
+  scroll-behavior: smooth;
+}
+        
+
         /* Updated Minimalist Loader */
         #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; }
         #loader-text { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; letter-spacing: 0.8em; color: white; overflow: hidden; }
@@ -282,9 +287,21 @@
         });
 
         lucide.createIcons();
+
+        <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script> 
+<script>
+    const lenis = new Lenis();
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+</script>
+    
     </script>
 </body>
 </html>
+
 
 
 
