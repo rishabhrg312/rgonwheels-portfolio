@@ -54,12 +54,16 @@
     </div>
 
     <main id="main-content" class="opacity-0">
-        <section class="relative h-screen w-full overflow-hidden bg-black parallax-container">
-    <div class="absolute inset-0 z-0 parallax-layer" data-speed="0.1">
-        <img src="img/pexels-maaz-kalia-104744186-29401243.jpg" class="w-full h-full object-cover opacity-80">
+        <section class="relative h-screen w-full overflow-hidden bg-black">
+    <div class="absolute inset-0 z-0">
+        <video autoplay muted loop playsinline preload="auto" 
+               class="w-full h-full object-cover object-center scale-[1.02]">
+            <source src="https://res.cloudinary.com/dkpbzpyb8/video/upload/v1772996060/hero-bg_z3brkx.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-black/40"></div>
     </div>
 
-    <div class="absolute inset-0 z-10 flex flex-col justify-center items-center text-center parallax-layer" data-speed="0.6">
+    <div class="absolute inset-0 z-10 flex flex-col justify-center items-center text-center parallax-layer" data-speed="0.4">
         <h1 class="hero-heading">RG ON WHEELS</h1>
         <p class="text-gray-400 uppercase tracking-[0.5em] text-[10px] mt-2">Capturing life through the lens of a traveler and a filmmaker.</p>
     </div>
@@ -209,4 +213,5 @@ gsap.utils.toArray(".parallax-layer").forEach(layer => {
     </script>
 </body>
 </html>
+
 
