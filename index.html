@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Rishabh Gulati (rgonwheels) - Professional Cinematographer & Storyteller in Ludhiana with 5+ years of experience.">
-    <meta name="author" content="Rishabh Gulati">
     <title>RG ON WHEELS | Cinematographer & Storyteller</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -23,17 +22,22 @@
 
         @media (max-width: 768px) { #cursor, #cursor-blur { display: none !important; } * { cursor: auto !important; } }
 
+        /* Cinematic Film Grain Overlay */
         .grain-overlay { position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background-image: url('https://res.cloudinary.com/dkpbzpyb8/image/upload/v1741460000/grain_texture.png'); opacity: 0.04; pointer-events: none; z-index: 9999; animation: grain-animation 8s steps(10) infinite; }
         @keyframes grain-animation { 0%, 100% { transform: translate(0, 0); } 10% { transform: translate(-5%, -10%); } 30% { transform: translate(-15%, 5%); } 50% { transform: translate(10%, 5%); } 70% { transform: translate(5%, 15%); } 90% { transform: translate(-10%, 5%); } }
 
-        html { scroll-behavior: smooth; }
+        /* --- LAG FIX STYLES --- */
+        .parallax-layer {
+            will-change: transform; /* Browser ko pehle hi batata hai move hone wala hai */
+            transform: translateZ(0); /* GPU acceleration on karta hai */
+            backface-visibility: hidden;
+        }
 
-        .hero-heading { font-family: 'Bebas Neue', sans-serif; font-size: 8vw; letter-spacing: 0.1em; color: white; line-height: 1; will-change: transform; text-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .hero-heading { font-family: 'Bebas Neue', sans-serif; font-size: 8vw; letter-spacing: 0.1em; color: white; line-height: 1; text-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         @media (max-width: 768px) { .hero-heading { font-size: 15vw; } }
 
-        .glass-card { background: rgba(255, 255, 255, 0.03) !important; backdrop-filter: blur(12px) saturate(180%) !important; -webkit-backdrop-filter: blur(12px) saturate(180%); border: 1px solid rgba(255, 255, 255, 0.1) !important; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); transition: all 0.4s ease; }
-        .glass-card:hover { background: rgba(255, 255, 255, 0.07) !important; border-color: #d4af37 !important; transform: translateY(-10px); }
-
+        .glass-card { background: rgba(255, 255, 255, 0.03) !important; backdrop-filter: blur(12px) saturate(180%) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); transition: all 0.4s ease; }
+        
         #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; }
         #loader-text { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; letter-spacing: 0.8em; color: white; overflow: hidden; }
         #loader-bar { width: 0; height: 2px; background: #d4af37; margin: 20px auto 0 auto; }
@@ -55,16 +59,16 @@
     <main id="main-content" class="opacity-0">
         <section class="relative h-screen w-full overflow-hidden bg-black parallax-container">
             <div class="absolute inset-0 z-0 parallax-layer" data-speed="0.1">
-                <img src="img/pexels-maaz-kalia-104744186-29401243.jpg" class="w-full h-full object-cover opacity-80">
+                <img src="pexels-maaz-kalia-104744186-29401243.jpg" class="w-full h-full object-cover opacity-80">
             </div>
 
-            <div class="absolute inset-0 z-10 flex flex-col justify-center items-center text-center parallax-layer" data-speed="0.5">
+            <div class="absolute inset-0 z-10 flex flex-col justify-center items-center text-center parallax-layer" data-speed="0.4">
                 <h1 class="hero-heading">RG ON WHEELS</h1>
                 <p class="text-gray-400 uppercase tracking-[0.5em] text-[10px] mt-2 font-light">Capturing life through the lens of a traveler and a filmmaker.</p>
             </div>
 
             <div class="absolute inset-0 z-20 flex items-end justify-center parallax-layer" data-speed="0.2">
-                <img src="img/subject-parallax.png" alt="Rishabh Silhouette" class="h-[90%] md:h-[100%] object-contain pointer-events-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)]">
+                <img src="subject-parallax.png" alt="Rishabh Silhouette" class="h-[90%] md:h-[100%] object-contain pointer-events-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)]">
             </div>
 
             <nav class="relative z-30 flex justify-between p-8 md:p-10 items-center">
@@ -83,11 +87,7 @@
                     <div class="w-20 h-[1px] bg-[#d4af37]"></div>
                 </div>
                 <div class="reveal-about">
-                    <p class="text-gray-400 mb-6">Based in Ludhiana, I am a professional cinematographer with 5+ years of experience in fashion videography.</p>
-                    <div class="flex gap-12">
-                        <div><p class="heading-font text-4xl text-[#d4af37]">5+</p><p class="text-[9px] uppercase tracking-widest text-gray-500">Years Exp</p></div>
-                        <div><p class="heading-font text-4xl text-[#d4af37]">50+</p><p class="text-[9px] uppercase tracking-widest text-gray-500">Stories</p></div>
-                    </div>
+                    <p class="text-gray-400 mb-6">Professional cinematographer with 5+ years of experience. Capturing stories across the map.</p>
                 </div>
             </div>
         </section>
@@ -95,52 +95,12 @@
         <section class="relative py-32 px-10 bg-[#0c0d10] z-10">
             <div class="max-w-6xl mx-auto">
                 <h2 class="heading-font text-4xl text-center mb-16 italic">The <span class="text-[#d4af37]">Arsenal</span></h2>
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                    <div class="p-8 glass-card reveal-about"><i data-lucide="smartphone" class="w-8 h-8 mb-4 text-[#d4af37]"></i><h3 class="heading-font text-xl">iPhone 12</h3></div>
-                    <div class="p-8 glass-card reveal-about"><i data-lucide="camera" class="w-8 h-8 mb-4 text-[#d4af37]"></i><h3 class="heading-font text-xl">DJI Action 5 Pro</h3></div>
-                    <div class="p-8 glass-card reveal-about"><i data-lucide="layers" class="w-8 h-8 mb-4 text-[#d4af37]"></i><h3 class="heading-font text-xl">DJI Gimbal</h3></div>
-                    <div class="p-8 glass-card reveal-about"><i data-lucide="mic" class="w-8 h-8 mb-4 text-[#d4af37]"></i><h3 class="heading-font text-xl">DJI Mic Mini</h3></div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+                    <div class="p-8 glass-card reveal-about"><i data-lucide="smartphone" class="mx-auto w-8 h-8 mb-4 text-[#d4af37]"></i><h3 class="heading-font text-xl">iPhone 12</h3></div>
+                    <div class="p-8 glass-card reveal-about"><i data-lucide="camera" class="mx-auto w-8 h-8 mb-4 text-[#d4af37]"></i><h3 class="heading-font text-xl">DJI Action 5 Pro</h3></div>
+                    <div class="p-8 glass-card reveal-about"><i data-lucide="layers" class="mx-auto w-8 h-8 mb-4 text-[#d4af37]"></i><h3 class="heading-font text-xl">DJI Gimbal</h3></div>
+                    <div class="p-8 glass-card reveal-about"><i data-lucide="mic" class="mx-auto w-8 h-8 mb-4 text-[#d4af37]"></i><h3 class="heading-font text-xl">DJI Mic Mini</h3></div>
                 </div>
-            </div>
-        </section>
-
-        <section class="relative py-24 bg-[#0a0a0a] z-10 overflow-hidden border-t border-white/5">
-            <div class="px-10 mb-12"><h2 class="heading-font text-5xl md:text-7xl tracking-widest leading-none">THE <span class="text-[#d4af37]">RIDE</span></h2></div>
-            <div class="flex gap-6 overflow-x-auto px-10 pb-10 no-scrollbar">
-                <div class="glass-card p-10 flex-shrink-0 w-[350px] md:w-[450px]">
-                    <i data-lucide="bike" class="w-8 h-8 text-[#d4af37] mb-6"></i>
-                    <h3 class="heading-font text-3xl mb-4">Hero Xpulse 200 4V</h3>
-                    <p class="text-sm text-gray-400">Built for the rugged trails of Punjab and the Himalayas.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="relative py-40 bg-black border-t border-white/5 overflow-hidden group">
-            <div class="absolute inset-0 z-0 opacity-0 group-hover:opacity-30 transition-opacity duration-1000">
-                <video autoplay muted loop playsinline class="w-full h-full object-cover grayscale">
-                    <source src="https://res.cloudinary.com/dkpbzpyb8/video/upload/v1772996060/hero-bg_z3brkx.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="max-w-4xl mx-auto text-center px-10 relative z-10">
-                <div class="reveal-about">
-                    <h2 class="heading-font text-6xl md:text-[10rem] mb-4 tracking-widest opacity-10 group-hover:opacity-20 transition-all duration-1000 transform group-hover:scale-110">THE VAULT</h2>
-                    <div class="-mt-16 md:-mt-24">
-                        <h3 class="heading-font text-3xl md:text-5xl mb-6 tracking-widest text-[#d4af37]">DIGITAL ARCHIVE</h3>
-                        <a href="https://drive.google.com/drive/folders/1KILSIcqt1rON1tKhpY8XlcgniX7duOy2?usp=drive_link" target="_blank" class="inline-block px-12 py-5 border border-[#d4af37] text-[#d4af37] text-[10px] uppercase tracking-[0.5em] hover:bg-[#d4af37] hover:text-black transition-all duration-700">Access The Vault — 2026</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="py-24 px-10 bg-[#0c0d10] border-t border-white/5">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="heading-font text-4xl md:text-5xl mb-12 tracking-widest text-center">GET IN <span class="text-[#d4af37]">TOUCH</span></h2>
-                <form action="https://formspree.io/f/xzdjzldv" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <input type="text" name="name" placeholder="NAME" required class="w-full bg-transparent border-b border-white/20 p-4 outline-none text-sm uppercase tracking-widest focus:border-[#d4af37]">
-                    <input type="email" name="email" placeholder="EMAIL" required class="w-full bg-transparent border-b border-white/20 p-4 outline-none text-sm uppercase tracking-widest focus:border-[#d4af37]">
-                    <textarea name="message" placeholder="MESSAGE" rows="4" class="md:col-span-2 w-full bg-transparent border-b border-white/20 p-4 outline-none text-sm uppercase tracking-widest focus:border-[#d4af37]"></textarea>
-                    <button type="submit" class="md:col-span-2 border border-[#d4af37] text-[#d4af37] py-5 uppercase tracking-[0.4em] text-[10px] hover:bg-[#d4af37] hover:text-black transition-all duration-500">Send Message</button>
-                </form>
             </div>
         </section>
 
@@ -148,56 +108,55 @@
             <h4 class="heading-font text-6xl mb-6 italic">Let's Collaborate</h4>
             <div class="flex justify-center gap-6">
                 <a href="https://instagram.com/rgonwheels" target="_blank" class="border border-white/20 px-8 py-3 hover:bg-white hover:text-black transition">Instagram</a>
-                <a href="https://youtube.com/@rgonwheels" target="_blank" class="border border-white/20 px-8 py-3 hover:bg-white hover:text-black transition">YouTube</a>
             </div>
         </footer>
     </main>
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
+        
+        // Smoother Loader Exit
         const tl = gsap.timeline();
-
-        // Loader
         tl.fromTo("#loader-text", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1.2, ease: "power4.out" })
           .to("#loader-bar", { width: "150px", duration: 1, ease: "expo.inOut" }, "-=0.5")
-          .to("#loader-text", { opacity: 0, y: -20, duration: 0.5, delay: 0.5 })
-          .to("#loader", { height: 0, duration: 1.2, ease: "expo.inOut" })
+          .to("#loader", { height: 0, duration: 1, ease: "expo.inOut", delay: 0.2 })
           .set("#loader", { display: "none" })
-          .to("#main-content", { opacity: 1, duration: 0.5 }, "-=0.8");
+          .to("#main-content", { opacity: 1, duration: 0.5 }, "-=0.5");
 
-        // 3D Sandwich Parallax logic
+        // PERFORMANCE OPTIMIZED PARALLAX
         gsap.utils.toArray(".parallax-layer").forEach(layer => {
             const speed = layer.getAttribute("data-speed");
             gsap.to(layer, {
                 yPercent: speed * 100,
+                force3D: true, // Forces GPU usage
                 ease: "none",
                 scrollTrigger: {
                     trigger: ".parallax-container",
                     start: "top top",
                     end: "bottom top",
-                    scrub: true
+                    scrub: 0.1 // Adding small delay for smoothness
                 }
             });
         });
 
         // General Reveals
         gsap.utils.toArray(".reveal-about, .glass-card").forEach(el => {
-            gsap.from(el, { scrollTrigger: { trigger: el, start: "top 90%" }, y: 40, opacity: 0, duration: 1, ease: "power2.out" });
+            gsap.from(el, { scrollTrigger: { trigger: el, start: "top 95%" }, y: 30, opacity: 0, duration: 0.8 });
         });
 
-        // Custom Cursor
+        // Cursor Logic
         const cursor = document.querySelector("#cursor");
         const cursorBlur = document.querySelector("#cursor-blur");
         window.addEventListener("mousemove", (e) => {
-            gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0 });
-            gsap.to(cursorBlur, { x: e.clientX - 14, y: e.clientY - 14, duration: 0.15 });
+            gsap.set(cursor, { x: e.clientX, y: e.clientY });
+            gsap.to(cursorBlur, { x: e.clientX - 14, y: e.clientY - 14, duration: 0.2 });
         });
 
         lucide.createIcons();
     </script>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script> 
     <script>
-        const lenis = new Lenis();
+        const lenis = new Lenis({ lerp: 0.05 }); // Smoother scroll lerp
         function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
         requestAnimationFrame(raf);
     </script>
