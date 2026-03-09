@@ -287,25 +287,18 @@
         });
 
         lucide.createIcons();
+    </script>
 
-        <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script> 
-<script>
-    const lenis = new Lenis();
-    function raf(time) {
-        lenis.raf(time);
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script> 
+    <script>
+        const lenis = new Lenis();
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
         requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-</script>
-    
     </script>
 </body>
 </html>
-
-
-
-
-
-
 
 
