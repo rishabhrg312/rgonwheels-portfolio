@@ -302,6 +302,15 @@
                 gsap.to(flare, { x: xMove, y: yMove, duration: 2, ease: "power2.out" });
             }
         });
+        
+        document.querySelectorAll('a, button, input').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+        gsap.to(cursorBlur, { scale: 2.5, backgroundColor: "rgba(212, 175, 55, 0.1)", duration: 0.3 });
+    });
+    el.addEventListener('mouseleave', () => {
+        gsap.to(cursorBlur, { scale: 1, backgroundColor: "transparent", duration: 0.3 });
+    });
+});
 
         lucide.createIcons();
     </script>
@@ -313,4 +322,5 @@
     </script>
 </body>
 </html>
+
 
