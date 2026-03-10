@@ -85,9 +85,9 @@
 }
 
 #travel-route {
-    stroke-dasharray: 2000; /* Badi value taaki poori line cover ho */
-    stroke-dashoffset: 2000;
-    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4));
+    stroke-dasharray: 2000; /* Badi value taaki poori line chhup sake */
+    stroke-dashoffset: 2000; /* Shuruat mein line gayab rahegi */
+    transition: none; /* GSAP ko interfere karne se roko */
 }
 
 /* Horizontal Scroll Section Fix */
@@ -207,8 +207,7 @@
    <section class="relative py-24 bg-[#0a0a0a] z-10 overflow-hidden border-t border-white/5">
     
 <div class="absolute inset-0 w-full h-full pointer-events-none z-0">
-    <svg width="100%" height="100%" viewBox="0 0 1000 500" preserveAspectRatio="none" class="map-path-svg">
-        
+    <svg width="100%" height="100%" viewBox="0 0 1000 500" preserveAspectRatio="none">
         <circle cx="50" cy="450" r="6" fill="#d4af37" class="animate-pulse" /> 
         
         <path id="travel-route" 
@@ -421,16 +420,21 @@
 const path = document.querySelector("#travel-route");
 if(path) {
     const pathLength = path.getTotalLength();
-    // Isse line starting mein poori chhup jayegi
-    gsap.set(path, { strokeDasharray: pathLength, strokeDashoffset: pathLength });
     
+    // Sabse pehle line ko invisible karo
+    gsap.set(path, { 
+        strokeDasharray: pathLength, 
+        strokeDashoffset: pathLength 
+    });
+
+    // Ab scroll ke saath draw karo
     gsap.to(path, {
         strokeDashoffset: 0,
         scrollTrigger: {
-            trigger: ".map-path-svg",
-            start: "top 80%", // Jab section aana shuru ho
+            trigger: ".relative.py-24.bg-\\[\\#0a0a0a\\]", // Tumhara 'The Ride' wala section
+            start: "top 80%", // Jab section screen par aana shuru ho
             end: "bottom 20%",
-            scrub: 1.5, // Smooth drawing on scroll
+            scrub: 1.5, // Scroll ki speed ke saath synchronize hoga
         }
     });
 }
@@ -453,6 +457,7 @@ if(path) {
 </script>
 </body>
 </html>
+
 
 
 
