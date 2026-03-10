@@ -80,13 +80,14 @@
     opacity: 0.2;
     pointer-events: none;
 }
-.map-path-svg svg {
-    width: 100%;
-    height: 100%;
+.map-path-svg {
+    filter: blur(0.5px); /* Thoda soft look */
 }
+
 #travel-route {
-    stroke-dasharray: 1000; /* Ye value script handle karegi but backup ke liye */
-    stroke-dashoffset: 1000;
+    stroke-dasharray: 2000; /* Badi value taaki poori line cover ho */
+    stroke-dashoffset: 2000;
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4));
 }
 
 /* Horizontal Scroll Section Fix */
@@ -205,14 +206,15 @@
         
    <section class="relative py-24 bg-[#0a0a0a] z-10 overflow-hidden border-t border-white/5">
     
-    <div class="absolute inset-0 w-full h-full pointer-events-none opacity-20 z-0">
-        <svg width="100%" height="100%" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" fill="none" class="map-path-svg">
-            <path id="travel-route" d="M50,350 Q150,300 250,320 T450,150 T650,200 T750,50" 
-                  stroke="#d4af37" stroke-width="2" fill="none" />
-            <circle cx="50" cy="350" r="4" fill="#d4af37" /> 
-            <circle cx="750" cy="50" r="4" fill="#ff4d4d" /> 
-        </svg>
-    </div>
+    <div class="absolute inset-0 w-full h-full pointer-events-none z-0">
+    <svg width="100%" height="100%" viewBox="0 0 1000 500" preserveAspectRatio="none" class="map-path-svg">
+        <path id="travel-route" d="M-50,450 C150,400 350,450 500,250 S850,100 1050,50" 
+              stroke="#d4af37" stroke-width="3" fill="none" opacity="0.4" />
+        
+        <circle cx="50" cy="450" r="6" fill="#d4af37" class="animate-pulse" /> 
+        <circle cx="950" cy="50" r="6" fill="#ff4d4d" class="animate-pulse" /> 
+    </svg>
+</div>
 
     <div class="px-10 mb-12 flex justify-between items-end relative z-10">
         <div>
@@ -413,16 +415,17 @@
 const path = document.querySelector("#travel-route");
 if(path) {
     const pathLength = path.getTotalLength();
+    // Initial state: Poori line chhupa do
     gsap.set(path, { strokeDasharray: pathLength, strokeDashoffset: pathLength });
     
     gsap.to(path, {
         strokeDashoffset: 0,
         scrollTrigger: {
-    trigger: "#travel-route", // Path khud trigger banega
-    start: "top 80%", 
-    end: "bottom 20%",
-    scrub: 2
-}
+            trigger: ".map-path-svg",
+            start: "top 80%", // Jab section screen par aana shuru ho
+            end: "bottom 20%",
+            scrub: 1.5, // Scroll ke saath saath chalegi
+        }
     });
 }
 
@@ -444,6 +447,7 @@ if(path) {
 </script>
 </body>
 </html>
+
 
 
 
