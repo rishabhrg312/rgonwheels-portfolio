@@ -198,9 +198,7 @@
                 </div>
             </div>
         </section>
-
-        <section class="relative py-24 bg-[#0a0a0a] z-10 overflow-hidden border-t border-white/5">
-    
+        
     <section class="relative py-24 bg-[#0a0a0a] z-10 overflow-hidden border-t border-white/5">
     
     <div class="absolute inset-0 w-full h-full pointer-events-none opacity-20 z-0">
@@ -219,10 +217,6 @@
         </div>
         <div class="hidden md:block text-[9px] uppercase tracking-widest text-gray-600 italic">Scroll to Explore →</div>
     </div>
-
-    </section>
-
-    </section>
             
             <div class="flex gap-6 overflow-x-auto px-10 pb-10 no-scrollbar select-none">
                 <div class="glass-card p-10 flex-shrink-0 w-[350px] md:w-[450px] reveal">
@@ -427,71 +421,25 @@ if(path) {
     });
 }
 
-    lucide.createIcons();
-
-        <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script> 
-<script>
-    // Initialize Lenis
-    const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smoothWheel: true
-    });
-
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    // Link Lenis with ScrollTrigger
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add((time) => {
-        lenis.raf(time * 1000);
-    });
-
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script> 
-
-<script>
-    // 1. Initialize Smooth Scroll (Lenis)
-    const lenis = new Lenis({
-        lerp: 0.1, 
-        smoothWheel: true
-    });
-
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    // 2. Connect Lenis with ScrollTrigger
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add((time) => {
-        lenis.raf(time * 1000);
-    });
-    gsap.ticker.lagSmoothing(0);
-
-    // 3. Map Route Draw Logic (Double check manually)
-    const path = document.querySelector("#travel-route");
-    if(path) {
-        const pathLength = path.getTotalLength();
-        // Initial state set kar rahe hain
-        gsap.set(path, { strokeDasharray: pathLength, strokeDashoffset: pathLength });
+        lucide.createIcons();
         
-        gsap.to(path, {
-            strokeDashoffset: 0,
-            scrollTrigger: {
-                trigger: ".map-path-svg",
-                start: "top 70%",
-                end: "bottom 20%",
-                scrub: 2 // Isse scroll ke saath line banegi
-            }
-        });
+</script> <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script> 
+<script>
+    const lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
     }
+    requestAnimationFrame(raf);
+
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+    });
 </script>
 </body>
 </html>
+
 
 
 
