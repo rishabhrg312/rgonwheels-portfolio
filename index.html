@@ -208,11 +208,11 @@
     
     <div class="absolute inset-0 w-full h-full pointer-events-none z-0">
     <svg width="100%" height="100%" viewBox="0 0 1000 500" preserveAspectRatio="none" class="map-path-svg">
-        <path id="travel-route" d="M-50,450 C150,400 350,450 500,250 S850,100 1050,50" 
-              stroke="#d4af37" stroke-width="3" fill="none" opacity="0.4" />
+        <path id="travel-route" d="M0,500 C200,450 400,480 500,250 S800,50 1000,0" 
+              stroke="#d4af37" stroke-width="3" fill="none" opacity="0.5" />
         
-        <circle cx="50" cy="450" r="6" fill="#d4af37" class="animate-pulse" /> 
-        <circle cx="950" cy="50" r="6" fill="#ff4d4d" class="animate-pulse" /> 
+        <circle cx="20" cy="480" r="5" fill="#d4af37" /> 
+        <circle cx="980" cy="20" r="5" fill="#ff4d4d" /> 
     </svg>
 </div>
 
@@ -415,16 +415,16 @@
 const path = document.querySelector("#travel-route");
 if(path) {
     const pathLength = path.getTotalLength();
-    // Initial state: Poori line chhupa do
+    // Isse line starting mein poori chhup jayegi
     gsap.set(path, { strokeDasharray: pathLength, strokeDashoffset: pathLength });
     
     gsap.to(path, {
         strokeDashoffset: 0,
         scrollTrigger: {
             trigger: ".map-path-svg",
-            start: "top 80%", // Jab section screen par aana shuru ho
+            start: "top 80%", // Jab section aana shuru ho
             end: "bottom 20%",
-            scrub: 1.5, // Scroll ke saath saath chalegi
+            scrub: 1.5, // Smooth drawing on scroll
         }
     });
 }
@@ -447,12 +447,3 @@ if(path) {
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
