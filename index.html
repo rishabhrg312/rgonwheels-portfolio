@@ -93,39 +93,6 @@
             0% { transform: rotate(-15deg) translateY(0); opacity: 0.4; }
             100% { transform: rotate(-15deg) translateY(50px); opacity: 0.7; }
         }
-        // Advanced Cursor Logic
-const cursor = document.querySelector("#cursor");
-const cursorBlur = document.querySelector("#cursor-blur");
-
-window.addEventListener("mousemove", (e) => {
-    gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0 });
-    gsap.to(cursorBlur, { x: e.clientX - 14, y: e.clientY - 14, duration: 0.15 });
-});
-
-// Hover Effect on Interactive Elements
-const interactiveElements = document.querySelectorAll('a, button, input, textarea, .glass-card');
-
-interactiveElements.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-        gsap.to(cursorBlur, { 
-            scale: 2.5, 
-            backgroundColor: "rgba(212, 175, 55, 0.15)", 
-            borderColor: "rgba(212, 175, 55, 0.8)",
-            duration: 0.3 
-        });
-        gsap.to(cursor, { scale: 0, duration: 0.2 }); // Dot chhota ho jayega
-    });
-    
-    el.addEventListener('mouseleave', () => {
-        gsap.to(cursorBlur, { 
-            scale: 1, 
-            backgroundColor: "transparent", 
-            borderColor: "#d4af37",
-            duration: 0.3 
-        });
-        gsap.to(cursor, { scale: 1, duration: 0.2 });
-    });
-});
         
     </style>
 </head>
@@ -192,6 +159,12 @@ interactiveElements.forEach(el => {
         <section class="relative py-24 bg-[#0a0a0a] z-10 overflow-hidden border-t border-white/5">
             <div class="px-10 mb-12 flex justify-between items-end">
                 <div>
+                    <div class="absolute right-0 top-0 w-full h-full pointer-events-none opacity-10 z-0">
+    <svg width="100%" height="100%" viewBox="0 0 800 400" fill="none" class="map-path-svg">
+        <path id="travel-route" d="M50,350 Q150,300 250,320 T450,150 T650,200 T750,50" 
+              stroke="#d4af37" stroke-width="2" fill="none" />
+        <circle cx="50" cy="350" r="4" fill="#d4af37" /> <circle cx="750" cy="50" r="4" fill="#ff4d4d" /> </svg>
+</div>
                     <h2 class="heading-font text-5xl md:text-7xl tracking-widest leading-none text-white uppercase">THE <span class="text-[#d4af37]">RIDE</span></h2>
                     <p class="text-[10px] uppercase tracking-[0.4em] text-gray-500 mt-2">Documenting life on two wheels</p>
                 </div>
@@ -215,7 +188,9 @@ interactiveElements.forEach(el => {
                     <h3 class="heading-font text-3xl mb-4 text-white uppercase">Spiti Expedition</h3>
                     <p class="text-sm text-gray-400 mb-6 leading-relaxed">Capturing the stark beauty of the cold desert at 14,000 feet.</p>
                     <div class="flex gap-4 border-t border-white/10 pt-4">
-                        <span class="text-[10px] tracking-widest text-[#d4af37]">ALT: <span id="14500">0</span>FT</span>
+                        <span class="text-[10px] tracking-widest text-[#d4af37]">
+    ALT: <span id="altitude-count">0</span>FT
+</span>
                         <span class="text-[10px] tracking-widest text-gray-500">|</span>
                         <span class="text-[10px] tracking-widest text-[#d4af37]">TEMP: -15°C</span>
                     </div>
@@ -301,94 +276,108 @@ interactiveElements.forEach(el => {
     </main>
 
     <script>
-        gsap.registerPlugin(ScrollTrigger);
-        
-        // 1. Loader Sequence
-        const tl = gsap.timeline();
-        tl.to("#loader-text", { opacity: 1, duration: 1 })
-          .to("#loader-bar", { width: "220px", duration: 1.2, ease: "expo.inOut" })
-          .to("#loader", { yPercent: -100, duration: 1, ease: "power4.inOut" })
-          .to("#main-content", { opacity: 1, duration: 0.5 }, "-=0.8")
-          .set("#loader", { display: "none" });
+    gsap.registerPlugin(ScrollTrigger);
 
-        // 2. Cinematic Opening Zoom (Background mountain load hote hi move hoga)
-        gsap.fromTo(".bg-zoom-effect img", 
-            { scale: 1.3 }, 
-            { scale: 1, duration: 5, ease: "power2.out", delay: 1 }
-        );
+    // 1. Loader Sequence
+    const tl = gsap.timeline();
+    tl.to("#loader-text", { opacity: 1, duration: 1 })
+      .to("#loader-bar", { width: "220px", duration: 1.2, ease: "expo.inOut" })
+      .to("#loader", { yPercent: -100, duration: 1, ease: "power4.inOut" })
+      .to("#main-content", { opacity: 1, duration: 0.5 }, "-=0.8")
+      .set("#loader", { display: "none" });
 
-        // 3. Optimized Parallax Engine (Sandwich Effect Fix)
-        gsap.utils.toArray(".parallax-layer").forEach(layer => {
-            const speed = layer.getAttribute("data-speed");
-            gsap.to(layer, {
-                yPercent: speed * 80, // Optimized for 3D depth
-                force3D: true, // GPU acceleration to stop lag
-                scrollTrigger: {
-                    trigger: ".parallax-container",
-                    start: "top top",
-                    end: "bottom top",
-                    scrub: 1 // High smoothness
-                }
-            });
-        });
+    // 2. Cinematic Opening Zoom
+    gsap.fromTo(".bg-zoom-effect img", 
+        { scale: 1.3 }, 
+        { scale: 1, duration: 5, ease: "power2.out", delay: 1 }
+    );
 
-        // 4. Section Reveals (Ride Cards & Content)
-        gsap.utils.toArray(".reveal, .glass-card").forEach(el => {
-            gsap.from(el, { 
-                scrollTrigger: { trigger: el, start: "top 92%" }, 
-                y: 50, opacity: 0, duration: 1, ease: "power3.out" 
-            });
-        });
-
-        // 5. Combined Cursor & Lens Flare Interaction
-        const cursor = document.querySelector("#cursor");
-        const cursorBlur = document.querySelector("#cursor-blur");
-        const flare = document.querySelector(".lens-flare");
-
-        window.addEventListener("mousemove", (e) => {
-            // Standard Cursor Logic
-            gsap.set(cursor, { x: e.clientX, y: e.clientY });
-            gsap.to(cursorBlur, { x: e.clientX - 14, y: e.clientY - 14, duration: 0.15 });
-
-            // Flare Interaction (Physics based)
-            if(flare) {
-                const xMove = (e.clientX - window.innerWidth / 2) * 0.15;
-                const yMove = (e.clientY - window.innerHeight / 2) * 0.15;
-                gsap.to(flare, { x: xMove, y: yMove, duration: 2, ease: "power2.out" });
+    // 3. Parallax Engine
+    gsap.utils.toArray(".parallax-layer").forEach(layer => {
+        const speed = layer.getAttribute("data-speed");
+        gsap.to(layer, {
+            yPercent: speed * 80,
+            force3D: true,
+            scrollTrigger: {
+                trigger: ".parallax-container",
+                start: "top top",
+                end: "bottom top",
+                scrub: 1
             }
         });
-        
-        document.querySelectorAll('a, button, input').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-        gsap.to(cursorBlur, { scale: 2.5, backgroundColor: "rgba(212, 175, 55, 0.1)", duration: 0.3 });
     });
-    el.addEventListener('mouseleave', () => {
-        gsap.to(cursorBlur, { scale: 1, backgroundColor: "transparent", duration: 0.3 });
-    });
-});
-        
-        // Altitude Counter Animation
-gsap.to("#altitude-count", {
-    innerText: 14500,
-    duration: 3,
-    snap: { innerText: 1 }, // Numbers jump nahi karenge, smooth chalenge
-    scrollTrigger: {
-        trigger: "#altitude-count",
-        start: "top 90%", // Jab card screen par aaye tab start ho
-        toggleActions: "play none none none"
-    }
-});
 
-        lucide.createIcons();
-    </script>
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script> 
-    <script>
-        const lenis = new Lenis({ lerp: 0.1, smoothWheel: true }); 
-        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-        requestAnimationFrame(raf);
-    </script>
+    // 4. Section Reveals
+    gsap.utils.toArray(".reveal, .glass-card").forEach(el => {
+        gsap.from(el, { 
+            scrollTrigger: { trigger: el, start: "top 92%" }, 
+            y: 50, opacity: 0, duration: 1, ease: "power3.out" 
+        });
+    });
+
+    // 5. Advanced Cursor & Lens Flare Logic (Combined in one MouseMove)
+    const cursor = document.querySelector("#cursor");
+    const cursorBlur = document.querySelector("#cursor-blur");
+    const flare = document.querySelector(".lens-flare");
+
+    window.addEventListener("mousemove", (e) => {
+        // Cursor Movement
+        gsap.set(cursor, { x: e.clientX, y: e.clientY });
+        gsap.to(cursorBlur, { x: e.clientX - 14, y: e.clientY - 14, duration: 0.15 });
+
+        // Flare Physics Interaction
+        if(flare) {
+            const xMove = (e.clientX - window.innerWidth / 2) * 0.15;
+            const yMove = (e.clientY - window.innerHeight / 2) * 0.15;
+            gsap.to(flare, { x: xMove, y: yMove, duration: 2, ease: "power2.out" });
+        }
+    });
+
+    // Hover Effects (Ab ek hi baar define kiya hai saare inputs aur links ke liye)
+    document.querySelectorAll('a, button, input, .glass-card').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            gsap.to(cursorBlur, { scale: 2.5, backgroundColor: "rgba(212, 175, 55, 0.1)", duration: 0.3 });
+            gsap.to(cursor, { scale: 0 });
+        });
+        el.addEventListener('mouseleave', () => {
+            gsap.to(cursorBlur, { scale: 1, backgroundColor: "transparent", duration: 0.3 });
+            gsap.to(cursor, { scale: 1 });
+        });
+    });
+
+    // 6. Altitude Counter
+    gsap.to("#altitude-count", {
+        innerText: 14500,
+        duration: 3,
+        snap: { innerText: 1 },
+        scrollTrigger: {
+            trigger: "#altitude-count",
+            start: "top 90%",
+        }
+    });
+
+    // 7. Map Route Drawing
+    const path = document.querySelector("#travel-route");
+    if(path) {
+        const pathLength = path.getTotalLength();
+        gsap.set(path, { strokeDasharray: pathLength, strokeDashoffset: pathLength });
+        
+        gsap.to(path, {
+            strokeDashoffset: 0,
+            scrollTrigger: {
+                trigger: ".map-path-svg",
+                start: "top 70%",
+                end: "bottom 20%",
+                scrub: 2
+            }
+        });
+    }
+
+    lucide.createIcons();
+</script>
 </body>
 </html>
+
 
 
 
