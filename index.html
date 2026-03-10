@@ -51,6 +51,26 @@
         }
         .glass-card:hover { border-color: #d4af37 !important; transform: translateY(-10px); }
 
+        /* Grainy Texture for Glass Cards */
+.glass-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.03; /* Bahut halka rakhna hai */
+    pointer-events: none;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+}
+
+/* Vault Hover Effect */
+.vault-video-container {
+    transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 1s ease;
+}
+.group:hover .vault-video-container {
+    transform: scale(1.1);
+    opacity: 0.6 !important;
+}
+
         #loader { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; }
         #loader-bar { width: 0; height: 2px; background: #d4af37; margin-top: 20px; }
         
@@ -73,6 +93,39 @@
             0% { transform: rotate(-15deg) translateY(0); opacity: 0.4; }
             100% { transform: rotate(-15deg) translateY(50px); opacity: 0.7; }
         }
+        // Advanced Cursor Logic
+const cursor = document.querySelector("#cursor");
+const cursorBlur = document.querySelector("#cursor-blur");
+
+window.addEventListener("mousemove", (e) => {
+    gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0 });
+    gsap.to(cursorBlur, { x: e.clientX - 14, y: e.clientY - 14, duration: 0.15 });
+});
+
+// Hover Effect on Interactive Elements
+const interactiveElements = document.querySelectorAll('a, button, input, textarea, .glass-card');
+
+interactiveElements.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+        gsap.to(cursorBlur, { 
+            scale: 2.5, 
+            backgroundColor: "rgba(212, 175, 55, 0.15)", 
+            borderColor: "rgba(212, 175, 55, 0.8)",
+            duration: 0.3 
+        });
+        gsap.to(cursor, { scale: 0, duration: 0.2 }); // Dot chhota ho jayega
+    });
+    
+    el.addEventListener('mouseleave', () => {
+        gsap.to(cursorBlur, { 
+            scale: 1, 
+            backgroundColor: "transparent", 
+            borderColor: "#d4af37",
+            duration: 0.3 
+        });
+        gsap.to(cursor, { scale: 1, duration: 0.2 });
+    });
+});
         
     </style>
 </head>
@@ -162,7 +215,7 @@
                     <h3 class="heading-font text-3xl mb-4 text-white uppercase">Spiti Expedition</h3>
                     <p class="text-sm text-gray-400 mb-6 leading-relaxed">Capturing the stark beauty of the cold desert at 14,000 feet.</p>
                     <div class="flex gap-4 border-t border-white/10 pt-4">
-                        <span class="text-[10px] tracking-widest text-[#d4af37]">ALT: 14,500FT</span>
+                        <span class="text-[10px] tracking-widest text-[#d4af37]">ALT: <span id="14500">0</span>FT</span>
                         <span class="text-[10px] tracking-widest text-gray-500">|</span>
                         <span class="text-[10px] tracking-widest text-[#d4af37]">TEMP: -15°C</span>
                     </div>
@@ -201,7 +254,9 @@
         </section>
 
         <section class="relative py-40 bg-black border-t border-white/5 overflow-hidden group">
-            <div class="absolute inset-0 z-0 opacity-0 group-hover:opacity-30 transition-opacity duration-1000">
+            <div class="absolute inset-0 z-0 opacity-0 group-hover:opacity-30 transition-all duration-1000 vault-video-container">
+    <video ... > </video>
+</div>
                 <video autoplay muted loop playsinline class="w-full h-full object-cover grayscale"><source src="https://res.cloudinary.com/dkpbzpyb8/video/upload/v1772996060/hero-bg_z3brkx.mp4" type="video/mp4"></video>
             </div>
             <div class="max-w-4xl mx-auto text-center relative z-10">
@@ -311,6 +366,18 @@
         gsap.to(cursorBlur, { scale: 1, backgroundColor: "transparent", duration: 0.3 });
     });
 });
+        
+        // Altitude Counter Animation
+gsap.to("#altitude-count", {
+    innerText: 14500,
+    duration: 3,
+    snap: { innerText: 1 }, // Numbers jump nahi karenge, smooth chalenge
+    scrollTrigger: {
+        trigger: "#altitude-count",
+        start: "top 90%", // Jab card screen par aaye tab start ho
+        toggleActions: "play none none none"
+    }
+});
 
         lucide.createIcons();
     </script>
@@ -322,5 +389,6 @@
     </script>
 </body>
 </html>
+
 
 
