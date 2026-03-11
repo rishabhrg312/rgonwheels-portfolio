@@ -419,18 +419,16 @@
     const path = document.querySelector("#travel-route");
 if(path) {
     const pathLength = path.getTotalLength();
-    
     gsap.set(path, { strokeDasharray: pathLength, strokeDashoffset: pathLength });
 
     gsap.to(path, {
         strokeDashoffset: 0,
         ease: "none",
         scrollTrigger: {
-            trigger: "#ride-section", // Humne ab ID use ki hai
-            start: "top 60%",        // Jab section screen ke thoda upar aaye tab shuru ho
-            end: "bottom 20%",       // Jab section khatam hone wala ho tab stop ho
-            scrub: 1,                // Scroll ke saath line ki drawing move hogi
-            // markers: true,        // <-- Is line ko check karne ke liye hata sakte ho (testing ke liye)
+            trigger: "#ride-section", // Ensure karo tumne section ko ye ID di hai
+            start: "top 20%",        // <-- ISKO 'top 20%' KARDO
+            end: "bottom 20%",
+            scrub: 1,
         }
     });
 }
@@ -452,6 +450,7 @@ if(path) {
 </script>
 </body>
 </html>
+
 
 
 
