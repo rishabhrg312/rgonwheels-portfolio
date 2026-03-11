@@ -204,7 +204,7 @@
             </div>
         </section>
         
-   <section class="relative py-24 bg-[#0a0a0a] z-10 overflow-hidden border-t border-white/5">
+   <section id="ride-section" class="relative py-24 bg-[#0a0a0a] z-10 overflow-hidden border-t border-white/5">
     
 <div class="absolute inset-0 w-full h-full pointer-events-none z-0">
     <svg width="100%" height="100%" viewBox="0 0 1000 500" preserveAspectRatio="none">
@@ -416,30 +416,24 @@
         }
     });
 
-    // Map Route Animation Fix
-const path = document.querySelector("#travel-route");
-if (path) {
+    const path = document.querySelector("#travel-route");
+if(path) {
     const pathLength = path.getTotalLength();
     
-    // 1. Pehle ensure karo ki line invisible hai
-    gsap.set(path, { 
-        strokeDasharray: pathLength, 
-        strokeDashoffset: pathLength 
-    });
+    gsap.set(path, { strokeDasharray: pathLength, strokeDashoffset: pathLength });
 
-    // 2. Ab scroll trigger lagao
     gsap.to(path, {
-        strokeDashoffset: 0, // Line draw hogi
+        strokeDashoffset: 0,
         ease: "none",
         scrollTrigger: {
-            trigger: ".relative.py-24.bg-\\[\\#0a0a0a\\]", // 'The Ride' wala section selector
-            start: "top 70%",   // Jab section 70% screen par aaye tab shuru ho
-            end: "bottom 20%",  // Jab section khatam hone wala ho tab stop ho
-            scrub: 1.5          // Isse drawing scroll ki speed se match hogi
+            trigger: "#ride-section", // Humne ab ID use ki hai
+            start: "top 60%",        // Jab section screen ke thoda upar aaye tab shuru ho
+            end: "bottom 20%",       // Jab section khatam hone wala ho tab stop ho
+            scrub: 1,                // Scroll ke saath line ki drawing move hogi
+            // markers: true,        // <-- Is line ko check karne ke liye hata sakte ho (testing ke liye)
         }
     });
 }
-
         lucide.createIcons();
         
 </script> <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script> 
@@ -458,6 +452,7 @@ if (path) {
 </script>
 </body>
 </html>
+
 
 
 
