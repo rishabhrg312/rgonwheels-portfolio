@@ -113,6 +113,35 @@
     pointer-events: none;
     background-image: url("https://grainy-gradients.vercel.app/noise.svg");
 }
+        .insta-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.insta-card img {
+    transition: transform 0.5s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.insta-card:hover img {
+    transform: scale(1.1);
+    filter: brightness(0.7);
+}
+.play-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: rgba(0,0,0,0.2);
+}
+.insta-card:hover .play-overlay {
+    opacity: 1;
+}
 
 /* Vault Hover Effect */
 .vault-video-container {
@@ -278,20 +307,36 @@ one frame, one road, one story at a time.</p>
     </div>
 </section>
 
-        <div class="reveal">
-    <h3 class="heading-font text-3xl mb-6 tracking-widest text-[#d4af37]">LATEST REELS</h3>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <section class="py-24 px-10 bg-[#0c0d10] border-t border-white/5">
+    <div class="max-w-6xl mx-auto">
+        <h3 class="heading-font text-4xl mb-12 tracking-widest text-center text-[#d4af37]">LATEST REELS</h3>
         
-        <div class="glass-card p-2 overflow-hidden aspect-[9/16] max-h-[500px]">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reels/YOUR_REEL_ID/" data-instgrm-version="14" style="width:100%; border:none;"></blockquote>
-        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <a href="https://www.instagram.com/reels/YOUR_REEL_ID_1/" target="_blank" class="insta-card aspect-[9/16] glass-card reveal">
+                <img src="reel-poster-1.jpg" alt="Latest Reel">
+                <div class="play-overlay">
+                    <i data-lucide="play" class="text-[#d4af37] w-12 h-12"></i>
+                </div>
+            </a>
 
-        <div class="glass-card p-2 overflow-hidden aspect-[9/16] max-h-[500px]">
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reels/ANOTHER_REEL_ID/" data-instgrm-version="14" style="width:100%; border:none;"></blockquote>
-        </div>
+            <a href="https://www.instagram.com/reels/YOUR_REEL_ID_2/" target="_blank" class="insta-card aspect-[9/16] glass-card reveal">
+                <img src="reel-poster-2.jpg" alt="Latest Reel">
+                <div class="play-overlay">
+                    <i data-lucide="play" class="text-[#d4af37] w-12 h-12"></i>
+                </div>
+            </a>
 
+            <a href="https://www.instagram.com/reels/YOUR_REEL_ID_3/" target="_blank" class="insta-card aspect-[9/16] glass-card reveal">
+                <img src="reel-poster-3.jpg" alt="Latest Reel">
+                <div class="play-overlay">
+                    <i data-lucide="play" class="text-[#d4af37] w-12 h-12"></i>
+                </div>
+            </a>
+
+        </div>
     </div>
-</div>
+</section>
 
                 <div class="reveal">
                     <h3 class="heading-font text-3xl mb-6 tracking-widest text-white">ON THE ROAD</h3>
@@ -502,6 +547,7 @@ if(path) {
     <script async src="//www.instagram.com/embed.js"></script>
 </body>
 </html>
+
 
 
 
