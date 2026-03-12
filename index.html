@@ -308,44 +308,43 @@ one frame, one road, one story at a time.</p>
 </section>
 
         <section class="py-24 px-10 bg-[#0c0d10] border-t border-white/5">
-    <div class="max-w-6xl mx-auto">
-        <h3 class="heading-font text-4xl mb-12 tracking-widest text-center text-[#d4af37]">LATEST REELS</h3>
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            <a href="https://www.instagram.com/reels/YOUR_REEL_ID_1/" target="_blank" class="insta-card aspect-[9/16] glass-card reveal">
-                <img src="reel-poster-1.jpg" alt="Latest Reel">
-                <div class="play-overlay">
-                    <i data-lucide="play" class="text-[#d4af37] w-12 h-12"></i>
+        <div class="reveal">
+            <h3 class="heading-font text-3xl mb-8 tracking-widest text-white uppercase flex items-center gap-3">
+                <i data-lucide="youtube" class="text-red-600"></i> On The Road
+            </h3>
+            <div class="glass-card overflow-hidden aspect-video group relative">
+                <img src="youtube-thumb.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <a href="https://youtube.com/@rgonwheels" target="_blank" class="bg-red-600/80 p-4 rounded-full hover:bg-red-600 transition-all scale-90 hover:scale-100">
+                        <i data-lucide="play" fill="white"></i>
+                    </a>
                 </div>
-            </a>
-
-            <a href="https://www.instagram.com/reels/YOUR_REEL_ID_2/" target="_blank" class="insta-card aspect-[9/16] glass-card reveal">
-                <img src="reel-poster-2.jpg" alt="Latest Reel">
-                <div class="play-overlay">
-                    <i data-lucide="play" class="text-[#d4af37] w-12 h-12"></i>
-                </div>
-            </a>
-
-            <a href="https://www.instagram.com/reels/YOUR_REEL_ID_3/" target="_blank" class="insta-card aspect-[9/16] glass-card reveal">
-                <img src="reel-poster-3.jpg" alt="Latest Reel">
-                <div class="play-overlay">
-                    <i data-lucide="play" class="text-[#d4af37] w-12 h-12"></i>
-                </div>
-            </a>
-
-        </div>
-    </div>
-</section>
-
-                <div class="reveal">
-                    <h3 class="heading-font text-3xl mb-6 tracking-widest text-white">ON THE ROAD</h3>
-                    <div class="aspect-video bg-white/5 flex items-center justify-center border border-white/10">
-                        <a href="https://youtube.com/@rgonwheels" target="_blank" class="text-xs tracking-widest text-gray-500 hover:text-[#d4af37]">WATCH LATEST VLOG</a>
-                    </div>
+                <div class="absolute bottom-4 left-4">
+                    <p class="text-[10px] tracking-[0.3em] uppercase text-gray-300">Latest Vlog out now</p>
                 </div>
             </div>
-        </section>
+        </div>
+
+        <div class="reveal">
+            <h3 class="heading-font text-3xl mb-8 tracking-widest text-[#d4af37] uppercase flex items-center gap-3">
+                <i data-lucide="instagram" class="text-[#d4af37]"></i> Latest Reels
+            </h3>
+            <div class="grid grid-cols-2 gap-4">
+                <a href="https://instagram.com/rgonwheels" target="_blank" class="glass-card aspect-[9/16] overflow-hidden group relative">
+                    <img src="reel-thumb-1.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all"></div>
+                </a>
+                <a href="https://instagram.com/rgonwheels" target="_blank" class="glass-card aspect-[9/16] overflow-hidden group relative">
+                    <img src="reel-thumb-2.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all"></div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
 
         <section class="relative py-40 bg-black border-t border-white/5 overflow-hidden group">
     <div class="absolute inset-0 z-0 opacity-0 group-hover:opacity-30 transition-all duration-1000 vault-video-container pointer-events-none">
@@ -547,6 +546,7 @@ if(path) {
     <script async src="//www.instagram.com/embed.js"></script>
 </body>
 </html>
+
 
 
 
