@@ -20,7 +20,6 @@
         #cursor { width: 8px; height: 8px; background-color: #d4af37; border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; mix-blend-mode: difference; }
         #cursor-blur { width: 35px; height: 35px; border: 1px solid #d4af37; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: width 0.3s, height 0.3s; }
 
-        @media (max-width: 768px) { #cursor, #cursor-blur { display: none !important; } * { cursor: auto !important; } }
 
         /* Lag Fix & Parallax Optimization */
         .parallax-layer { will-change: transform; transform: translateZ(0); backface-visibility: hidden; }
@@ -40,7 +39,7 @@
         }
 
         .hero-heading { font-family: 'Bebas Neue', sans-serif; font-size: 8vw; letter-spacing: 0.1em; color: white; line-height: 1; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
-        @media (max-width: 768px) { .hero-heading { font-size: 15vw; } }
+    
 
         /* Glassmorphism Restore */
         .glass-card { 
@@ -205,6 +204,44 @@
     opacity: 1;
     transform: scale(1);
 }
+        /* --- MOBILE FIX START --- */
+@media (max-width: 768px) {
+    /* 1. Cursor hatane ke liye */
+    #cursor, #cursor-blur { display: none !important; }
+    * { cursor: auto !important; }
+
+    /* 2. Loader Text Fix (Naam screen se bahar nahi jayega) */
+    #loader-text {
+        font-size: 7vw !important;
+        letter-spacing: 0.2em !important;
+        padding: 0 20px;
+    }
+
+    /* 3. Hero Heading (RG ON WHEELS) Fix */
+    .hero-heading { 
+        font-size: 13vw !important; 
+        margin-bottom: 8px !important;
+        transform: translateY(-20px); /* Isse text thoda upar shift hoga */
+    }
+
+    /* 4. Tagline Fix (Capturing life...) */
+    .parallax-layer p {
+        font-size: 7px !important;
+        letter-spacing: 0.15em !important;
+        line-height: 1.6;
+        width: 85% !important;
+        margin: 0 auto;
+        transform: translateY(-15px);
+    }
+
+    /* 5. Silhouette Fix (Aapki photo thodi niche) */
+    .parallax-layer img#hero-subject {
+        height: 60% !important; 
+        transform: scale(1.1) translateY(20%) !important;
+        bottom: -5% !important;
+    }
+}
+/* --- MOBILE FIX END --- */
         
     </style>
 </head>
@@ -700,6 +737,7 @@ if(path) {
     <script async src="//www.instagram.com/embed.js"></script>
 </body>
 </html>
+
 
 
 
