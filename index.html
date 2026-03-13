@@ -230,11 +230,18 @@
         transform: translateY(-25px) !important;
     }
 
-    /* Subject Silhouette - Ise thoda niche hi rakho taaki text saaf dikhe */
+    /* Subject Silhouette - Ise bada aur 3D feel dene ke liye */
     .parallax-layer img#hero-subject {
-        height: 65% !important; /* 80% zyada bada ho raha tha mobile pe */
-        transform: scale(1.1) translateY(10%) !important;
+        height: 85% !important; /* Size badhaya */
+        transform: scale(1.3) translateY(5%) !important; /* Zoom aur Height set ki */
         bottom: -2% !important;
+        z-index: 20;
+    }
+
+    /* Bottom Shadow Fix - Isse niche ka black gap bhar jayega */
+    .subject-bottom-gradient {
+        height: 45vh !important;
+        bottom: -5px !important;
     }
     /* Peeche wala bada text "THE VAULT" */
     .group h2.text-6xl {
@@ -249,9 +256,20 @@
         margin-top: 20px !important;
     }
 
-    /* Vault section ki height mobile par adjust karne ke liye */
-    #vault-section {
-        padding: 80px 0 !important;
+    /* Button ko screen ke andar fit karne ke liye */
+    #vault-section a {
+        width: 90% !important;
+        max-width: 300px;
+        padding: 15px 10px !important;
+        font-size: 8px !important;
+        margin: 0 auto;
+        display: block;
+    }
+
+    /* "THE VAULT" background text spacing */
+    .group h2.text-6xl {
+        font-size: 3rem !important;
+        transform: translateY(20px) !important;
     }
 }
 /* --- MOBILE FIX END --- */
@@ -559,9 +577,13 @@ one frame, one road, one story at a time.</p>
 
     // 3. Parallax Engine
     gsap.utils.toArray(".parallax-layer").forEach(layer => {
-        const speed = layer.getAttribute("data-speed");
-        gsap.to(layer, {
-            yPercent: speed * 80,
+    const speed = layer.getAttribute("data-speed");
+    // Mobile par speed ko bilkul kam (0.05) kardo taaki layers bikhre nahi
+    const finalSpeed = window.innerWidth < 768 ? speed * 0.1 : speed;
+
+    gsap.to(layer, {
+        yPercent: finalSpeed * 80,
+        // ... baaki same rahega
             force3D: true,
             scrollTrigger: {
                 trigger: ".parallax-container",
@@ -750,6 +772,7 @@ if(path) {
     <script async src="//www.instagram.com/embed.js"></script>
 </body>
 </html>
+
 
 
 
