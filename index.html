@@ -213,28 +213,43 @@
     <div id="cursor-blur"></div>
 
     <div id="loader">
-        <h1 id="loader-text" class="heading-font text-4xl tracking-[0.5em] opacity-0 text-white">RISHABH GULATI</h1>
+        <h1 id="loader-text" class="heading-font text-3xl md:text-4xl tracking-[0.2em] md:tracking-[0.5em] opacity-0 text-white text-center px-6">
+            RISHABH GULATI
+        </h1>
         <div id="loader-bar"></div>
     </div>
 
     <main id="main-content" class="opacity-0">
         <section class="relative h-screen w-full overflow-hidden bg-black parallax-container">
+            <nav class="absolute top-0 left-0 w-full z-30 flex justify-between p-6 md:p-10 items-center">
+                <div class="heading-font text-sm md:text-2xl tracking-widest text-white uppercase">RISHABH GULATI</div>
+                <div class="flex items-center gap-4 md:gap-6">
+                    <a href="https://youtube.com/@rgonwheels" target="_blank" class="text-white hover:text-[#d4af37] scale-90 md:scale-100">
+                        <i data-lucide="youtube"></i>
+                    </a>
+                    <a href="https://instagram.com/rgonwheels" target="_blank" class="text-white hover:text-[#d4af37] scale-90 md:scale-100">
+                        <i data-lucide="instagram"></i>
+                    </a>
+                </div>
+            </nav>
+
             <div class="absolute inset-0 z-0 parallax-layer bg-zoom-effect" data-speed="0.1">
                 <img src="pexels-maaz-kalia-104744186-29401243.jpg" class="w-full h-full object-cover opacity-80" loading="eager">
                 <div class="lens-flare"></div>
             </div>
 
             <div class="absolute inset-0 z-10 flex flex-col justify-center items-center text-center parallax-layer" data-speed="0.5">
-                <h1 class="hero-heading">RG ON WHEELS</h1>
-                <p class="text-gray-400 uppercase tracking-[0.5em] text-[10px] mt-2 font-light">Capturing life through the lens of a traveler and a filmmaker.</p>
+                <h1 class="hero-heading select-none">RG ON WHEELS</h1>
+                <p class="text-gray-400 uppercase tracking-[0.3em] md:tracking-[0.5em] text-[7px] md:text-[10px] mt-2 font-light px-10">
+                    Capturing life through the lens of a traveler and a filmmaker.
+                </p>
             </div>
 
             <div class="absolute inset-0 z-20 flex items-end justify-center parallax-layer" data-speed="0.2">
-                <img src="subject-parallax.png" id="hero-subject" alt="Rishabh Silhouette" class="h-[95%] md:h-[105%] object-contain pointer-events-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)]">
+                <img src="subject-parallax.png" id="hero-subject" alt="Rishabh Silhouette" class="h-[75%] md:h-[105%] object-contain pointer-events-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)]">
             </div>
 
             <div class="subject-bottom-gradient"></div>
-
             <nav class="relative z-30 flex justify-between p-10 items-center">
                 <div class="heading-font text-2xl tracking-widest text-white">RISHABH GULATI</div>
                 <div class="flex items-center gap-6">
@@ -691,6 +706,7 @@ if(path) {
     <script async src="//www.instagram.com/embed.js"></script>
 </body>
 </html>
+
 
 
 
