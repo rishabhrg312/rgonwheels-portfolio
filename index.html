@@ -602,8 +602,18 @@ if(contactForm) {
             headers: { 'Accept': 'application/json' }
         });
 
+        const contactForm = document.getElementById('contact-form');
+if(contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: new FormData(contactForm),
+            headers: { 'Accept': 'application/json' }
+        });
+
         if (response.ok) {
-            // Professional Cinematic Popup
             Swal.fire({
                 title: 'INQUIRY RECEIVED',
                 html: `
@@ -624,6 +634,8 @@ if(contactForm) {
             });
             contactForm.reset();
         }
+    });
+}
         
         lucide.createIcons();
 </script>
@@ -646,6 +658,7 @@ if(contactForm) {
     <script async src="//www.instagram.com/embed.js"></script>
 </body>
 </html>
+
 
 
 
