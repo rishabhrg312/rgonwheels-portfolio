@@ -217,33 +217,30 @@
         padding: 0 20px;
     }
 
-    /* 3. Hero Heading (RG ON WHEELS) Fix */
+    /* 3. Hero Heading Fix */
     .hero-heading { 
         font-size: 13vw !important; 
-        margin-bottom: 8px !important;
-        transform: translateY(-20px); /* Isse text thoda upar shift hoga */
+        margin-bottom: 5px !important;
+        transform: translateY(20px) !important; /* Ise niche laya overlap ke liye */
     }
 
-    /* 4. Tagline Fix (Capturing life...) */
+    /* 4. Tagline Fix */
     .parallax-layer p {
-        font-size: 7px !important;
-        letter-spacing: 0.15em !important;
-        line-height: 1.6;
-        width: 85% !important;
-        margin: 0 auto;
-        transform: translateY(-15px);
+        font-size: 8px !important;
+        transform: translateY(25px) !important;
     }
 
-    /* 5. Silhouette Fix (Aapki photo thodi upar) */
-.parallax-layer img#hero-subject {
-    height: 60% !important; 
-    transform: scale(1.1) translateY(10%) !important;
-    bottom: -5% !important;
-}
-    /* Mobile par peeche wala bada text "The Vault" chhota karne ke liye */
+    /* 5. Silhouette Fix (3D & Parallax Feel) */
+    .parallax-layer img#hero-subject {
+        height: 80% !important; /* Size badha diya taaki 3D lage */
+        transform: scale(1.2) translateY(5%) !important; /* translateY kam kiya taaki upar aaye */
+        bottom: -2% !important;
+        z-index: 20;
+    }
+    /* The Vault background text fix */
     .group h2.text-6xl {
-        font-size: 4rem !important; /* PC par ye 10rem tha, mobile par chhota kar diya */
-        opacity: 0.1 !important;
+        font-size: 3.5rem !important;
+        transform: translateY(40px) !important; /* Ise niche laya overlap theek karne ke liye */
     }
     
     /* "Fashion Archive" heading ko fit karne ke liye */
@@ -752,6 +749,7 @@ if(path) {
     <script async src="//www.instagram.com/embed.js"></script>
 </body>
 </html>
+
 
 
 
