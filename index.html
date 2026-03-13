@@ -25,10 +25,10 @@
         .parallax-layer { will-change: transform; transform: translateZ(0); backface-visibility: hidden; }
 
         /* Subject Edge Fix: Isse incomplete sides chhup jayengi */
-        .parallax-layer img#hero-subject {
-            transform: scale(1.15) translateY(8%); 
-            transform-origin: bottom center;
-        }
+.parallax-layer img#hero-subject {
+    transform: scale(1.15) translateY(0%); 
+    transform-origin: bottom center;
+}
 
         /* Bottom Shadow Overlay */
         .subject-bottom-gradient {
@@ -234,11 +234,26 @@
         transform: translateY(-15px);
     }
 
-    /* 5. Silhouette Fix (Aapki photo thodi niche) */
-    .parallax-layer img#hero-subject {
-        height: 60% !important; 
-        transform: scale(1.1) translateY(20%) !important;
-        bottom: -5% !important;
+    /* 5. Silhouette Fix (Aapki photo thodi upar) */
+.parallax-layer img#hero-subject {
+    height: 60% !important; 
+    transform: scale(1.1) translateY(10%) !important;
+    bottom: -5% !important;
+}
+    /* Mobile par peeche wala bada text "The Vault" chhota karne ke liye */
+    .group h2.text-6xl {
+        font-size: 4rem !important; /* PC par ye 10rem tha, mobile par chhota kar diya */
+        opacity: 0.1 !important;
+    }
+    
+    /* "Fashion Archive" heading ko fit karne ke liye */
+    h3.text-3xl {
+        font-size: 1.8rem !important;
+    }
+
+    /* Vault section ki height mobile par adjust karne ke liye */
+    #vault-section {
+        padding: 80px 0 !important;
     }
 }
 /* --- MOBILE FIX END --- */
@@ -717,26 +732,27 @@ if(path) {
 
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
     <script>
-        const lenis = new Lenis({ 
-            duration: 1.2, 
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            smoothWheel: true 
-        });
+    const lenis = new Lenis({ 
+        duration: 0.8,  // <-- Ise 1.2 se badal kar 0.8 kiya (fast karne ke liye)
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true 
+    });
 
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
+    function raf(time) {
+        lenis.raf(time);
         requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
 
-        lenis.on('scroll', ScrollTrigger.update);
-        gsap.ticker.add((time) => {
-            lenis.raf(time * 1000);
-        });
-    </script>
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+    });
+</script>
     <script async src="//www.instagram.com/embed.js"></script>
 </body>
 </html>
+
 
 
 
