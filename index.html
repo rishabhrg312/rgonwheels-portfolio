@@ -206,70 +206,77 @@
 }
         /* --- MOBILE FIX START --- */
 @media (max-width: 768px) {
-    /* 1. Cursor hatane ke liye */
+    /* 1. Cursor Fix */
     #cursor, #cursor-blur { display: none !important; }
     * { cursor: auto !important; }
 
-    /* 2. Loader Text Fix (Naam screen se bahar nahi jayega) */
+    /* 2. Loader Text Fix */
     #loader-text {
         font-size: 7vw !important;
-        letter-spacing: 0.2em !important;
+        letter-spacing: 0.15em !important;
         padding: 0 20px;
     }
 
-    /* Hero Heading ko thoda upar rakho */
+    /* 3. Hero Section (Heading & Tagline) */
     .hero-heading { 
-        font-size: 12vw !important; 
-        margin-bottom: 10px !important;
-        transform: translateY(-30px) !important; /* Ise thoda upar shift kiya */
+        font-size: 13vw !important; 
+        margin-bottom: 5px !important;
+        transform: translateY(-20px) !important; /* Thoda upar taaki 3D depth dikhe */
     }
 
-    /* Tagline ko heading ke paas rakho */
     .parallax-layer p {
         font-size: 8px !important;
-        transform: translateY(-25px) !important;
+        letter-spacing: 0.1em !important;
+        width: 80% !important;
+        margin: 0 auto;
+        transform: translateY(-15px) !important;
     }
 
-    /* Subject Silhouette - Ise bada aur 3D feel dene ke liye */
+    /* 4. Subject Silhouette (Bottom Gap Fix) */
     .parallax-layer img#hero-subject {
-        height: 85% !important; /* Size badhaya */
-        transform: scale(1.3) translateY(5%) !important; /* Zoom aur Height set ki */
+        height: 70% !important; /* 85 se 70 kiya taaki niche dhasa na rahe */
+        transform: scale(1.25) translateY(12%) !important; /* Zoom rakha par thoda niche shift kiya gap bharne ke liye */
         bottom: -2% !important;
         z-index: 20;
     }
 
-    /* Bottom Shadow Fix - Isse niche ka black gap bhar jayega */
+    /* 5. Bottom Shadow (The "Gap" Filler) */
     .subject-bottom-gradient {
-        height: 45vh !important;
+        height: 55vh !important; /* Height badhayi taaki black area piche wale section se mil jaye */
         bottom: -5px !important;
-    }
-    /* Peeche wala bada text "THE VAULT" */
-    .group h2.text-6xl {
-        font-size: 3.5rem !important;
-        transform: translateY(0px) !important; /* Overlap hatane ke liye reset kiya */
-        opacity: 0.1 !important;
+        background: linear-gradient(to top, rgba(10, 10, 10, 1) 30%, rgba(10, 10, 10, 0)) !important;
     }
 
-    /* Fashion Archive heading */
-    h3.text-3xl {
-        font-size: 1.6rem !important;
-        margin-top: 20px !important;
+    /* 6. Vault Section Fix (Button & Text) */
+    /* Background text "THE VAULT" */
+    .group h2.text-6xl, .group h2.text-\[10rem\] {
+        font-size: 3.5rem !important; 
+        transform: translateY(10px) !important; 
+        opacity: 0.15 !important;
     }
 
-    /* Button ko screen ke andar fit karne ke liye */
-    #vault-section a {
-        width: 90% !important;
-        max-width: 300px;
-        padding: 15px 10px !important;
+    /* "FASHION ARCHIVE" */
+    h3.text-3xl, h3.text-5xl {
+        font-size: 1.8rem !important;
+        margin-top: 10px !important;
+    }
+
+    /* Access Vault Button (Red Circle Fix) */
+    #vault-section a, .group a {
+        width: 85% !important; /* Screen ke andar rakha */
+        max-width: 280px;
+        padding: 12px 5px !important;
         font-size: 8px !important;
+        letter-spacing: 0.2em !important;
         margin: 0 auto;
         display: block;
+        white-space: nowrap; /* Text line change na kare */
     }
 
-    /* "THE VAULT" background text spacing */
-    .group h2.text-6xl {
-        font-size: 3rem !important;
-        transform: translateY(20px) !important;
+    /* Section Spacing Fix */
+    section {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
     }
 }
 /* --- MOBILE FIX END --- */
@@ -321,7 +328,7 @@
             <div class="subject-bottom-gradient"></div>
         </section>
 
-        <section class="relative py-24 px-10 bg-[#0a0a0a]">
+        <section class="relative py-12 md:py-24 px-10 bg-[#0a0a0a] -mt-2 md:mt-0">
             <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="reveal">
                     <h2 class="heading-font text-5xl md:text-7xl mb-6 tracking-wider leading-none">THE <br><span class="text-[#d4af37]">STORYTELLER</span></h2>
@@ -578,8 +585,8 @@ one frame, one road, one story at a time.</p>
     // 3. Parallax Engine
     gsap.utils.toArray(".parallax-layer").forEach(layer => {
     const speed = layer.getAttribute("data-speed");
-    // Mobile par speed ko bilkul kam (0.05) kardo taaki layers bikhre nahi
-    const finalSpeed = window.innerWidth < 768 ? speed * 0.1 : speed;
+    // Mobile par parallax movement ko halka kardo taaki gaps na banein
+const finalSpeed = window.innerWidth < 768 ? speed * 0.05 : speed;
 
     gsap.to(layer, {
         yPercent: finalSpeed * 80,
@@ -772,6 +779,7 @@ if(path) {
     <script async src="//www.instagram.com/embed.js"></script>
 </body>
 </html>
+
 
 
 
