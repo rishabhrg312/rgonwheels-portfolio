@@ -217,35 +217,36 @@
         padding: 0 20px;
     }
 
-    /* 3. Hero Heading Fix */
+    /* Hero Heading ko thoda upar rakho */
     .hero-heading { 
-        font-size: 13vw !important; 
-        margin-bottom: 5px !important;
-        transform: translateY(20px) !important; /* Ise niche laya overlap ke liye */
+        font-size: 12vw !important; 
+        margin-bottom: 10px !important;
+        transform: translateY(-30px) !important; /* Ise thoda upar shift kiya */
     }
 
-    /* 4. Tagline Fix */
+    /* Tagline ko heading ke paas rakho */
     .parallax-layer p {
         font-size: 8px !important;
-        transform: translateY(25px) !important;
+        transform: translateY(-25px) !important;
     }
 
-    /* 5. Silhouette Fix (3D & Parallax Feel) */
+    /* Subject Silhouette - Ise thoda niche hi rakho taaki text saaf dikhe */
     .parallax-layer img#hero-subject {
-        height: 80% !important; /* Size badha diya taaki 3D lage */
-        transform: scale(1.2) translateY(5%) !important; /* translateY kam kiya taaki upar aaye */
+        height: 65% !important; /* 80% zyada bada ho raha tha mobile pe */
+        transform: scale(1.1) translateY(10%) !important;
         bottom: -2% !important;
-        z-index: 20;
     }
-    /* The Vault background text fix */
+    /* Peeche wala bada text "THE VAULT" */
     .group h2.text-6xl {
         font-size: 3.5rem !important;
-        transform: translateY(40px) !important; /* Ise niche laya overlap theek karne ke liye */
+        transform: translateY(0px) !important; /* Overlap hatane ke liye reset kiya */
+        opacity: 0.1 !important;
     }
-    
-    /* "Fashion Archive" heading ko fit karne ke liye */
+
+    /* Fashion Archive heading */
     h3.text-3xl {
-        font-size: 1.8rem !important;
+        font-size: 1.6rem !important;
+        margin-top: 20px !important;
     }
 
     /* Vault section ki height mobile par adjust karne ke liye */
@@ -749,6 +750,7 @@ if(path) {
     <script async src="//www.instagram.com/embed.js"></script>
 </body>
 </html>
+
 
 
 
