@@ -591,70 +591,87 @@ if(path) {
             });
         });
     }
-        const contactForm = document.getElementById('contact-form');
-if(contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault(); // Page reload hone se rokega
-        
-        const response = await fetch(contactForm.action, {
-            method: 'POST',
-            body: new FormData(contactForm),
-            headers: { 'Accept': 'application/json' }
-        });
+        // 9. Contact Form Submission (Fixed & Cleaned)
+    const contactForm = document.getElementById('contact-form');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Button loading state (Optional but good)
+            const btn = contactForm.querySelector('button');
+            const originalText = btn.innerText;
+            btn.innerText = "SENDING...";
+            btn.disabled = true;
 
-        const contactForm = document.getElementById('contact-form');
-if(contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const response = await fetch(contactForm.action, {
-            method: 'POST',
-            body: new FormData(contactForm),
-            headers: { 'Accept': 'application/json' }
-        });
-
-        if (response.ok) {
-                Swal.fire({
-                    title: 'INQUIRY RECEIVED',
-                    html: `<p style="color: #9ca3af; font-size: 13px; letter-spacing: 0.15em; line-height: 1.6; text-transform: uppercase;">
-                            Thank you for reaching out. <br> 
-                            Your project details have been archived. <br>
-                            I will get back to you shortly to discuss the vision.
-                          </p>`,
-                    icon: 'success',
-                    iconColor: '#d4af37',
-                    background: '#0c0d10',
-                    confirmButtonColor: '#d4af37',
-                    confirmButtonText: 'CLOSE',
-                    customClass: { popup: 'glass-card border border-white/10' }
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: new FormData(contactForm),
+                    headers: { 'Accept': 'application/json' }
                 });
-                contactForm.reset();
+
+                if (response.ok) {
+                    Swal.fire({
+                        title: 'INQUIRY RECEIVED',
+                        html: `<p style="color: #9ca3af; font-size: 13px; letter-spacing: 0.15em; line-height: 1.6; text-transform: uppercase;">
+                                Thank you for reaching out. <br> 
+                                Your project details have been archived. <br>
+                                I will get back to you shortly to discuss the vision.
+                              </p>`,
+                        icon: 'success',
+                        iconColor: '#d4af37',
+                        background: '#0c0d10',
+                        confirmButtonColor: '#d4af37',
+                        confirmButtonText: 'CLOSE',
+                        customClass: { popup: 'glass-card border border-white/10' }
+                    });
+                    contactForm.reset();
+                } else {
+                    throw new Error('Submission failed');
+                }
+            } catch (error) {
+                Swal.fire({
+                    title: 'ERROR',
+                    text: 'Something went wrong. Please try again.',
+                    icon: 'error',
+                    background: '#0c0d10',
+                    confirmButtonColor: '#d4af37'
+                });
+            } finally {
+                btn.innerText = originalText;
+                btn.disabled = false;
             }
         });
     }
 
-    // Final Init
+    // Final Initialization
     lucide.createIcons();
     </script>
 
-<script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
-<script>
-    // Ek hi baar setup karna hai bas
-    const lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+    <script>
+        const lenis = new Lenis({ 
+            duration: 1.2, 
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel: true 
+        });
 
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add((time) => {
-        lenis.raf(time * 1000);
-    });
-</script>
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+        });
+    </script>
     <script async src="//www.instagram.com/embed.js"></script>
 </body>
 </html>
+
 
 
 
