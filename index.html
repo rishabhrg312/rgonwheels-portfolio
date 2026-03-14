@@ -229,68 +229,39 @@
 }
         /* --- MOBILE FIX START --- */
 @media (max-width: 768px) {
-    /* 1. Basics */
-    #cursor, #cursor-blur { display: none !important; }
-    * { cursor: auto !important; }
-    #loader-text { font-size: 7vw !important; letter-spacing: 0.1em !important; }
+        #cursor, #cursor-blur { display: none !important; }
+        * { cursor: auto !important; }
+        
+        /* 1. Website Right Side Bhag rahi hai - uska ilaaj */
+        html, body { overflow-x: hidden !important; width: 100vw !important; position: relative !important; }
+        section { width: 100% !important; overflow: hidden !important; padding-left: 20px !important; padding-right: 20px !important; }
 
-    /* 2. Front Hero Section (Readability Fix) */
-    .hero-heading { 
-        font-size: 13vw !important; 
-        transform: translateY(-50px) !important; /* Heading ko thoda upar rakha */
+        /* 2. Hero Section Visibility */
+        .hero-heading { font-size: 13vw !important; transform: translateY(-50px) !important; }
+        
+        .parallax-layer p { 
+            font-size: 8px !important; 
+            transform: translateY(-35px) !important; 
+            display: block !important; 
+            opacity: 1 !important; 
+            z-index: 30 !important; 
+            position: relative !important;
+        }
+
+        .parallax-layer img#hero-subject { 
+            height: 65% !important; 
+            display: block !important; 
+            opacity: 1 !important; 
+            transform: scale(1.2) translateY(15%) !important; 
+        }
+
+        /* 3. YouTube Alignment */
+        .aspect-video { height: 210px !important; }
+
+        /* 4. Vault Alignment (Fashion Archive fix) */
+        h3.text-3xl { font-size: 1.6rem !important; margin-bottom: 55px !important; position: relative; z-index: 20; }
+        .group h2.text-6xl { font-size: 3rem !important; transform: translateY(35px) !important; opacity: 0.15 !important; }
     }
-
-    .parallax-layer p {
-        font-size: 8px !important;
-        transform: translateY(-40px) !important; /* Tagline ko heading ke paas kiya */
-        z-index: 30 !important;
-        opacity: 1 !important;
-        text-shadow: 0 0 10px rgba(0,0,0,0.8); /* Taaki piche ki baraf mein na chhup jaye */
-    }
-
-    .parallax-layer img#hero-subject {
-        height: 60% !important; /* Thoda chota kiya taaki text clear dikhe */
-        transform: scale(1.1) translateY(22%) !important; /* Niche dhakk diya text se door */
-    }
-
-    /* 3. Bottom Gap Fix */
-    .subject-bottom-gradient {
-        height: 50vh !important;
-        bottom: -2px !important;
-    }
-
-    /* 4. YouTube Icon Fix (Center & Size) */
-    .aspect-video { height: 220px !important; display: flex !important; align-items: center !important; justify-content: center !important; }
-    .aspect-video a { transform: scale(1.1) !important; }
-
-    /* 5. Fashion Vault Alignment (Overlap Fix) */
-    /* "FASHION ARCHIVE" */
-    h3.text-3xl {
-        font-size: 1.5rem !important;
-        margin-bottom: 60px !important; /* <--- Ise badhaya taaki background text piche rahe */
-        position: relative;
-        z-index: 20;
-    }
-
-    /* Background text "THE VAULT" */
-    .group h2.text-6xl {
-        font-size: 2.8rem !important;
-        opacity: 0.1 !important;
-        transform: translateY(30px) !important; /* Ise thoda niche shift kiya overlap se bachne ke liye */
-        z-index: 10;
-    }
-
-    /* Access Vault Button (Red Circle Fix) */
-    #vault-section a, .group a {
-        width: 85% !important;
-        max-width: 280px;
-        padding: 15px 5px !important;
-        font-size: 8px !important;
-        margin: 0 auto !important;
-        display: block;
-        white-space: nowrap;
-    }
-}
         
     </style>
 </head>
