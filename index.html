@@ -212,91 +212,66 @@
     min-height: 48px !important;
 }
         /* --- MOBILE FIX START --- */
+/* --- MOBILE FIX START --- */
 @media (max-width: 768px) {
-    /* 1. Cursor hatane ke liye (wahi purana fix) */
+    /* 1. Cursor Fix */
     #cursor, #cursor-blur { display: none !important; }
     * { cursor: auto !important; }
 
-    /* 2. Loader Text Fix (wahi purana fix) */
-    #loader-text {
-        font-size: 7vw !important;
-        letter-spacing: 0.15em !important;
-        padding: 0 20px;
-    }
+    /* 2. Loader Text */
+    #loader-text { font-size: 7vw !important; letter-spacing: 0.15em !important; padding: 0 20px; }
 
     /* 3. Hero Section fixes */
     .hero-heading { 
         font-size: 13vw !important; 
         margin-bottom: 5px !important;
-        /* YAHAN YE LINE ADD KARO: Isse text thoda upar shift hoga aur gap bharega */
         margin-top: -15vh !important; 
-        transform: none !important; /* TranslateY ko mobile pe band kar do */
+        transform: none !important; 
     }
 
     .parallax-layer p {
-        font-size: 10px !important; /* Thoda bada taaki readable ho */
+        font-size: 10px !important;
         letter-spacing: 0.1em !important;
         width: 90% !important;
         margin: 0 auto;
-        transform: none !important; /* Gap control karne ke liye ise remove karo */
+        transform: none !important;
     }
-}
 
-    /* 4. Subject Silhouette (Bada aur solid look ke liye height balanced kiya hai) */
+    /* 4. Subject Silhouette - AB YE BHI MEDIA QUERY KE ANDAR HAI */
     .parallax-layer img#hero-subject {
-        height: 70% !important; /* Pehle 85% tha, use balanced kiya depth lane ke liye */
-        /* Zoom karke thoda niche dhakk diya gap bharne ke liye */
+        height: 70% !important;
         transform: scale(1.25) translateY(12%) !important; 
         bottom: -2% !important;
-        z-index: 20; /* Ise text se upar na aane dene ke liye */
+        z-index: 20;
     }
 
-    /* 5. Bottom Shadow (Tension mat lo, isse niche ka black gap bhar jayega) */
+    /* 5. Bottom Shadow */
     .subject-bottom-gradient {
-        /* Height badhayi blend smoothly karne ke liye background se */
         height: 55vh !important; 
         bottom: -5px !important;
         background: linear-gradient(to top, rgba(10, 10, 10, 1) 30%, rgba(10, 10, 10, 0)) !important;
     }
 
-    /* 6. The Vault Section (Button aur Text overlapping fix karein) */
-    /* Peeche wala bada text "THE VAULT" */
-    .group h2.text-6xl, .group h2.text-\[10rem\] {
-        font-size: 3.5rem !important; 
-        /* Overlap hatane ke liye reset kiya gap optimization block ke andar */
-        transform: translateY(10px) !important; 
-        opacity: 0.15 !important;
-    }
-
-    /* "FASHION ARCHIVE" */
-    h3.text-3xl, h3.text-5xl {
-        font-size: 1.8rem !important;
-        margin-top: 10px !important;
-    }
-
-    /* Access Vault Button (Red Circle wala gap) screen se bahr na nikle */
+    /* 6. Vault & Ride Section fixes for Mobile */
+    .group h2.text-6xl, .group h2.text-\[10rem\] { font-size: 3.5rem !important; opacity: 0.15 !important; }
+    h3.text-3xl, h3.text-5xl { font-size: 1.8rem !important; margin-top: 10px !important; }
+    
     #vault-section a, .group a {
-        /* Screen width balanced karne ke liye width adjust kiya gaya hai */
         width: 85% !important; 
         max-width: 280px;
-        /* Padding aur font balance kiya hai spacing ke liye */
         padding: 12px 5px !important;
         font-size: 8px !important;
-        letter-spacing: 0.2em !important;
         margin: 0 auto;
         display: block;
-        white-space: nowrap; /* Text ko wrapping se bachane ke liye */
     }
 
-#ride-section {
-    padding-bottom: 40px !important; /* Gap kam karne ke liye */
-}
-
-section {
-    padding-left: 15px !important; /* Side gaps barabar karne ke liye */
-    padding-right: 15px !important;
-}
-}
+    #ride-section { padding-bottom: 40px !important; }
+    
+    section {
+        padding-left: 15px !important; 
+        padding-right: 15px !important;
+    }
+} /* <--- YE HAI ASLI BRACKET JO AB SARE MOBILE STYLES KO BAND KAREGA */
         
     </style>
 </head>
@@ -439,30 +414,40 @@ one frame, one road, one story at a time.</p>
     </div>
 </section>
 
-        <section class="py-24 px-10 bg-[#0c0d10] border-t border-white/5 reveal">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start px-6">
-    <div class="w-full">
-        </div>
-
-    <div class="w-full">
-        </div>
-</div>
+        <section class="py-24 px-6 md:px-12 bg-[#0c0d10] border-t border-white/5 reveal">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        
+        <div class="w-full">
             <h3 class="heading-font text-3xl mb-8 text-white uppercase flex items-center gap-3">
                 <i data-lucide="youtube" class="text-red-600"></i> On The Road
             </h3>
-            <div class="glass-card overflow-hidden aspect-video group relative mb-8 w-full">
+            
+            <div class="glass-card overflow-hidden aspect-video group relative mb-10 w-full mx-auto">
                 <img src="youtube-thumb.jpg" alt="YouTube" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60">
                 <div class="absolute inset-0 flex items-center justify-center">
-    <a href="https://youtube.com/@rgonwheels" target="_blank" 
-       style="width: 64px !important; height: 64px !important; min-width: 64px !important; min-height: 64px !important; display: flex !important; align-items: center !important; justify-content: center !important; border-radius: 9999px !important; aspect-ratio: 1/1 !important;"
-       class="bg-red-600/80 hover:bg-red-600 transition-all hover:scale-110">
-        <i data-lucide="play" fill="white" class="text-white w-6 h-6"></i>
-    </a>
-</div>
-            </div>
-            <div class="border-l border-[#d4af37]/30 pl-6 ml-1">
-                <p class="text-gray-400 uppercase tracking-[0.3em] text-[10px] mb-6 italic">"Every road has a story..."</p>
+                    <a href="https://youtube.com/@rgonwheels" target="_blank" 
+                       style="width: 60px !important; height: 60px !important; min-width: 60px !important; min-height: 60px !important;"
+                       class="bg-red-600/80 rounded-full flex items-center justify-center hover:scale-110 transition-all flex-shrink-0">
+                        <i data-lucide="play" fill="white" class="text-white w-6 h-6"></i>
+                    </a>
                 </div>
+            </div>
+
+            <div class="reveal border-l border-[#d4af37]/30 pl-8 ml-2">
+                <p class="text-gray-400 uppercase tracking-[0.3em] text-[10px] mb-8 italic">
+                    "Every road has a story. Watch mine unfold frame by frame on YouTube."
+                </p>
+                <div class="space-y-6">
+                    <div>
+                        <p class="text-[9px] text-gray-600 uppercase tracking-widest mb-1">Current Expedition</p>
+                        <p class="text-sm text-white font-bold uppercase">Spiti Valley 2026</p>
+                    </div>
+                    <div>
+                        <p class="text-[9px] text-gray-600 uppercase tracking-widest mb-1">Captured via</p>
+                        <p class="text-sm text-white font-bold uppercase">DJI Action 5 Pro</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="w-full">
@@ -475,16 +460,21 @@ one frame, one road, one story at a time.</p>
             
             <div class="grid grid-cols-2 gap-4">
                 <a href="#" class="insta-grid-card glass-card aspect-[9/16] overflow-hidden group relative">
-                    <img src="reel-thumb-1.jpg" class="w-full h-full object-cover">
+                    <img src="reel-thumb-1.jpg" alt="Reel 1" class="w-full h-full object-cover">
+                    <div class="play-btn-overlay">
+                        <i data-lucide="play" class="text-[#d4af37] w-10 h-10"></i>
+                    </div>
                 </a>
                 <a href="#" class="insta-grid-card glass-card aspect-[9/16] overflow-hidden group relative">
-                    <img src="reel-thumb-2.jpg" class="w-full h-full object-cover">
+                    <img src="reel-thumb-2.jpg" alt="Reel 2" class="w-full h-full object-cover">
+                    <div class="play-btn-overlay">
+                        <i data-lucide="play" class="text-[#d4af37] w-10 h-10"></i>
+                    </div>
                 </a>
             </div>
         </div>
 
-    </div>
-</section>
+    </div> </section>
 
        <section class="relative py-40 bg-black border-t border-white/5 overflow-hidden group">
     <div class="absolute inset-0 z-0 opacity-0 group-hover:opacity-60 transition-all duration-1000 vault-video-container pointer-events-none">
