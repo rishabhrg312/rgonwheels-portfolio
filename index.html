@@ -281,11 +281,14 @@
         white-space: nowrap; /* Text ko wrapping se bachane ke liye */
     }
 
-    /* Poore sections ki side padding balanced karein symmetry ke liye */
-    section {
-        padding-left: 20px !important;
-        padding-right: 20px !important;
-    }
+#ride-section {
+    padding-bottom: 40px !important; /* Gap kam karne ke liye */
+}
+
+section {
+    padding-left: 15px !important; /* Side gaps barabar karne ke liye */
+    padding-right: 15px !important;
+}
 }
         
     </style>
@@ -392,7 +395,7 @@ one frame, one road, one story at a time.</p>
         <div class="hidden md:block text-[9px] uppercase tracking-widest text-gray-600 italic">Scroll to Explore →</div>
     </div>
 
-    <div class="flex gap-6 overflow-x-auto px-10 pb-10 no-scrollbar select-none relative z-10">
+    <div class="flex gap-6 overflow-x-auto px-6 pb-10 no-scrollbar relative z-10 w-full mx-auto">
         
         <div class="glass-card p-10 flex-shrink-0 w-[350px] md:w-[450px] reveal">
             <i data-lucide="bike" class="w-8 h-8 text-[#d4af37] mb-6"></i>
@@ -442,9 +445,9 @@ one frame, one road, one story at a time.</p>
         <img src="youtube-thumb.jpg" alt="YouTube" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60">
         <div class="absolute inset-0 flex items-center justify-center">
             <a href="https://youtube.com/@rgonwheels" target="_blank" 
-               class="bg-red-600/80 w-14 h-14 md:w-16 md:h-16 rounded-full hover:bg-red-600 transition-all flex items-center justify-center">
-                <i data-lucide="play" fill="white" class="text-white w-6 h-6"></i>
-            </a>
+   class="bg-red-600/80 w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+    <i data-lucide="play" fill="white" class="text-white w-6 h-6"></i>
+</a>
         </div>
     </div>
 </div>
