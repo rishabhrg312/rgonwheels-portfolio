@@ -230,13 +230,14 @@
     }
 
     .parallax-layer img#hero-subject {
-    /* Height badha di taaki banda bada dikhe */
-    height: 95% !important; 
-    /* Zoom badhaya aur thoda niche set kiya taaki edge na dikhe */
-    transform: scale(1.6) translateY(5%) !important; 
+    /* Bande ka size kaafi bada kar diya */
+    height: 110% !important; 
+    /* Scale 2.2 taaki wo marked area jitna bada dikhe */
+    transform: scale(2.2) translateY(10%) !important; 
     transform-origin: bottom center;
-    bottom: -2% !important;
-    z-index: 25 !important; /* Text se upar rahega */
+    bottom: -5% !important;
+    z-index: 25 !important;
+    filter: drop-shadow(0 -10px 20px rgba(0,0,0,0.5));
 }
 
 /* Heading ko piche dhakne ke liye */
@@ -597,31 +598,39 @@ one frame, one road, one story at a time.</p>
         { scale: 1, duration: 5, ease: "power2.out", delay: 1 }
     );
 
-    // 3. Optimized Parallax for Mobile Depth
+    // 3. Aggressive Parallax for Mobile (Fast Movement)
 gsap.utils.toArray(".parallax-layer").forEach(layer => {
     const speed = layer.getAttribute("data-speed");
-    let movement = 0;
+    let movementValue = 0;
 
     if (window.innerWidth < 768) {
-        // Mobile Depth Logic: 
-        // Agar speed zyada hai (Heading), toh usey bohot zyada move karo
-        // Agar speed kam hai (Subject), toh usey bilkul kam move karo
-        movement = speed > 0.3 ? 150 : 30; 
+        // Agar Heading hai (speed high), toh usey 150% upar bhejo tezi se
+        // Agar Subject hai (speed low), toh usey bas 10-20% move karo
+        movementValue = speed > 0.3 ? -150 : 20; 
+        
+        gsap.to(layer, {
+            yPercent: movementValue, // Percent use karne se movement tez dikhti hai
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".parallax-container",
+                start: "top top",
+                end: "bottom top",
+                scrub: 0.5 // Scrub kam karne se response instantaneous ho jata hai
+            }
+        });
     } else {
-        // Desktop normal logic
-        movement = speed * 400;
+        // Desktop settings same rakhein
+        gsap.to(layer, {
+            y: speed * 400,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".parallax-container",
+                start: "top top",
+                end: "bottom top",
+                scrub: 1
+            }
+        });
     }
-
-    gsap.to(layer, {
-        y: movement,
-        ease: "none",
-        scrollTrigger: {
-            trigger: ".parallax-container",
-            start: "top top",
-            end: "bottom top",
-            scrub: 1
-        }
-    });
 });
 
     // 4. Section Reveals (Smooth Slide-in)
