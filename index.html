@@ -226,23 +226,18 @@
         opacity: 0.9;
     }
 
-    .parallax-layer p {
-        font-size: 8px !important;
-        letter-spacing: 0.1em !important;
-        width: 80% !important;
-        margin: 0 auto;
-        /* Heading aur tagline ke gap ko optimize karne ke liye */
-        transform: translateY(-15px) !important;
-    }
+    /* Tagline ko upar shift karo heading ke paas */
+.parallax-layer p {
+    font-size: 8px !important;
+    transform: translateY(-45px) !important; /* -25 se badha kar -45 kiya */
+    z-index: 30 !important; /* Taaki ye subject ke upar dikhe */
+}
 
-    /* 4. Subject Silhouette (Bada aur solid look ke liye height balanced kiya hai) */
-    .parallax-layer img#hero-subject {
-        height: 70% !important; /* Pehle 85% tha, use balanced kiya depth lane ke liye */
-        /* Zoom karke thoda niche dhakk diya gap bharne ke liye */
-        transform: scale(1.25) translateY(12%) !important; 
-        bottom: -2% !important;
-        z-index: 20; /* Ise text se upar na aane dene ke liye */
-    }
+/* Subject ko thoda aur niche karo taaki text clear dikhe */
+.parallax-layer img#hero-subject {
+    height: 65% !important; 
+    transform: scale(1.2) translateY(18%) !important; /* 10% se 18% kiya */
+}
 
     /* 5. Bottom Shadow (Tension mat lo, isse niche ka black gap bhar jayega) */
     .subject-bottom-gradient {
@@ -252,20 +247,18 @@
         background: linear-gradient(to top, rgba(10, 10, 10, 1) 30%, rgba(10, 10, 10, 0)) !important;
     }
 
-    /* 6. The Vault Section (Button aur Text overlapping fix karein) */
-    /* Peeche wala bada text "THE VAULT" */
-    .group h2.text-6xl, .group h2.text-\[10rem\] {
-        font-size: 3.5rem !important; 
-        /* Overlap hatane ke liye reset kiya gap optimization block ke andar */
-        transform: translateY(10px) !important; 
-        opacity: 0.15 !important;
-    }
+   /* Fashion Archive heading ke niche gap badhao */
+h3.text-3xl {
+    font-size: 1.6rem !important;
+    margin-bottom: 50px !important; /* Background text se door karne ke liye */
+}
 
-    /* "FASHION ARCHIVE" */
-    h3.text-3xl, h3.text-5xl {
-        font-size: 1.8rem !important;
-        margin-top: 10px !important;
-    }
+/* Background text "THE VAULT" ko halka aur niche karo */
+.group h2.text-6xl {
+    font-size: 3rem !important;
+    opacity: 0.1 !important;
+    transform: translateY(25px) !important; /* Ise thoda niche shift kiya */
+}
 
     /* Access Vault Button (Red Circle wala gap) screen se bahr na nikle */
     #vault-section a, .group a {
@@ -436,13 +429,12 @@ one frame, one road, one story at a time.</p>
     <h3 class="heading-font text-3xl mb-8 tracking-widest text-white uppercase flex items-center gap-3">
         <i data-lucide="youtube" class="text-red-600"></i> On The Road
     </h3>
-    <div class="glass-card overflow-hidden aspect-video group relative mb-10">
-        <img src="youtube-thumb.jpg" alt="YouTube" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60">
-        <div class="absolute inset-0 flex items-center justify-center">
-            <a href="https://youtube.com/@rgonwheels" target="_blank" class="bg-red-600/80 p-4 rounded-full hover:bg-red-600 transition-all scale-90 hover:scale-100">
-                <i data-lucide="play" fill="white" class="text-white"></i>
-            </a>
-        </div>
+    <div class="glass-card overflow-hidden aspect-video group relative mb-10 flex items-center justify-center">
+    <img src="youtube-thumb.jpg" alt="YouTube" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60">
+    <a href="https://youtube.com/@rgonwheels" target="_blank" class="relative z-10 bg-red-600 p-5 rounded-full hover:bg-red-700 transition-all scale-125">
+        <i data-lucide="youtube" class="text-white w-10 h-10"></i>
+    </a>
+</div>
     </div>
 
     <div class="reveal max-w-[90%] border-l border-[#d4af37]/30 pl-8 ml-2">
