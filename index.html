@@ -39,6 +39,12 @@
         }
 
         .hero-heading { font-family: 'Bebas Neue', sans-serif; font-size: 8vw; letter-spacing: 0.1em; color: white; line-height: 1; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+
+        /* PC par tagline ko thoda upar lane ke liye */
+.parallax-layer p {
+    position: relative;
+    z-index: 25;
+}
     
 
         /* Glassmorphism Restore */
@@ -207,7 +213,19 @@
         /* Desktop Alignment Fix */
 @media (min-width: 1024px) {
     main { width: 100%; max-width: 100vw; overflow-x: hidden; }
-    section { padding-left: 5rem; padding-right: 5rem; }
+    section { 
+        padding-left: 10% !important; 
+        padding-right: 10% !important; 
+        width: 100% !important; 
+        box-sizing: border-box !important;
+    }
+}
+        /* PC/Desktop par "The Vault" ka gap theek karne ke liye */
+@media (min-width: 1024px) {
+    .group h2.text-6xl, .group h2.text-\[10rem\] {
+        line-height: 0.8 !important;
+        margin-bottom: 2rem !important;
+    }
 }
         /* --- MOBILE FIX START --- */
 @media (max-width: 768px) {
@@ -423,11 +441,12 @@ one frame, one road, one story at a time.</p>
         <i data-lucide="youtube" class="text-red-600"></i> On The Road
     </h3>
     <div class="glass-card overflow-hidden aspect-video group relative mb-10 flex items-center justify-center"> <img src="youtube-thumb.jpg" alt="YouTube" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60">
-    <a href="https://youtube.com/@rgonwheels" target="_blank" class="relative z-10 bg-red-600 p-5 rounded-full hover:bg-red-700 transition-all">
-        <i data-lucide="youtube" class="text-white w-8 h-8 md:w-10 md:h-10"></i>
-    </a>
-</div>
+        
+        <a href="https://youtube.com/@rgonwheels" target="_blank" class="relative z-10 bg-red-600 p-5 rounded-full hover:bg-red-700 transition-all scale-110 md:scale-125">
+            <i data-lucide="youtube" class="text-white w-8 h-8 md:w-10 md:h-10"></i>
+        </a>
     </div>
+</div>
 
     <div class="reveal max-w-[90%] border-l border-[#d4af37]/30 pl-8 ml-2">
         <p class="text-gray-400 uppercase tracking-[0.3em] text-[10px] mb-8 leading-loose italic">
@@ -461,18 +480,19 @@ one frame, one road, one story at a time.</p>
             </div>
             
             <div class="grid grid-cols-2 gap-4">
-                <a href="https://instagram.com/rgonwheels" target="_blank" class="insta-grid-card glass-card aspect-[9/16] overflow-hidden group relative">
-                    <img src="reel-thumb-1.jpg" alt="Reel 1" class="w-full h-full object-cover group-hover:scale-110 transition-all opacity-80">
-                    <div class="play-btn-overlay">
-                        <i data-lucide="play" class="text-[#d4af37] w-10 h-10"></i>
-                    </div>
-                </a>
-                <a href="https://instagram.com/rgonwheels" target="_blank" class="insta-grid-card glass-card aspect-[9/16] overflow-hidden group relative">
-                    <img src="reel-thumb-2.jpg" alt="Reel 2" class="w-full h-full object-cover group-hover:scale-110 transition-all opacity-80">
-                    <div class="play-btn-overlay">
-                        <i data-lucide="play" class="text-[#d4af37] w-10 h-10"></i>
-                    </div>
-                </a>
+                <a href="https://instagram.com/rgonwheels" target="_blank" class="insta-grid-card glass-card aspect-[9/16] overflow-hidden group relative block">
+    <img src="reel-thumb-1.jpg" class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500">
+    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
+        <i data-lucide="instagram" class="text-white w-8 h-8"></i>
+    </div>
+</a>
+
+<a href="https://instagram.com/rgonwheels" target="_blank" class="insta-grid-card glass-card aspect-[9/16] overflow-hidden group relative block">
+    <img src="reel-thumb-2.jpg" class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500">
+    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
+        <i data-lucide="instagram" class="text-white w-8 h-8"></i>
+    </div>
+</a>
             </div>
         </div>
 
