@@ -593,8 +593,9 @@ one frame, one road, one story at a time.</p>
     gsap.utils.toArray(".parallax-layer").forEach(layer => {
     const speed = layer.getAttribute("data-speed");
     // Mobile par movement aur kam kardo taaki layers aligned rahen, bikhre nahi.
-    const finalSpeed = window.innerWidth < 768 ? speed * 0.05 : speed;
-
+    const finalSpeed = window.innerWidth < 768 ? speed * 0.05 : speed; 
+    
+    // ... baaki same rahega yPercent calculation logic tak
     gsap.to(layer, {
         yPercent: finalSpeed * 80,
         // ... baaki same rahega
