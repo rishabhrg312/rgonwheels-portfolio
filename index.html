@@ -204,6 +204,13 @@
     opacity: 1;
     transform: scale(1);
 }
+
+        /* YouTube button ko capsule banne se rokne ke liye absolute fix */
+.aspect-video a.bg-red-600\/80 {
+    aspect-ratio: 1 / 1 !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+}
         /* --- MOBILE FIX START --- */
 @media (max-width: 768px) {
     /* 1. Cursor hatane ke liye (wahi purana fix) */
@@ -433,71 +440,40 @@ one frame, one road, one story at a time.</p>
 </section>
 
         <section class="py-24 px-10 bg-[#0c0d10] border-t border-white/5 reveal">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         
-       <div>
-    <h3 class="heading-font text-3xl mb-8 tracking-widest text-white uppercase flex items-center gap-3">
-        <i data-lucide="youtube" class="text-red-600"></i> On The Road
-    </h3>
-    <div>
-    <div class="max-w-2xl md:max-w-full"> <div class="glass-card overflow-hidden aspect-video group relative mb-10 w-full">
-        </div>
-</div>
-        <img src="youtube-thumb.jpg" alt="YouTube" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60">
-        <div class="absolute inset-0 flex items-center justify-center">
-    <a href="https://youtube.com/@rgonwheels" target="_blank" 
-       class="bg-red-600/80 w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center hover:scale-110 transition-transform flex-shrink-0">
-        <i data-lucide="play" fill="white" class="text-white w-6 h-6"></i>
-    </a>
-</div>
-        </div>
-    </div>
-</div>
-
-    <div class="reveal max-w-[90%] border-l border-[#d4af37]/30 pl-8 ml-2">
-        <p class="text-gray-400 uppercase tracking-[0.3em] text-[10px] mb-8 leading-loose italic">
-            "Every road has a story. Watch mine unfold frame by frame on YouTube."
-        </p>
-
-        <div class="space-y-6 mb-10">
-            <div>
-                <p class="text-[9px] text-gray-600 uppercase tracking-widest mb-1">Current Expedition</p>
-                <p class="text-sm text-white font-bold uppercase tracking-widest">Spiti Valley 2026</p>
+        <div class="w-full">
+            <h3 class="heading-font text-3xl mb-8 text-white uppercase flex items-center gap-3">
+                <i data-lucide="youtube" class="text-red-600"></i> On The Road
+            </h3>
+            <div class="glass-card overflow-hidden aspect-video group relative mb-8 w-full">
+                <img src="youtube-thumb.jpg" alt="YouTube" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <a href="https://youtube.com/@rgonwheels" target="_blank" 
+                       class="bg-red-600/80 w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center hover:scale-110 transition-transform flex-shrink-0">
+                        <i data-lucide="play" fill="white" class="text-white w-5 h-5 md:w-6 md:h-6"></i>
+                    </a>
+                </div>
             </div>
-            <div>
-                <p class="text-[9px] text-gray-600 uppercase tracking-widest mb-1">Captured via</p>
-                <p class="text-sm text-white font-bold uppercase tracking-widest">DJI Action 5 Pro</p>
-            </div>
+            <div class="border-l border-[#d4af37]/30 pl-6 ml-1">
+                <p class="text-gray-400 uppercase tracking-[0.3em] text-[10px] mb-6 italic">"Every road has a story..."</p>
+                </div>
         </div>
 
-        <a href="https://youtube.com/@rgonwheels" target="_blank" class="inline-flex items-center gap-4 text-[#d4af37] text-[10px] tracking-[0.4em] uppercase hover:gap-6 transition-all duration-300 group">
-            Watch Latest Vlog 
-            <i data-lucide="chevron-right" class="w-4 h-4"></i>
-        </a>
-    </div>
-</div>
-
-        <div>
+        <div class="w-full">
             <div class="flex justify-between items-center mb-8">
                 <h3 class="heading-font text-3xl tracking-widest text-[#d4af37] uppercase flex items-center gap-3">
                     <i data-lucide="instagram" class="text-[#d4af37]"></i> Latest Reels
                 </h3>
-                <a href="https://instagram.com/rgonwheels" target="_blank" class="text-[10px] tracking-[0.3em] text-gray-500 hover:text-[#d4af37] transition-colors uppercase">View All →</a>
+                <a href="https://instagram.com/rgonwheels" target="_blank" class="text-[10px] tracking-[0.3em] text-gray-500 hover:text-[#d4af37] uppercase">View All →</a>
             </div>
             
-            <div class="grid grid-cols-2 gap-4 mt-8">
-    </div>
-                <a href="https://instagram.com/rgonwheels" target="_blank" class="insta-grid-card glass-card aspect-[9/16] overflow-hidden group relative">
-                    <img src="reel-thumb-1.jpg" alt="Reel 1" class="w-full h-full object-cover group-hover:scale-110 transition-all opacity-80">
-                    <div class="play-btn-overlay">
-                        <i data-lucide="play" class="text-[#d4af37] w-10 h-10"></i>
-                    </div>
+            <div class="grid grid-cols-2 gap-4">
+                <a href="#" class="insta-grid-card glass-card aspect-[9/16] overflow-hidden group relative">
+                    <img src="reel-thumb-1.jpg" class="w-full h-full object-cover">
                 </a>
-                <a href="https://instagram.com/rgonwheels" target="_blank" class="insta-grid-card glass-card aspect-[9/16] overflow-hidden group relative">
-                    <img src="reel-thumb-2.jpg" alt="Reel 2" class="w-full h-full object-cover group-hover:scale-110 transition-all opacity-80">
-                    <div class="play-btn-overlay">
-                        <i data-lucide="play" class="text-[#d4af37] w-10 h-10"></i>
-                    </div>
+                <a href="#" class="insta-grid-card glass-card aspect-[9/16] overflow-hidden group relative">
+                    <img src="reel-thumb-2.jpg" class="w-full h-full object-cover">
                 </a>
             </div>
         </div>
