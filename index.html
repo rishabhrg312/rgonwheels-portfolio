@@ -598,28 +598,29 @@ one frame, one road, one story at a time.</p>
         { scale: 1, duration: 5, ease: "power2.out", delay: 1 }
     );
 
-    // 3. Aggressive Parallax for Mobile (Fast Movement)
+    // 3. Aggressive Parallax for Mobile (Direction: Down)
 gsap.utils.toArray(".parallax-layer").forEach(layer => {
     const speed = layer.getAttribute("data-speed");
     let movementValue = 0;
 
     if (window.innerWidth < 768) {
-        // Agar Heading hai (speed high), toh usey 150% upar bhejo tezi se
-        // Agar Subject hai (speed low), toh usey bas 10-20% move karo
-        movementValue = speed > 0.3 ? -150 : 20; 
+        // Positive value = Niche jayega
+        // Agar Heading hai (speed high), toh usey niche bhejo tezi se
+        // Agar Subject hai (speed low), toh usey thoda sa move karo (par utna nahi)
+        movementValue = speed > 0.3 ? 120 : 20; 
         
         gsap.to(layer, {
-            yPercent: movementValue, // Percent use karne se movement tez dikhti hai
+            yPercent: movementValue, 
             ease: "none",
             scrollTrigger: {
                 trigger: ".parallax-container",
                 start: "top top",
                 end: "bottom top",
-                scrub: 0.5 // Scrub kam karne se response instantaneous ho jata hai
+                scrub: 0.5 
             }
         });
     } else {
-        // Desktop settings same rakhein
+        // Desktop stays same (Negative because it goes up there usually)
         gsap.to(layer, {
             y: speed * 400,
             ease: "none",
@@ -632,7 +633,6 @@ gsap.utils.toArray(".parallax-layer").forEach(layer => {
         });
     }
 });
-
     // 4. Section Reveals (Smooth Slide-in)
 gsap.utils.toArray(".reveal, .glass-card").forEach(el => {
     gsap.from(el, { 
