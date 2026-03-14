@@ -39,12 +39,6 @@
         }
 
         .hero-heading { font-family: 'Bebas Neue', sans-serif; font-size: 8vw; letter-spacing: 0.1em; color: white; line-height: 1; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
-
-        /* PC par tagline ko thoda upar lane ke liye */
-.parallax-layer p {
-    position: relative;
-    z-index: 25;
-}
     
 
         /* Glassmorphism Restore */
@@ -210,58 +204,89 @@
     opacity: 1;
     transform: scale(1);
 }
-        /* Desktop Alignment Fix */
-@media (min-width: 1024px) {
-    main { width: 100%; max-width: 100vw; overflow-x: hidden; }
-    section { 
-        padding-left: 10% !important; 
-        padding-right: 10% !important; 
-        width: 100% !important; 
-        box-sizing: border-box !important;
-    }
-}
-        /* PC/Desktop par "The Vault" ka gap theek karne ke liye */
-@media (min-width: 1024px) {
-    .group h2.text-6xl, .group h2.text-\[10rem\] {
-        line-height: 0.8 !important;
-        margin-bottom: 2rem !important;
-    }
-}
         /* --- MOBILE FIX START --- */
 @media (max-width: 768px) {
-        #cursor, #cursor-blur { display: none !important; }
-        * { cursor: auto !important; }
-        
-        /* 1. Website Right Side Bhag rahi hai - uska ilaaj */
-        html, body { overflow-x: hidden !important; width: 100vw !important; position: relative !important; }
-        section { width: 100% !important; overflow: hidden !important; padding-left: 20px !important; padding-right: 20px !important; }
+    /* 1. Cursor hatane ke liye (wahi purana fix) */
+    #cursor, #cursor-blur { display: none !important; }
+    * { cursor: auto !important; }
 
-        /* 2. Hero Section Visibility */
-        .hero-heading { font-size: 13vw !important; transform: translateY(-50px) !important; }
-        
-        .parallax-layer p { 
-            font-size: 8px !important; 
-            transform: translateY(-35px) !important; 
-            display: block !important; 
-            opacity: 1 !important; 
-            z-index: 30 !important; 
-            position: relative !important;
-        }
-
-        .parallax-layer img#hero-subject { 
-            height: 65% !important; 
-            display: block !important; 
-            opacity: 1 !important; 
-            transform: scale(1.2) translateY(15%) !important; 
-        }
-
-        /* 3. YouTube Alignment */
-        .aspect-video { height: 210px !important; }
-
-        /* 4. Vault Alignment (Fashion Archive fix) */
-        h3.text-3xl { font-size: 1.6rem !important; margin-bottom: 55px !important; position: relative; z-index: 20; }
-        .group h2.text-6xl { font-size: 3rem !important; transform: translateY(35px) !important; opacity: 0.15 !important; }
+    /* 2. Loader Text Fix (wahi purana fix) */
+    #loader-text {
+        font-size: 7vw !important;
+        letter-spacing: 0.15em !important;
+        padding: 0 20px;
     }
+
+    /* 3. Hero Section (Heading & Tagline) overlap aur positioning fix */
+    .hero-heading { 
+        font-size: 13vw !important; 
+        margin-bottom: 5px !important;
+        /* Ise thoda upar shift kiya depth aur clean look ke liye */
+        transform: translateY(-20px) !important;
+        opacity: 0.9;
+    }
+
+    .parallax-layer p {
+        font-size: 8px !important;
+        letter-spacing: 0.1em !important;
+        width: 80% !important;
+        margin: 0 auto;
+        /* Heading aur tagline ke gap ko optimize karne ke liye */
+        transform: translateY(-15px) !important;
+    }
+
+    /* 4. Subject Silhouette (Bada aur solid look ke liye height balanced kiya hai) */
+    .parallax-layer img#hero-subject {
+        height: 70% !important; /* Pehle 85% tha, use balanced kiya depth lane ke liye */
+        /* Zoom karke thoda niche dhakk diya gap bharne ke liye */
+        transform: scale(1.25) translateY(12%) !important; 
+        bottom: -2% !important;
+        z-index: 20; /* Ise text se upar na aane dene ke liye */
+    }
+
+    /* 5. Bottom Shadow (Tension mat lo, isse niche ka black gap bhar jayega) */
+    .subject-bottom-gradient {
+        /* Height badhayi blend smoothly karne ke liye background se */
+        height: 55vh !important; 
+        bottom: -5px !important;
+        background: linear-gradient(to top, rgba(10, 10, 10, 1) 30%, rgba(10, 10, 10, 0)) !important;
+    }
+
+    /* 6. The Vault Section (Button aur Text overlapping fix karein) */
+    /* Peeche wala bada text "THE VAULT" */
+    .group h2.text-6xl, .group h2.text-\[10rem\] {
+        font-size: 3.5rem !important; 
+        /* Overlap hatane ke liye reset kiya gap optimization block ke andar */
+        transform: translateY(10px) !important; 
+        opacity: 0.15 !important;
+    }
+
+    /* "FASHION ARCHIVE" */
+    h3.text-3xl, h3.text-5xl {
+        font-size: 1.8rem !important;
+        margin-top: 10px !important;
+    }
+
+    /* Access Vault Button (Red Circle wala gap) screen se bahr na nikle */
+    #vault-section a, .group a {
+        /* Screen width balanced karne ke liye width adjust kiya gaya hai */
+        width: 85% !important; 
+        max-width: 280px;
+        /* Padding aur font balance kiya hai spacing ke liye */
+        padding: 12px 5px !important;
+        font-size: 8px !important;
+        letter-spacing: 0.2em !important;
+        margin: 0 auto;
+        display: block;
+        white-space: nowrap; /* Text ko wrapping se bachane ke liye */
+    }
+
+    /* Poore sections ki side padding balanced karein symmetry ke liye */
+    section {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+}
         
     </style>
 </head>
@@ -405,38 +430,43 @@ one frame, one road, one story at a time.</p>
 </section>
 
         <section class="py-24 px-10 bg-[#0c0d10] border-t border-white/5 reveal">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
         
-        <div>
-            <h3 class="heading-font text-3xl mb-8 tracking-widest text-white uppercase flex items-center gap-3">
-                <i data-lucide="youtube" class="text-red-600"></i> On The Road
-            </h3>
-            <div class="glass-card overflow-hidden aspect-video group relative mb-10 flex items-center justify-center"> 
-                <img src="youtube-thumb.jpg" alt="YouTube" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60">
-                <a href="https://youtube.com/@rgonwheels" target="_blank" class="relative z-10 bg-red-600 p-5 rounded-full hover:bg-red-700 transition-all scale-110 md:scale-125">
-                    <i data-lucide="youtube" class="text-white w-8 h-8 md:w-10 md:h-10"></i>
-                </a>
-            </div>
+       <div>
+    <h3 class="heading-font text-3xl mb-8 tracking-widest text-white uppercase flex items-center gap-3">
+        <i data-lucide="youtube" class="text-red-600"></i> On The Road
+    </h3>
+    <div class="glass-card overflow-hidden aspect-video group relative mb-10">
+        <img src="youtube-thumb.jpg" alt="YouTube" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60">
+        <div class="absolute inset-0 flex items-center justify-center">
+            <a href="https://youtube.com/@rgonwheels" target="_blank" class="bg-red-600/80 p-4 rounded-full hover:bg-red-600 transition-all scale-90 hover:scale-100">
+                <i data-lucide="play" fill="white" class="text-white"></i>
+            </a>
+        </div>
+    </div>
 
-            <div class="reveal max-w-[90%] border-l border-[#d4af37]/30 pl-8 ml-2">
-                <p class="text-gray-400 uppercase tracking-[0.3em] text-[10px] mb-8 leading-loose italic">
-                    "Every road has a story. Watch mine unfold frame by frame on YouTube."
-                </p>
-                <div class="space-y-6 mb-10">
-                    <div>
-                        <p class="text-[9px] text-gray-600 uppercase tracking-widest mb-1">Current Expedition</p>
-                        <p class="text-sm text-white font-bold uppercase tracking-widest">Spiti Valley 2026</p>
-                    </div>
-                    <div>
-                        <p class="text-[9px] text-gray-600 uppercase tracking-widest mb-1">Captured via</p>
-                        <p class="text-sm text-white font-bold uppercase tracking-widest">DJI Action 5 Pro</p>
-                    </div>
-                </div>
-                <a href="https://youtube.com/@rgonwheels" target="_blank" class="inline-flex items-center gap-4 text-[#d4af37] text-[10px] tracking-[0.4em] uppercase hover:gap-6 transition-all duration-300 group">
-                    Watch Latest Vlog <i data-lucide="chevron-right" class="w-4 h-4"></i>
-                </a>
+    <div class="reveal max-w-[90%] border-l border-[#d4af37]/30 pl-8 ml-2">
+        <p class="text-gray-400 uppercase tracking-[0.3em] text-[10px] mb-8 leading-loose italic">
+            "Every road has a story. Watch mine unfold frame by frame on YouTube."
+        </p>
+
+        <div class="space-y-6 mb-10">
+            <div>
+                <p class="text-[9px] text-gray-600 uppercase tracking-widest mb-1">Current Expedition</p>
+                <p class="text-sm text-white font-bold uppercase tracking-widest">Spiti Valley 2026</p>
+            </div>
+            <div>
+                <p class="text-[9px] text-gray-600 uppercase tracking-widest mb-1">Captured via</p>
+                <p class="text-sm text-white font-bold uppercase tracking-widest">DJI Action 5 Pro</p>
             </div>
         </div>
+
+        <a href="https://youtube.com/@rgonwheels" target="_blank" class="inline-flex items-center gap-4 text-[#d4af37] text-[10px] tracking-[0.4em] uppercase hover:gap-6 transition-all duration-300 group">
+            Watch Latest Vlog 
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+        </a>
+    </div>
+</div>
 
         <div>
             <div class="flex justify-between items-center mb-8">
@@ -447,16 +477,16 @@ one frame, one road, one story at a time.</p>
             </div>
             
             <div class="grid grid-cols-2 gap-4">
-                <a href="https://instagram.com/rgonwheels" target="_blank" class="insta-grid-card glass-card aspect-[9/16] overflow-hidden group relative block">
-                    <img src="reel-thumb-1.jpg" class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
-                        <i data-lucide="instagram" class="text-white w-8 h-8"></i>
+                <a href="https://instagram.com/rgonwheels" target="_blank" class="insta-grid-card glass-card aspect-[9/16] overflow-hidden group relative">
+                    <img src="reel-thumb-1.jpg" alt="Reel 1" class="w-full h-full object-cover group-hover:scale-110 transition-all opacity-80">
+                    <div class="play-btn-overlay">
+                        <i data-lucide="play" class="text-[#d4af37] w-10 h-10"></i>
                     </div>
                 </a>
-                <a href="https://instagram.com/rgonwheels" target="_blank" class="insta-grid-card glass-card aspect-[9/16] overflow-hidden group relative block">
-                    <img src="reel-thumb-2.jpg" class="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
-                        <i data-lucide="instagram" class="text-white w-8 h-8"></i>
+                <a href="https://instagram.com/rgonwheels" target="_blank" class="insta-grid-card glass-card aspect-[9/16] overflow-hidden group relative">
+                    <img src="reel-thumb-2.jpg" alt="Reel 2" class="w-full h-full object-cover group-hover:scale-110 transition-all opacity-80">
+                    <div class="play-btn-overlay">
+                        <i data-lucide="play" class="text-[#d4af37] w-10 h-10"></i>
                     </div>
                 </a>
             </div>
@@ -563,9 +593,8 @@ one frame, one road, one story at a time.</p>
     gsap.utils.toArray(".parallax-layer").forEach(layer => {
     const speed = layer.getAttribute("data-speed");
     // Mobile par movement aur kam kardo taaki layers aligned rahen, bikhre nahi.
-    const finalSpeed = window.innerWidth < 768 ? speed * 0.05 : speed; 
-    
-    // ... baaki same rahega yPercent calculation logic tak
+    const finalSpeed = window.innerWidth < 768 ? speed * 0.05 : speed;
+
     gsap.to(layer, {
         yPercent: finalSpeed * 80,
         // ... baaki same rahega
@@ -757,7 +786,6 @@ if(path) {
     <script async src="//www.instagram.com/embed.js"></script>
 </body>
 </html>
-
 
 
 
