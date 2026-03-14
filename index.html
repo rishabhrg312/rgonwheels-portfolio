@@ -217,12 +217,12 @@
         padding: 0 20px;
     }
 
-    /* 3. Hero Section (Heading & Tagline) overlap aur positioning fix */
+    /* 3. Hero Section (Heading & Tagline) overlap aur positioning fix - Updated */
     .hero-heading { 
         font-size: 13vw !important; 
         margin-bottom: 5px !important;
-        /* Ise thoda upar shift kiya depth aur clean look ke liye */
-        transform: translateY(-20px) !important;
+        /* Space kam karne ke liye negative margin upar side */
+        margin-top: -30px !important; /* adjust is value as needed */
         opacity: 0.9;
     }
 
@@ -436,13 +436,16 @@ one frame, one road, one story at a time.</p>
     <h3 class="heading-font text-3xl mb-8 tracking-widest text-white uppercase flex items-center gap-3">
         <i data-lucide="youtube" class="text-red-600"></i> On The Road
     </h3>
-    <div class="glass-card overflow-hidden aspect-video group relative mb-10">
-        <img src="youtube-thumb.jpg" alt="YouTube" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60">
-        <div class="absolute inset-0 flex items-center justify-center">
-            <a href="https://youtube.com/@rgonwheels" target="_blank" class="bg-red-600/80 p-4 rounded-full hover:bg-red-600 transition-all scale-90 hover:scale-100">
-                <i data-lucide="play" fill="white" class="text-white"></i>
-            </a>
+    <div>
+    <div class="flex justify-center md:block"> <div class="glass-card overflow-hidden aspect-video group relative mb-10 md:mb-10 w-[80%] md:w-full"> <img src="youtube-thumb.jpg" alt="YouTube" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60">
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="flex justify-center items-center w-full h-full"> 
+                    <a href="https://youtube.com/@rgonwheels" target="_blank" class="bg-red-600/80 p-4 rounded-full hover:bg-red-600 transition-all scale-90 hover:scale-100 flex-shrink-0">
+                        <i data-lucide="play" fill="white" class="text-white w-6 h-6 md:w-6 md:h-6"></i> </a>
+                </div>
+                </div>
         </div>
+    </div>
     </div>
 
     <div class="reveal max-w-[90%] border-l border-[#d4af37]/30 pl-8 ml-2">
