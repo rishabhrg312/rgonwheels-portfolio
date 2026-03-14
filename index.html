@@ -230,12 +230,20 @@
     }
 
     .parallax-layer img#hero-subject {
-    height: 80% !important; /* Thoda bada taaki heading piche chhup sake */
-    bottom: -5% !important; /* Bottom se ekdum chipka hua */
-    transform: scale(1.3) !important; /* Scale thoda badhaya mobile ke liye */
-    z-index: 20 !important; /* Isse upar rakho heading se */
+    /* Height badha di taaki banda bada dikhe */
+    height: 95% !important; 
+    /* Zoom badhaya aur thoda niche set kiya taaki edge na dikhe */
+    transform: scale(1.6) translateY(5%) !important; 
+    transform-origin: bottom center;
+    bottom: -2% !important;
+    z-index: 25 !important; /* Text se upar rahega */
 }
 
+/* Heading ko piche dhakne ke liye */
+.hero-heading {
+    z-index: 10 !important;
+    position: relative;
+}
     /* 4. Subject Silhouette - AB YE BHI MEDIA QUERY KE ANDAR HAI */
     .parallax-layer img#hero-subject {
         height: 70% !important;
@@ -589,12 +597,20 @@ one frame, one road, one story at a time.</p>
         { scale: 1, duration: 5, ease: "power2.out", delay: 1 }
     );
 
-    // 3. Updated Parallax Engine for Mobile & Desktop
+    // 3. Optimized Parallax for Mobile Depth
 gsap.utils.toArray(".parallax-layer").forEach(layer => {
     const speed = layer.getAttribute("data-speed");
-    
-    // Desktop ke liye normal speed, Mobile ke liye thodi optimized
-    const movement = window.innerWidth < 768 ? speed * 120 : speed * 400;
+    let movement = 0;
+
+    if (window.innerWidth < 768) {
+        // Mobile Depth Logic: 
+        // Agar speed zyada hai (Heading), toh usey bohot zyada move karo
+        // Agar speed kam hai (Subject), toh usey bilkul kam move karo
+        movement = speed > 0.3 ? 150 : 30; 
+    } else {
+        // Desktop normal logic
+        movement = speed * 400;
+    }
 
     gsap.to(layer, {
         y: movement,
@@ -603,7 +619,7 @@ gsap.utils.toArray(".parallax-layer").forEach(layer => {
             trigger: ".parallax-container",
             start: "top top",
             end: "bottom top",
-            scrub: true // Mobile pe smooth movement ke liye scrub true rakhein
+            scrub: 1
         }
     });
 });
