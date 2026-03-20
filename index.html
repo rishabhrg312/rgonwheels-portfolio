@@ -619,22 +619,21 @@ gsap.utils.toArray(".parallax-layer").forEach(layer => {
     const speed = layer.getAttribute("data-speed");
     let movementValue = 0;
 
-    if (window.innerWidth < 768) {
-        // Positive value = Niche jayega
-        // Agar Heading hai (speed high), toh usey niche bhejo tezi se
-        // Agar Subject hai (speed low), toh usey thoda sa move karo (par utna nahi)
-        movementValue = speed > 0.3 ? 120 : 20; 
-        
-        gsap.to(layer, {
-            yPercent: movementValue, 
-            ease: "none",
-            scrollTrigger: {
-                trigger: ".parallax-container",
-                start: "top top",
-                end: "bottom top",
-                scrub: 0.5 
-            }
-        });
+   // Ensure this part is exactly like this for mobile:
+if (window.innerWidth < 768) {
+    // Tezi se NICHE (marked area ki taraf)
+    let movement = speed > 0.3 ? 120 : 30; 
+    
+    gsap.to(layer, {
+        yPercent: movement,
+        ease: "none",
+        scrollTrigger: {
+            trigger: ".parallax-container",
+            start: "top top",
+            end: "bottom top",
+            scrub: 0.5 
+        }
+    });
     } else {
         // Desktop stays same (Negative because it goes up there usually)
         gsap.to(layer, {
