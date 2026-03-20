@@ -233,20 +233,24 @@
 @media (max-width: 768px) {
     /* ... cursor, loader fixed hain, unko mat chhedna ... */
 
+    /* --- MOBILE FIX START --- */
+@media (max-width: 768px) {
+    /* ... cursor, loader fixed hain, unko mat chhedna ... */
+
     .parallax-layer img#hero-subject {
-        /* Desktop jaisa fixed structure yahan nahi chahiye */
+        /* Phone par width auto rahegi */
         width: auto !important; 
         /* Height manually badhai taaki subject dominate kare screen */
         height: 75% !important; 
         
         /* THE REAL FIX: 
-           Aggressive Zoom: Scale 3.0 kiya taaki marked area jitna bada dikhe.
-           translateY(8%) kiya taaki image niche chipki rahe. */
-        transform: scale(3.0) translateY(8%) !important; 
+           Aggressive Zoom: Scale 4.0 kiya taaki marked area full width aur height cover kare.
+           translateY(15%) kiya taaki image niche chipki rahe, gap na dikhe. */
+        transform: scale(4.0) translateY(15%) !important; 
         transform-origin: bottom center;
         
         /* Position Fix */
-        bottom: -2% !important;
+        bottom: -3% !important;
         z-index: 30 !important; /* Heading se upar taaki gap cover ho */
         filter: drop-shadow(0 -10px 20px rgba(0,0,0,0.5));
     }
