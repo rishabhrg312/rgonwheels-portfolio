@@ -237,6 +237,11 @@
 @media (max-width: 768px) {
     /* ... cursor, loader fixed hain, unko mat chhedna ... */
 
+    nav { z-index: 99 !important; } /* Buttons ko force karke upar layega */
+    
+    /* Baaki tera zoom wala code yahan chalta rahega... */
+}
+
     .parallax-layer img#hero-subject {
         /* Phone par width auto rahegi */
         width: auto !important; 
@@ -332,7 +337,9 @@
     <main id="main-content" class="opacity-0">
         <section class="relative h-screen w-full overflow-hidden bg-black parallax-container">
             
-            <nav class="absolute top-0 left-0 w-full z-30 flex justify-between p-6 md:p-10 items-center">
+            <nav class="absolute top-0 left-0 w-full z-30 ...">
+
+<nav class="absolute top-0 left-0 w-full z-50 flex justify-between p-6 md:p-10 items-center">
                 <div class="heading-font text-sm md:text-2xl tracking-widest text-white uppercase">RISHABH GULATI</div>
                 <div class="flex items-center gap-4 md:gap-6">
                     <a href="https://youtube.com/@rgonwheels" target="_blank" class="text-white hover:text-[#d4af37] scale-90 md:scale-100">
